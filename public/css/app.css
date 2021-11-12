@@ -3149,6 +3149,9 @@ html:not([dir=rtl]) .c-callout-dark {
 table tr {
   border:none;
 }
+.pagination {
+  justify-content:right;
+}
 
 @media (hover: hover), (-ms-high-contrast: none) {
   .card-link:hover {
@@ -8513,12 +8516,15 @@ html:not([dir=rtl]) .navbar-nav {
   display: flex;
   list-style: none;
   border-radius: 0.25rem;
+  justify-content: center;
 }
 html:not([dir=rtl]) .pagination {
   padding-left: 0;
+  justify-content: center;
 }
 *[dir=rtl] .pagination {
   padding-right: 0;
+  justify-content: center;
 }
 
 .page-link {
@@ -8571,8 +8577,8 @@ html:not([dir=rtl]) .page-item:last-child .page-link {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #321fdb;
-  border-color: #321fdb;
+  background-color: #333;
+  border-color: #333;
 }
 .page-item.disabled .page-link {
   pointer-events: none;
@@ -8608,22 +8614,27 @@ html:not([dir=rtl]) .pagination-lg .page-item:last-child .page-link {
   padding: 0.25rem 0.5rem;
   font-size: 0.765625rem;
   line-height: 1.5;
+  justify-content: center;
 }
 html:not([dir=rtl]) .pagination-sm .page-item:first-child .page-link {
   border-top-left-radius: 0.2rem;
   border-bottom-left-radius: 0.2rem;
+  justify-content: center;
 }
 *[dir=rtl] .pagination-sm .page-item:first-child .page-link {
   border-top-right-radius: 0.2rem;
   border-bottom-right-radius: 0.2rem;
+  justify-content: center;
 }
 html:not([dir=rtl]) .pagination-sm .page-item:last-child .page-link {
   border-top-right-radius: 0.2rem;
   border-bottom-right-radius: 0.2rem;
+  justify-content: center;
 }
 *[dir=rtl] .pagination-sm .page-item:last-child .page-link {
   border-top-left-radius: 0.2rem;
   border-bottom-left-radius: 0.2rem;
+  justify-content: center;
 }
 
 .popover {

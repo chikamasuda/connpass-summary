@@ -5,7 +5,8 @@
         <img src="https://infyom.com/images/logo/blue_logo_150x150.png" width="46" height="46"
              class="c-sidebar-brand-minimized" alt="Brand Logo"> -->
         <a class="c-sidebar-nav-link c-active" href="">
-            <i class="c-sidebar-nav-icon cib-laravel" ></i><span class="brand-text font-weight-light" style="font-size: 18px;">Event List</span>
+            <i class="c-sidebar-nav-icon cil-list-rich"></i>
+            <span class="brand-text font-weight-medium" style="font-size: 18px;">Connpass Event List</span>
         </a>
     </div>
     <ul class="c-sidebar-nav">
