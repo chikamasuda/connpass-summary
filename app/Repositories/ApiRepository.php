@@ -12,40 +12,33 @@ class ApiRepository
     */
     public function popularEventBatch()
     {
-       $options = [
-            'http' => [
-                'method' => 'GET',
-                'header' => 'User-Agent: iOS',
-            ],
-        ];
-        $context = stream_context_create($options);
         $month = date('Ym');
         $next_month = $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
 
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=1&start=1';
-        $this->apiConnpass($url, $context);
+        $this->apiConnpass($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=1&start=101';
-        $this->apiConnpass($url, $context);
+        $this->apiConnpass($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=1&start=201';
-        $this->apiConnpass($url, $context);
+        $this->apiConnpass($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . 'order=3&start=1';
-        $this->apiConnpass($url, $context);
+        $this->apiConnpass($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=3&start=101';
-        $this->apiConnpass($url, $context);
+        $this->apiConnpass($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=3&start=201';
-        $this->apiConnpass($url, $context);
+        $this->apiConnpass($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=1&start=1';
-        $this->apiConnpass($url, $context);
+        $this->apiConnpass($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=1&start=101';
-        $this->apiConnpass($url, $context);
+        $this->apiConnpass($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=1&start=201';
-        $this->apiConnpass($url, $context);
+        $this->apiConnpass($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . 'order=3&start=1';
-        $this->apiConnpass($url, $context);
+        $this->apiConnpass($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=3&start=101';
-        $this->apiConnpass($url, $context);
+        $this->apiConnpass($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=1&start=201';
-        $this->apiConnpass($url, $context);
+        $this->apiConnpass($url);
     }
 
     /**
@@ -55,23 +48,17 @@ class ApiRepository
      */
     public function phpEventBatch()
     {
-        $options = [
-            'http' => [
-                'method' => 'GET',
-                'header' => 'User-Agent: iOS',
-            ],
-        ];
-        $context = stream_context_create($options);
         $month = date('Ym');
         $next_month = $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
+        
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&keyword=PHP&start=1';
-        $this->apiConnpassPHP($url, $context);
+        $this->apiConnpassPHP($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&keyword=PHP&start=101';
-        $this->apiConnpassPHP($url, $context);
+        $this->apiConnpassPHP($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&keyword=PHP&start=1';
-        $this->apiConnpassPHP($url, $context);
+        $this->apiConnpassPHP($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&keyword=PHP&start=101';
-        $this->apiConnpassPHP($url, $context);
+        $this->apiConnpassPHP($url);
     }
 
     /**
@@ -81,8 +68,15 @@ class ApiRepository
      * @param string $context
      * @return void
      */
-    private function apiConnpass($url, $context)
+    private function apiConnpass($url)
     {
+        $options = [
+            'http' => [
+                'method' => 'GET',
+                'header' => 'User-Agent: iOS',
+            ],
+        ];
+        $context = stream_context_create($options);
         $response = file_get_contents($url, true, $context);
         $arrays = json_decode($response, true);
         $num = count($arrays['events']);
@@ -118,8 +112,15 @@ class ApiRepository
      * @param string $context
      * @return void
      */
-    private function apiConnpassPHP($url, $context)
+    private function apiConnpassPHP($url)
     {
+        $options = [
+            'http' => [
+                'method' => 'GET',
+                'header' => 'User-Agent: iOS',
+            ],
+        ];
+        $context = stream_context_create($options);
         $response = file_get_contents($url, true, $context);
         $arrays = json_decode($response, true);
         $num = count($arrays['events']);
