@@ -26,12 +26,12 @@
                                 <input type="text" class="form-control" placeholder="開催場所">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-md pl-4 pr-4 btn-success">検索</button>
+                        <button type="submit" class="btn btn-md pl-5 pr-5 btn-success">検索</button>
                         <button type="submit" class="btn btn-md pl-4 pr-4 btn-dark ml-2">リセット</button>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header"><strong>人気イベント一覧</strong></div>
+                    <div class="card-header"><strong>PHPイベント一覧</strong></div>
                     <div class="card-body mt-1">
                     <div class="text-center pb-3"> {{ $lists->links('pagination::bootstrap-4') }}</div>
                       @foreach($lists as $list)

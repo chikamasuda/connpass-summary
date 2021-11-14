@@ -4,10 +4,10 @@
              class="c-sidebar-brand-full" alt="Brand Logo">
         <img src="https://infyom.com/images/logo/blue_logo_150x150.png" width="46" height="46"
              class="c-sidebar-brand-minimized" alt="Brand Logo"> -->
-        <a class="c-sidebar-nav-link c-active" href="">
+        <div class="c-sidebar-nav-link c-active">
             <i class="c-sidebar-nav-icon cil-list-rich"></i>
             <span class="brand-text font-weight-medium" style="font-size: 18px;">Connpass Event List</span>
-        </a>
+        </div>
     </div>
     <ul class="c-sidebar-nav">
         @include('layouts.menu')

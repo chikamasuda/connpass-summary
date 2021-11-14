@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Auth::routes();
+//Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\EventController::class, 'popularEvent'])->name('home');
+Route::get('/php', [App\Http\Controllers\EventController::class, 'phpEvent'])->name('php');
+Route::get('/csv', [App\Http\Controllers\CsvDownloadController::class, 'index'])->name('csv');
