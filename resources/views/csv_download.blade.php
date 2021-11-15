@@ -19,11 +19,11 @@
                                 <tbody>
                                     <tr>
                                         <td>人気イベント一覧</td>
-                                        <td class=""> <a class="btn btn-success btn-block col-md-5" href=""> <i class="fas fa-download mr-2"></i>ダウンロード</a></td>
+                                        <td class=""> <a class="btn btn-success btn-block col-md-5" href="{{ route('csv.popular') }}"> <i class="fas fa-download mr-2"></i>ダウンロード</a></td>
                                     </tr>
                                     <tr>
                                         <td>PHPイベント一覧</td>
-                                        <td> <a class="btn btn-success btn-block col-md-5" href=""> <i class="fas fa-download mr-2"></i>ダウンロード</a></td>
+                                        <td> <a class="btn btn-success btn-block col-md-5" href="{{ route('csv.php') }}"> <i class="fas fa-download mr-2"></i>ダウンロード</a></td>
                                     </tr>
                                 </tbody>
                             </table>

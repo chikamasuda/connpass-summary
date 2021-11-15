@@ -43,11 +43,12 @@
                                 <li class="list-unstyled"><i class="fas fa-user-friends mr-1 text-info"></i>{{ $list->group }}</li>
                                 <li class="mt-1 list-unstyled"><i class="fas fa-user-alt mr-2 mt-1 text-success"></i>{{ $list->owner }}</li>
                             </ul>
-                            <li style="width: 15%;"><i class="fas fa-map-marker-alt text-danger mr-2 ml-2"></i>{{$list->address }}</li>
+                            <li style="width: 15%;" class="mr-2 ml-2"><i class="fas fa-map-marker-alt text-danger mr-2" ></i>{{$list->address }}</li>
                             <li style="width: 15%;" class="ml-3 font-weight-bold"><i class="fas fa-users text-warning mr-1"></i>
                             {{ $list->accepted }}@if($list->limit) / {{ $list->limit }}@endif人</li>
                         </ul>
                         @endforeach
+                        <div class="text-center pb-3 mt-2"> {{ $lists->links('pagination::bootstrap-4') }}</div>
                         </tbody>
                         </table>
                     </div>

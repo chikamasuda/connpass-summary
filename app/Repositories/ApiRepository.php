@@ -1,43 +1,90 @@
 <?php
+
 namespace App\Repositories;
 
 use App\Models\Event;
 
-class ApiRepository 
+class ApiRepository
 {
-   /**
-    * 人気イベントバッチ処理
-    *
-    * @return void
-    */
+    /**
+     * 人気イベントバッチ処理当月
+     *
+     * @return void
+     */
     public function popularEventBatch()
     {
         $month = date('Ym');
-        $next_month = $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
 
-        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=1&start=1';
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=11';
         $this->apiConnpass($url);
-        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=1&start=101';
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=101';
         $this->apiConnpass($url);
-        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=1&start=201';
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=201';
         $this->apiConnpass($url);
-        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . 'order=3&start=1';
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=301';
         $this->apiConnpass($url);
-        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=3&start=101';
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=401';
         $this->apiConnpass($url);
-        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=3&start=201';
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=501';
         $this->apiConnpass($url);
-        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=1&start=1';
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=601';
         $this->apiConnpass($url);
-        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=1&start=101';
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=701';
         $this->apiConnpass($url);
-        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=1&start=201';
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=801';
         $this->apiConnpass($url);
-        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . 'order=3&start=1';
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=901';
         $this->apiConnpass($url);
-        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=3&start=101';
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1001';
         $this->apiConnpass($url);
-        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=1&start=201';
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1101';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1201';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1301';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1401';
+        $this->apiConnpass($url);
+    }
+
+    /**
+     * 人気イベントバッチ処理翌月
+     *
+     * @return void
+     */
+    public function popularEventBatchSecond()
+    {
+        $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
+
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=101';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=201';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=301';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=401';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=501';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=601';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=701';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=801';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=901';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1001';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1101';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1201';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1301';
+        $this->apiConnpass($url);
+        $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1401';
         $this->apiConnpass($url);
     }
 
@@ -50,7 +97,7 @@ class ApiRepository
     {
         $month = date('Ym');
         $next_month = $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
-        
+
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&keyword=PHP&start=1';
         $this->apiConnpassPHP($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&keyword=PHP&start=101';
@@ -79,6 +126,7 @@ class ApiRepository
         $context = stream_context_create($options);
         $response = file_get_contents($url, true, $context);
         $arrays = json_decode($response, true);
+        //dd($arrays);
         $num = count($arrays['events']);
 
         for ($i = 0; $i < $num; $i++) {
@@ -93,7 +141,7 @@ class ApiRepository
             }
             $event_data['owner'] = $arrays['events'][$i]['owner_display_name'];
             $event_data['address'] = $arrays['events'][$i]['address'];
-            $event_data['accepted'] = $arrays['events'][$i]['accepted'];
+            $event_data['accepted'] = $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'];
             $event_data['limit'] = $arrays['events'][$i]['limit'];
             $events = Event::firstOrNew([
                 'event_id' => $arrays['events'][$i]['event_id'],
@@ -105,7 +153,7 @@ class ApiRepository
         }
     }
 
-     /**
+    /**
      * connpassAPIの検索結果PHPの情報取得・保存
      *
      * @param string $url
@@ -137,7 +185,7 @@ class ApiRepository
             }
             $event_data['owner'] = $arrays['events'][$i]['owner_display_name'];
             $event_data['address'] = $arrays['events'][$i]['address'];
-            $event_data['accepted'] = $arrays['events'][$i]['accepted'];
+            $event_data['accepted'] = $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'];;
             $events = Event::firstOrNew([
                 'event_id' => $arrays['events'][$i]['event_id'],
             ]);

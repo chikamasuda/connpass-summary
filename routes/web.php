@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::get('/', [App\Http\Controllers\EventController::class, 'popularEvent'])->name('home');
 Route::get('/php', [App\Http\Controllers\EventController::class, 'phpEvent'])->name('php');
 Route::get('/csv', [App\Http\Controllers\CsvDownloadController::class, 'index'])->name('csv');
+Route::get('/csv_popular', [App\Http\Controllers\CsvDownloadController::class, 'downloadPopularEvent'])->name('csv.popular');
+Route::get('/csv_php', [App\Http\Controllers\CsvDownloadController::class, 'downloadPhpEvent'])->name('csv.php');

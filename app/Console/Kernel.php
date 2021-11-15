@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('command:connpass')->hourly();
+        $schedule->command('command:connpass')->everyThirtyMinutes();
     }
 
     /**
