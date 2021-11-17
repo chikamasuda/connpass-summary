@@ -4575,7 +4575,7 @@ html:not([dir=rtl]) .dropleft .dropdown-toggle:empty::after {
   line-height: 1.5;
   background-clip: padding-box;
   border: 1px solid;
-  color: #768192;
+  color: #333;
   background-color: #fff;
   border-color: #d8dbe0;
   border-radius: 0.25rem;
@@ -4595,7 +4595,7 @@ html:not([dir=rtl]) .dropleft .dropdown-toggle:empty::after {
   text-shadow: 0 0 0 #768192;
 }
 .form-control:focus {
-  color: #768192;
+  color: #333;
   background-color: #fff;
   border-color: #958bef;
   outline: 0;
@@ -8614,27 +8614,27 @@ html:not([dir=rtl]) .pagination-lg .page-item:last-child .page-link {
   padding: 0.25rem 0.5rem;
   font-size: 0.765625rem;
   line-height: 1.5;
-  justify-content: center;
+  justify-content: right;
 }
 html:not([dir=rtl]) .pagination-sm .page-item:first-child .page-link {
   border-top-left-radius: 0.2rem;
   border-bottom-left-radius: 0.2rem;
-  justify-content: center;
+  justify-content: right;
 }
 *[dir=rtl] .pagination-sm .page-item:first-child .page-link {
   border-top-right-radius: 0.2rem;
   border-bottom-right-radius: 0.2rem;
-  justify-content: center;
+  justify-content: right;
 }
 html:not([dir=rtl]) .pagination-sm .page-item:last-child .page-link {
   border-top-right-radius: 0.2rem;
   border-bottom-right-radius: 0.2rem;
-  justify-content: center;
+  justify-content: right;
 }
 *[dir=rtl] .pagination-sm .page-item:last-child .page-link {
   border-top-left-radius: 0.2rem;
   border-bottom-left-radius: 0.2rem;
-  justify-content: center;
+  justify-content: right;
 }
 
 .popover {

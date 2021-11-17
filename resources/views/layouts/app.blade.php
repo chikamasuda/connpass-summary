@@ -18,7 +18,6 @@
 </head>
 
 <body class="c-app">
-@include('layouts.sidebar')
 
 <div class="c-wrapper">
     <header class="c-header c-header-light c-header-fixed">
