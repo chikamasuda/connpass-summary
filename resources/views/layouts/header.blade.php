@@ -8,6 +8,9 @@
         data-class="c-sidebar-lg-show" responsive="true">
     <i class="c-icon c-icon-lg cil-menu"></i>
 </button> -->
+<div class="c-sidebar-nav-link c-active ml-3">
+    <span class="brand-text font-weight-bold" style="font-size: 18px;">Connpass Summary</span>
+</div>
 <ul class="c-header-nav mfs-auto mr-3">
     <a class="c-sidebar-nav-link c-active text-dark" href="{{ route('home') }}">
         ホーム

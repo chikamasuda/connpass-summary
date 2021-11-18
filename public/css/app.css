@@ -54,7 +54,7 @@
   --light: #ebedef;
   --dark: #636f83;
   color: #3c4b64;
-  background-color: #ebedef;
+  background-color: #f8fafc;
   --color: #3c4b64;
 }
 
@@ -3092,6 +3092,7 @@ html:not([dir=rtl]) .c-callout-dark {
   border-radius: 0.25rem;
   background-color: #fff;
   border-color: #d8dbe0;
+  overflow: scroll;
 }
 .card > hr {
   margin-right: 0;
@@ -3122,7 +3123,7 @@ html:not([dir=rtl]) .c-callout-dark {
 }
 .card[class^=bg-] .card-header,
 .card[class*=" bg-"] .card-header {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #ececec;
   border-color: rgba(0, 0, 0, 0.125);
 }
 
@@ -3169,7 +3170,7 @@ html:not([dir=rtl]) .card-link + .card-link {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
   border-bottom: 1px solid;
-  background-color: #fff;
+  background-color: #f6f6f6;
   border-color: #d8dbe0;
 }
 .card-header:first-child {
@@ -4561,7 +4562,7 @@ html:not([dir=rtl]) .dropleft .dropdown-toggle:empty::after {
 
 .c-footer {
   color: #3c4b64;
-  background: #ebedef;
+  background: #f8fafc;
   border-top: 1px solid #d8dbe0;
 }
 
@@ -5091,12 +5092,12 @@ html:not([dir=rtl]) .was-validated .custom-select:invalid, html:not([dir=rtl]) .
 }
 @media (min-width: 576px) {
   .container {
-    max-width: 540px;
+    max-width: 960px;
   }
 }
 @media (min-width: 768px) {
   .container {
-    max-width: 720px;
+    max-width: 960px;
   }
 }
 @media (min-width: 992px) {
@@ -5106,12 +5107,12 @@ html:not([dir=rtl]) .was-validated .custom-select:invalid, html:not([dir=rtl]) .
 }
 @media (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: 1000px;
   }
 }
 @media (min-width: 1400px) {
   .container {
-    max-width: 1320px;
+    max-width: 1000px;
   }
 }
 
@@ -5125,12 +5126,12 @@ html:not([dir=rtl]) .was-validated .custom-select:invalid, html:not([dir=rtl]) .
 
 @media (min-width: 576px) {
   .container-sm, .container {
-    max-width: 540px;
+    max-width: 900px;
   }
 }
 @media (min-width: 768px) {
   .container-md, .container-sm, .container {
-    max-width: 720px;
+    max-width: 900px;
   }
 }
 @media (min-width: 992px) {
@@ -5145,7 +5146,7 @@ html:not([dir=rtl]) .was-validated .custom-select:invalid, html:not([dir=rtl]) .
 }
 @media (min-width: 1400px) {
   .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1320px;
+    max-width: 1140px;
   }
 }
 .row {

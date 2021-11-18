@@ -40,6 +40,12 @@ class EventController extends Controller
     */
     public function popularEventSearch(Request $request)
     {
+        // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
+        if ($request->has('reset')) {
+            $this->searchService->forgetOld();
+            return redirect()->route('home');
+        }
+
         $keyword = $request->input('keyword');
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
@@ -64,6 +70,32 @@ class EventController extends Controller
             ->where('php_flag', 1)
             ->orderBy('date', 'asc')
             ->paginate(50);
+
+        return view('php_event', compact('lists'));
+    }
+
+    /**
+     * PHPイベント検索
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function phpEventSearch(Request $request)
+    {
+         // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
+         if ($request->has('reset')) {
+            $this->searchService->forgetOld();
+            return redirect()->route('php');
+        }
+
+        $keyword = $request->input('keyword');
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        $address = $request->input('address');
+
+        $lists = $this->searchService->searchPhpEvents($keyword, $start_date, $end_date, $address);
+
+        session()->flashInput($request->input());
 
         return view('php_event', compact('lists'));
     }
