@@ -1,12 +1,7 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
     <div class="c-sidebar-brand d-md-down-none">
-        <!-- <img src="https://infyom.com/images/logo/logo_236w.png" width="46"
-             class="c-sidebar-brand-full" alt="Brand Logo">
-        <img src="https://infyom.com/images/logo/blue_logo_150x150.png" width="46" height="46"
-             class="c-sidebar-brand-minimized" alt="Brand Logo"> -->
-        <div class="c-sidebar-nav-link c-active">
-            <i class="c-sidebar-nav-icon cil-list-rich"></i>
-            <span class="brand-text font-weight-medium" style="font-size: 18px;">Connpass Event List</span>
+        <div>
+            <span class="brand-text font-weight-bold" style="font-size: 18px;">Connpass Summary</span>
         </div>
     </div>
     <ul class="c-sidebar-nav">
@@ -18,6 +13,5 @@
             <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 369px;"></div>
         </div>
     </ul>
-    <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent"
-            data-class="c-sidebar-minimized"></button>
+    <!-- <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button> -->
 </div>

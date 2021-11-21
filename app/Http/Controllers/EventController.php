@@ -29,7 +29,7 @@ class EventController extends Controller
             ->OrderBy('accepted', 'desc')
             ->paginate(50);
 
-        return view('home', compact('lists'));
+        return view('popular_event', compact('lists'));
     }
 
    /**
