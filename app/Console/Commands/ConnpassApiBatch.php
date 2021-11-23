@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Repositories\ApiRepository;
+use App\Services\ApiService;
 
 class ConnpassApiBatch extends Command
 {
@@ -22,17 +22,17 @@ class ConnpassApiBatch extends Command
      */
     protected $description = 'コンパスAPIのバッチ処理';
 
-    protected $api_repository;
+    protected $apiService;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(ApiRepository $api_repository)
+    public function __construct(ApiService $apiService)
     {
         parent::__construct();
-        $this->api_repository = $api_repository;
+        $this->apiService = $apiService;
     }
 
     /**
@@ -42,8 +42,8 @@ class ConnpassApiBatch extends Command
      */
     public function handle()
     {
-        $this->api_repository->popularEventBatch();
-        $this->api_repository->popularEventBatchSecond();
-        $this->api_repository->phpEventBatch();
+        $this->apiService->popularEventBatch();
+        $this->apiService->popularEventBatchSecond();
+        $this->apiService->phpEventBatch();
     }
 }
