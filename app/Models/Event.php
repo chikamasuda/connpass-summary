@@ -23,4 +23,9 @@ class Event extends Model
         'accepted',
         'limit'
     ];
+
+    public function alert()
+    {
+        return $this->hasMany(Alert::class);
+    }
 }

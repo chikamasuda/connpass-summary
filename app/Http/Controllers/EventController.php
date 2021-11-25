@@ -27,7 +27,7 @@ class EventController extends Controller
             ->where('date', '<', date('Ymd', strtotime('first day of next month')))
             ->where('accepted', '>=', 50)
             ->OrderBy('accepted', 'desc')
-            ->paginate(50);
+            ->paginate(20);
 
         return view('popular_event', compact('lists'));
     }
@@ -43,7 +43,7 @@ class EventController extends Controller
         // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
         if ($request->has('reset')) {
             $this->searchService->forgetOld();
-            return redirect()->route('home');
+            return redirect()->route('popular_event');
         }
 
         $keyword = $request->input('keyword');
@@ -55,7 +55,7 @@ class EventController extends Controller
 
         session()->flashInput($request->input());
 
-        return view('home', compact('lists'));
+        return view('popular_event', compact('lists'));
     }
 
     /**
@@ -69,7 +69,7 @@ class EventController extends Controller
             ->where('date', '<', date('Ymd', strtotime('first day of next month')))
             ->where('php_flag', 1)
             ->orderBy('date', 'asc')
-            ->paginate(50);
+            ->paginate(20);
 
         return view('php_event', compact('lists'));
     }

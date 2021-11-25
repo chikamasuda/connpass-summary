@@ -8,22 +8,22 @@
                 <i class="fas fa-home mr-2"></i><strong style="font-size: 16px;">HOME</strong>
             </div>
             <div class="card-body">
-                Connpass Summaryは技術勉強会まとめサイトです。このサイトは、Connpass(https://connpass.com/)から情報を取得しています。
+                Connpass Summaryは技術勉強会まとめサイトです。Connpassの50人以上参加の人気イベントや人気急上昇イベント、PHPのイベントをピックアップしています。このサイトは、Connpass(https://connpass.com/)から情報を取得しています。
             </div>
         </div>
         <div class="card p-0">
             <div class="card-header pt-3  d-flex justify-content-between">
                 <div><i class="fas fa-exclamation-triangle mr-2 text-danger"></i>
-                    <strong style="font-size: 16px;">人気急上昇({{ \Carbon\Carbon::now()->format("m/d" )}}：前日比）</strong>
+                    <strong style="font-size: 16px;">人気急上昇イベント({{ \Carbon\Carbon::yesterday()->format("m/d" )}}）</strong>
                 </div>
                 <a href="" style="font-size: 14px;" class="text-dark font-weight-bold"></a>
             </div>
-            <div class="card-body">
+            <div class="card-body mt-2">
                 @foreach($events as $list)
-                <ul class="d-flex list-unstyled">
-                    <li style="width: 15%;" class="font-weight-bold">{{ Str::substr($list->date, 5, 2) }}/{{ Str::substr($list->date, 8, 2) }} </li>
-                    <li style="width: 60%;" class="font-weight-bold ml-2 text-dark"><a href="{{ $list->url }}" target="_blank" class="text-dark">{{ Str::substr($list->title, 0, 37) }}</a></li>
-                    <li style="width: 25%;" class="font-weight-bold text-right">{{ $list->accepted }}人<i class="fas fa-level-up-alt ml-2"></i></li>
+                <ul class="d-flex list-unstyled border-bottom pb-3">
+                    <li style="width: 13%;" class="font-weight-bold">{{ Str::substr($list->event->date, 5, 2) }}/{{ Str::substr($list->event->date, 8, 2) }} </li>
+                    <li style="width: 57%;" class="font-weight-bold ml-2 text-dark"><a href="{{ $list->event->url }}" target="_blank" class="text-dark">{{ $list->event->title }}</a></li>
+                    <li style="width: 25%;" class="font-weight-bold text-right">{{ $list->diff }}人<i class="fas fa-level-up-alt ml-2"></i></li>
                 </ul>
                 @endforeach
             </div>

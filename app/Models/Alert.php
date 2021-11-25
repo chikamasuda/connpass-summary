@@ -17,4 +17,9 @@ class Alert extends Model
         'number',
         'diff'
     ];
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
 }
