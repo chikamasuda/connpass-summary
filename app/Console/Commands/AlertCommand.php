@@ -12,7 +12,7 @@ class AlertCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'command:alert';
+    protected $signature = 'command:alertcommand';
 
     /**
      * The console command description.

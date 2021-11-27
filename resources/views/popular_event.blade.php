@@ -6,6 +6,7 @@
         <div class="card-header"><strong>絞り込み検索</strong></div>
         <div class="card-body">
             <form action="{{ route('popular.search') }}" method="get">
+            @csrf
                 <div class="mb-0">
                     <div class="form-group">
                         <label for="">キーワード</label>

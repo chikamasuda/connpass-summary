@@ -12,18 +12,8 @@ use App\Models\Alert;
 
 class HomeController extends Controller
 {
-    public $apiService;
-
-    public function __construct(ApiService $apiService)
-    {
-        $this->apiService = $apiService;
-    }
-
     public function index()
     {   
-        // $this->apiService->AlertBatch();
-        // $this->apiService->alertSecondBatch();
-
         $lists = Event::where('date', '>', Carbon::yesterday())
             ->where('date', '<', date('Ymd', strtotime('first day of next month')))
             ->where('accepted', '>=', 50)

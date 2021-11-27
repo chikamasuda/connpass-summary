@@ -14,7 +14,7 @@
         <div class="card p-0">
             <div class="card-header pt-3  d-flex justify-content-between">
                 <div><i class="fas fa-exclamation-triangle mr-2 text-danger"></i>
-                    <strong style="font-size: 16px;">人気急上昇イベント({{ \Carbon\Carbon::yesterday()->format("m/d" )}}）</strong>
+                    <strong style="font-size: 16px;">人気急上昇イベント(24時間単位）</strong>
                 </div>
                 <a href="" style="font-size: 14px;" class="text-dark font-weight-bold"></a>
             </div>
