@@ -2,7 +2,32 @@
   color: #fff;
   height: 24px;
   text-align: center;
-  color: #c65244;
+  color: #333;
   border-radius: 50%;
-  border: 1px solid #c65244;
+  border: 1px solid #333;
+}
+
+.title-border {
+  border-bottom: 3px solid #333;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.event-card {
+  background-color: #fff;
+  border: 1px solid #d8dbe0;
+  border-radius: 0.25rem;
+}
+
+.home-title {
+  font-size: 16px;
+  margin: 0;
+}
+
+.title-url {
+  font-size: 14px;
 }

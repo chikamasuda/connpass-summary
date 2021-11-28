@@ -22,12 +22,12 @@ Route::get('/popular', [App\Http\Controllers\EventController::class, 'popularEve
 Route::get('/search', [App\Http\Controllers\EventController::class, 'popularEventSearch'])->name('popular.search');
 Route::get('/php', [App\Http\Controllers\EventController::class, 'phpEvent'])->name('php');
 Route::get('/php_search', [App\Http\Controllers\EventController::class, 'phpEventSearch'])->name('php.search');
-// Route::get('/csv', [App\Http\Controllers\CsvDownloadController::class, 'index'])->name('csv');
-// Route::get('/csv_popular', [App\Http\Controllers\CsvDownloadController::class, 'downloadPopularEvent'])->name('csv.popular');
-// Route::get('/csv_php', [App\Http\Controllers\CsvDownloadController::class, 'downloadPhpEvent'])->name('csv.php');
+Route::get('/csv', [App\Http\Controllers\CsvDownloadController::class, 'index'])->name('csv');
+Route::get('/csv_popular', [App\Http\Controllers\CsvDownloadController::class, 'downloadPopularEvent'])->name('csv.popular');
+Route::get('/csv_php', [App\Http\Controllers\CsvDownloadController::class, 'downloadPhpEvent'])->name('csv.php');
 //問い合わせ入力ページ
-Route::get('/contact', 'ContactController@index')->name('contact.index');
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
 //問い合わせ確認ページ
-Route::post('/contact/confirm', 'ContactController@confirm')->name('contact.confirm');
+Route::post('/contact/confirm', [App\Http\Controllers\ContactController::class, 'confirm'])->name('contact.confirm');
 //問い合わせ送信完了ページ
 Route::post('/contact/thanks', 'ContactController@send')->name('contact.send');

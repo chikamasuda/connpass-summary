@@ -1,22 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row  pt-4 container mx-auto">
-    <div class="col-md-7 p-0">
+<section class="row  pt-4 container mx-auto">
+    <div class="col-md-7 p-0 pt-4">
         <div class="card">
-            <div class="card-header pt-3">
-                <i class="fas fa-home mr-2"></i><strong style="font-size: 16px;">HOME</strong>
+            <div class="mb-2 mt-2 pb-2 card-header font-weight-bold d-flex justify-content-between">
+                <h2 class="home-title font-weight-bold pb-2"><i class="fas fa-home mr-2"></i>
+                    HOME
+                </h2>
             </div>
             <div class="card-body">
                 Connpass Summaryは技術勉強会まとめサイトです。Connpassの50人以上参加の人気イベントや人気急上昇イベント、PHPのイベントをピックアップしています。このサイトは、Connpass(https://connpass.com/)から情報を取得しています。
             </div>
         </div>
         <div class="card p-0">
-            <div class="card-header pt-3  d-flex justify-content-between">
-                <div><i class="fas fa-exclamation-triangle mr-2 text-danger"></i>
-                    <strong style="font-size: 16px;">人気急上昇イベント(24時間単位）</strong>
-                </div>
-                <a href="" style="font-size: 14px;" class="text-dark font-weight-bold"></a>
+            <div class="mb-2 mt-2 pb-2 card-header font-weight-bold d-flex justify-content-between">
+                <h2 class="home-title font-weight-bold pb-2"><i class="fas fa-exclamation-triangle mr-2 text-danger"></i>
+                    人気急上昇イベント({{ \Carbon\Carbon::yesterday()->format("m/d" )}}）
+                </h2>
             </div>
             <div class="card-body mt-2">
                 @foreach($events as $list)
@@ -29,11 +30,13 @@
             </div>
         </div>
     </div>
-    <div class="offset-md-1 col-md-4 p-0">
+    <div class="offset-md-1 col-md-4 p-0 mt-4">
         <div class="card">
-            <div class="mb-4 card-header pb-2 font-weight-bold d-flex justify-content-between pt-3 pb-3" style="font-size: 16px;">
-                <div>人気ランキング</div>
-                <a href="{{ route('popular') }}" style="font-size: 14px;" class="text-dark"><span>▶︎</span> 人気イベント一覧をみる</a>
+            <div class="mb-2 mt-2 pb-2 card-header font-weight-bold d-flex justify-content-between">
+                <h2 class="home-title font-weight-bold pb-2"><i class="fas fa-fire text-warning mr-1"></i>
+                    人気ランキング
+                    <a href="{{ route('popular') }}" class="text-dark title-url ml-4"><span>▶︎</span> 人気イベント一覧をみる</a>
+                </h2>
             </div>
             <div class="card-body">
                 @foreach($lists as $i => $list)
@@ -45,5 +48,5 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection
