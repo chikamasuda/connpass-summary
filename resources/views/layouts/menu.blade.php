@@ -8,7 +8,7 @@
     <a class="c-sidebar-nav-link c-active" href="{{ route('php') }}">
         <i class="c-sidebar-nav-icon cib-laravel"></i>PHPイベント一覧
     </a>
-    <a class="c-sidebar-nav-link c-active" href="{{ route('php') }}">
+    <a class="c-sidebar-nav-link c-active" href="{{ route('contact.index') }}">
         <i class="c-sidebar-nav-icon cil-envelope-letter"></i>お問い合わせ
     </a>
 </li>

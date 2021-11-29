@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Services\ApiService;
+use App\Http\Controllers\ApiController;
 
 class AlertCommand extends Command
 {
@@ -21,17 +21,17 @@ class AlertCommand extends Command
      */
     protected $description = 'コンパスAPIのアラート表示バッチ処理';
 
-    protected $apiService;
+    protected $apiController;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(ApiService $apiService)
+    public function __construct(ApiController $apiController)
     {
         parent::__construct();
-        $this->apiService = $apiService;
+        $this->apiController = $apiController;
     }
 
     /**
@@ -41,7 +41,7 @@ class AlertCommand extends Command
      */
     public function handle()
     {
-      $this->apiService->AlertBatch();
-      $this->apiService->alertSecondBatch();
+      $this->apiController->alertBatch();
+      $this->apiController->alertSecondBatch();
     }
 }

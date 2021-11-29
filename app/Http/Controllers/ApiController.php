@@ -1,16 +1,12 @@
 <?php
 
-namespace App\Services;
+namespace App\Http\Controllers;
 
-use App\Models\Event;
-use Carbon\Carbon;
 use App\Repositories\ApiRepository;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-
-class ApiService
+class ApiController extends Controller
 {
     public $apiRepository;
 
@@ -26,8 +22,8 @@ class ApiService
      */
     public function popularEventBatch()
     {
-        DB::beginTransaction();
         try {
+            DB::beginTransaction();
             $month = date('Ym');
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1';
             $this->apiRepository->apiConnpass($url);
@@ -53,12 +49,6 @@ class ApiService
             $this->apiRepository->apiConnpass($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1101';
             $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1201';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1301';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1401';
-            $this->apiRepository->apiConnpass($url);
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
@@ -74,8 +64,8 @@ class ApiService
      */
     public function popularEventBatchSecond()
     {
-        DB::beginTransaction();
         try {
+            DB::beginTransaction();
             $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1';
             $this->apiRepository->apiConnpass($url);
@@ -101,12 +91,6 @@ class ApiService
             $this->apiRepository->apiConnpass($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1101';
             $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1201';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1301';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1401';
-            $this->apiRepository->apiConnpass($url);
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
@@ -122,8 +106,8 @@ class ApiService
      */
     public function phpEventBatch()
     {
-        DB::beginTransaction();
         try {
+            DB::beginTransaction();
             $month = date('Ym');
             $next_month = $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
 
@@ -148,10 +132,10 @@ class ApiService
      *
      * @return void
      */
-    public function AlertBatch()
+    public function alertBatch()
     {
-        DB::beginTransaction();
         try {
+            DB::beginTransaction();
             $month = date('Ym');
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1';
             $this->apiRepository->apiAlert($url);
@@ -177,12 +161,6 @@ class ApiService
             $this->apiRepository->apiAlert($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1101';
             $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1201';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1301';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1401';
-            $this->apiRepository->apiAlert($url);
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
@@ -198,8 +176,8 @@ class ApiService
      */
     public function alertSecondBatch()
     {
-        DB::beginTransaction();
         try {
+            DB::beginTransaction();
             $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1';
             $this->apiRepository->apiAlert($url);
@@ -224,12 +202,6 @@ class ApiService
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1001';
             $this->apiRepository->apiAlert($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1101';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1201';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1301';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1401';
             $this->apiRepository->apiAlert($url);
             DB::commit();
         } catch (\Throwable $e) {

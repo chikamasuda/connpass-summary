@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Event;
 use App\Models\Alert;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
 
 class ApiRepository
 {
@@ -17,17 +18,13 @@ class ApiRepository
      */
     public function apiConnpass($url)
     {
-        $options = [
-            'http' => [
-                'method' => 'GET',
-                'header' => 'User-Agent: iOS',
-            ],
-        ];
-        $context = stream_context_create($options);
-        $response = file_get_contents($url, true, $context);
-        $arrays = json_decode($response, true);
+        $method = "GET";
+        $client = new Client();
+        $response = $client->request($method, $url);
+        $arrays = $response->getBody();
+        $arrays = json_decode($arrays, true);
         $num = count($arrays['events']);
-
+        
         for ($i = 0; $i < $num; $i++) {
             $event_data['event_id'] = $arrays['events'][$i]['event_id'];
             $event_data['date'] = substr($arrays['events'][$i]['started_at'], 0, 10);
@@ -61,15 +58,11 @@ class ApiRepository
      */
     public function apiConnpassPHP($url)
     {
-        $options = [
-            'http' => [
-                'method' => 'GET',
-                'header' => 'User-Agent: iOS',
-            ],
-        ];
-        $context = stream_context_create($options);
-        $response = file_get_contents($url, true, $context);
-        $arrays = json_decode($response, true);
+        $method = "GET";
+        $client = new Client();
+        $response = $client->request($method, $url);
+        $arrays = $response->getBody();
+        $arrays = json_decode($arrays, true);
         $num = count($arrays['events']);
 
         for ($i = 0; $i < $num; $i++) {
@@ -105,16 +98,11 @@ class ApiRepository
      */
     public function apiAlert($url)
     {
-        $options = [
-            'http' => [
-                'method' => 'GET',  
-                'header' => 'User-Agent: iOS'
-            ],
-        ];
-        $context = stream_context_create($options);
-        $response = file_get_contents($url, true, $context);
-        $arrays = json_decode($response, true);
-        //dd($arrays);
+        $method = "GET";
+        $client = new Client();
+        $response = $client->request($method, $url);
+        $arrays = $response->getBody();
+        $arrays = json_decode($arrays, true);
         $num = count($arrays['events']);
 
         for ($i = 0; $i < $num; $i++) {

@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Services\SearchService;
-use App\Services\ApiService;
-use App\Repositories\ApiRepository;
 use App\Models\Event;
 use App\Models\Alert;
 
@@ -18,7 +15,7 @@ class HomeController extends Controller
             ->where('date', '<', date('Ymd', strtotime('first day of next month')))
             ->where('accepted', '>=', 50)
             ->OrderBy('accepted', 'desc')
-            ->paginate(10);
+            ->paginate(5);
 
         $events = Alert::where('date', date('Y-m-d'))
             ->where('diff', '>=', 20)

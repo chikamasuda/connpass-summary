@@ -13,8 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \App\Console\Commands\ConnpassApiBatch::class,
-        \App\Console\Commands\AlertCommand::class,
+        Commands\ConnpassApiBatch::class,
+        Commands\AlertCommand::class,
     ];
 
     /**
@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('command:connpass')->everyThirtyMinutes();
-        $schedule->command('command:alertcommand')->dailyAt('0:00');
+        $schedule->command('command:alertcommand')->daily();
     }
 
     /**
