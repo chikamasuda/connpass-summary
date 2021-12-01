@@ -3,7 +3,7 @@
 @section('content')
 @include('layouts.alert')
 <section class="row container mx-auto mt-4">
-    <main class="card col-md-6 p-0 mt-2 mx-auto">
+    <main class="card col-md-7 p-0 mt-2 mx-auto">
         <h2 class="card-header bg-light title">お問い合わせ</h2>
         <div class="card-body">
             <p>リクエスト、バグなどありましたら、お問い合わせください。<br>

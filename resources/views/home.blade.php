@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="row  mt-4 container mx-auto">
+<main class="row mt-4 container justify-content-center mx-auto">
     <section class="col-md-7 p-0 mt-2">
         <div class="card">
             <div class="card-header font-weight-bold d-flex justify-content-between bg-light">
@@ -40,8 +40,14 @@
             </div>
         </div>
     </section>
-    <aside class="offset-md-1 col-md-4 p-0 mt-2">
-        <h2 class="home-title font-weight-bold pb-1 pt-1 title-border pb-2 mb-4">
+    <aside class="offset-md-1 p-0 mt-2 aside justify-content-center">
+        <a href="https://px.a8.net/svt/ejp?a8mat=3HQS18+BOC1V6+0K+116B0H" rel="nofollow">
+            <img border="0" width="350" height="240" alt="" src="https://www23.a8.net/svt/bgt?aid=211201388706&wid=001&eno=01&mid=s00000000002006244000&mc=1"></a>
+        <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=3HQS18+BOC1V6+0K+116B0H" alt="">
+        <a href="https://px.a8.net/svt/ejp?a8mat=3HQS18+BQ4COI+50+2HK8J5" rel="nofollow">
+            <img border="0" width="350" height="80" alt="" src="https://www28.a8.net/svt/bgt?aid=211201388709&wid=001&eno=01&mid=s00000000018015043000&mc=1" class="mt-1"></a>
+        <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3HQS18+BQ4COI+50+2HK8J5" alt=""  >
+        <h2 class="home-title font-weight-bold mt-3 pt-1 title-border pb-2 mb-4">
             人気イベントランキング
         </h2>
         @foreach($lists as $i => $list)

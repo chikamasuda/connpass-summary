@@ -43,7 +43,7 @@ class EventController extends Controller
         // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
         if ($request->has('reset')) {
             $this->searchService->forgetOld();
-            return redirect()->route('popular_event');
+            return redirect()->route('popular');
         }
 
         $keyword = $request->input('keyword');

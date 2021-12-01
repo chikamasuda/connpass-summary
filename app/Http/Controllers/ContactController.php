@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactForm;
 
@@ -17,17 +17,15 @@ class ContactController extends Controller
     {
         return view('contact.index');
     }
-
-    public function confirm(Request $request)
+    
+    /**
+     * お問い合わせ内容確認画面表示
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function confirm(ContactRequest $request)
     {
-        //バリデーションを実行（結果に問題があれば処理を中断してエラーを返す）
-        $request->validate([
-            'name'  => 'required',
-            'email' => 'required|email',
-            'title' => 'required',
-            'body'  => 'required',
-        ]);
-        
         //フォームから受け取ったすべてのinputの値を取得
         $contact = $request->all();
         //画面遷移してもフォームの内容維持
@@ -35,7 +33,13 @@ class ContactController extends Controller
         return view('contact.confirm', compact('contact'));
     }
 
-    public function send(Request $request)
+    /**
+     * メール送信と送信完了画面表示
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function send(ContactRequest $request)
     {
          //メール送信
          $data = [

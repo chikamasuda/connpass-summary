@@ -49,6 +49,8 @@ class ApiController extends Controller
             $this->apiRepository->apiConnpass($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1101';
             $this->apiRepository->apiConnpass($url);
+            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1201';
+            $this->apiRepository->apiConnpass($url);
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
@@ -161,6 +163,8 @@ class ApiController extends Controller
             $this->apiRepository->apiAlert($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1101';
             $this->apiRepository->apiAlert($url);
+            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1201';
+            $this->apiRepository->apiAlert($url);
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
@@ -179,6 +183,7 @@ class ApiController extends Controller
         try {
             DB::beginTransaction();
             $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
+            $month_after_next =  date('Ym', strtotime(date('Y-m-1') . '+2 month'));
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1';
             $this->apiRepository->apiAlert($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=101';
@@ -202,6 +207,10 @@ class ApiController extends Controller
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1001';
             $this->apiRepository->apiAlert($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1101';
+            $this->apiRepository->apiAlert($url);
+            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&order=2&start=1';
+            $this->apiRepository->apiAlert($url);
+            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&order=2&start=101';
             $this->apiRepository->apiAlert($url);
             DB::commit();
         } catch (\Throwable $e) {

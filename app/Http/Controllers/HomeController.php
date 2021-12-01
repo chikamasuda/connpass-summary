@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\Event;
 use App\Models\Alert;
+use GuzzleHttp\Client;
 
 class HomeController extends Controller
 {
