@@ -26,6 +26,6 @@ class Event extends Model
 
     public function alert()
     {
-        return $this->hasMany(Alert::class);
+        return $this->hasOne(Alert::class);
     }
 }

@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\ApiRepository;
+use App\Services\ApiService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class ApiController extends Controller
 {
-    public $apiRepository;
+    public $apiService;
 
-    public function __construct(ApiRepository $apiRepository)
+    public function __construct(ApiService $apiService)
     {
-        $this->apiRepository = $apiRepository;
+        $this->apiService = $apiService;
     }
-
     /**
      * 人気イベントバッチ処理当月
      *
@@ -22,41 +21,7 @@ class ApiController extends Controller
      */
     public function popularEventBatch()
     {
-        try {
-            DB::beginTransaction();
-            $month = date('Ym');
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=101';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=201';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=301';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=401';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=501';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=601';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=701';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=801';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=901';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1001';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1101';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1201';
-            $this->apiRepository->apiConnpass($url);
-            DB::commit();
-        } catch (\Throwable $e) {
-            DB::rollback();
-            // 全てのエラー・例外をキャッチしてログに残す
-            Log::error($e);
-        }
+        $this->apiService->popularEventBatch();
     }
 
     /**
@@ -66,39 +31,7 @@ class ApiController extends Controller
      */
     public function popularEventBatchSecond()
     {
-        try {
-            DB::beginTransaction();
-            $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=101';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=201';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=301';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=401';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=501';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=601';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=701';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=801';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=901';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1001';
-            $this->apiRepository->apiConnpass($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1101';
-            $this->apiRepository->apiConnpass($url);
-            DB::commit();
-        } catch (\Throwable $e) {
-            DB::rollback();
-            // 全てのエラー・例外をキャッチしてログに残す
-            Log::error($e);
-        }
+        $this->apiService->popularEventBatchSecond();
     }
 
     /**
@@ -108,25 +41,7 @@ class ApiController extends Controller
      */
     public function phpEventBatch()
     {
-        try {
-            DB::beginTransaction();
-            $month = date('Ym');
-            $next_month = $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
-
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&keyword=PHP&start=1';
-            $this->apiRepository->apiConnpassPHP($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&keyword=PHP&start=101';
-            $this->apiRepository->apiConnpassPHP($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&keyword=PHP&start=1';
-            $this->apiRepository->apiConnpassPHP($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&keyword=PHP&start=101';
-            $this->apiRepository->apiConnpassPHP($url);
-            DB::commit();
-        } catch (\Throwable $e) {
-            DB::rollback();
-            // 全てのエラー・例外をキャッチしてログに残す
-            Log::error($e);
-        }
+        $this->apiService->phpEventBatch();
     }
 
     /**
@@ -136,41 +51,7 @@ class ApiController extends Controller
      */
     public function alertBatch()
     {
-        try {
-            DB::beginTransaction();
-            $month = date('Ym');
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=101';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=201';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=301';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=401';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=501';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=601';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=701';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=801';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=901';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1001';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1101';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1201';
-            $this->apiRepository->apiAlert($url);
-            DB::commit();
-        } catch (\Throwable $e) {
-            DB::rollback();
-            // 全てのエラー・例外をキャッチしてログに残す
-            Log::error($e);
-        }
+        $this->apiService->alertBatch();
     }
 
     /**
@@ -180,43 +61,6 @@ class ApiController extends Controller
      */
     public function alertSecondBatch()
     {
-        try {
-            DB::beginTransaction();
-            $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
-            $month_after_next =  date('Ym', strtotime(date('Y-m-1') . '+2 month'));
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=101';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=201';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=301';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=401';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=501';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=601';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=701';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=801';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=901';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1001';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1101';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&order=2&start=1';
-            $this->apiRepository->apiAlert($url);
-            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&order=2&start=101';
-            $this->apiRepository->apiAlert($url);
-            DB::commit();
-        } catch (\Throwable $e) {
-            DB::rollback();
-            // 全てのエラー・例外をキャッチしてログに残す
-            Log::error($e);
-        }
+        $this->apiService->alertSecondBatch();
     }
 }

@@ -24,7 +24,7 @@ class ApiRepository
         $arrays = $response->getBody();
         $arrays = json_decode($arrays, true);
         $num = count($arrays['events']);
-        
+        //dd($arrays);
         for ($i = 0; $i < $num; $i++) {
             $event_data['event_id'] = $arrays['events'][$i]['event_id'];
             $event_data['date'] = substr($arrays['events'][$i]['started_at'], 0, 10);
@@ -106,22 +106,19 @@ class ApiRepository
         $num = count($arrays['events']);
 
         for ($i = 0; $i < $num; $i++) {
-            $event_id = $arrays['events'][$i]['event_id'];
-            $id = Event::where('event_id', $event_id)->value('id');
-            if(!empty($id)) {
-            //Alertsテーブルにデータ保存
-            $alerts = new Alert();
-            $alerts->date = date('Y-m-d');
-            $alerts->event_id = $id;
-            $alerts->number = $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'];
-            $event_accepted = Alert::where('date', Carbon::yesterday()->format('Y-m-d'))
-                ->where('event_id', $id)
-                ->value('number');
-            if (empty($event_accepted))  $alerts->diff = $alerts->number;
-            $alerts->diff = $alerts->number - $event_accepted;
-            $alerts->timestamps = false;
-            $alerts->save();
-            } 
+                $event_id = $arrays['events'][$i]['event_id'];
+                $id = Event::where('event_id', $event_id)->value('id');
+                //Alertsテーブルにデータ保存
+                $alerts = Alert::firstOrNew([
+                    'event_id' =>  $id,
+                ]);
+                $alert_data['number']= $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'];
+                $event_accepted = Alert::where('event_id', $id)->value('number');
+                if (empty($event_accepted))  $alert_data['diff'] = $alerts->number;
+                $alert_data['diff'] = $alert_data['number'] - $event_accepted;
+                $alerts->fill($alert_data);
+                //dd($alerts);
+                $alerts->save();
         }
     }
 }

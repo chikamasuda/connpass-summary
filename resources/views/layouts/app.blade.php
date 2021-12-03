@@ -25,7 +25,7 @@
             @yield('content')
         </div>
         <footer class="c-footer">
-            <div class="mx-auto"></div>
+            <small class="mx-auto"> &copy; Connpass Summary</small>
         </footer>
     </div>
     <script src="{{ mix('js/app.js') }}" defer></script>
