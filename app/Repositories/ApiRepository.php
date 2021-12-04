@@ -106,19 +106,19 @@ class ApiRepository
         $num = count($arrays['events']);
 
         for ($i = 0; $i < $num; $i++) {
-                $event_id = $arrays['events'][$i]['event_id'];
-                $id = Event::where('event_id', $event_id)->value('id');
-                //Alertsテーブルにデータ保存
-                $alerts = Alert::firstOrNew([
-                    'event_id' =>  $id,
-                ]);
-                $alert_data['number']= $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'];
-                $event_accepted = Alert::where('event_id', $id)->value('number');
-                if (empty($event_accepted))  $alert_data['diff'] = $alerts->number;
-                $alert_data['diff'] = $alert_data['number'] - $event_accepted;
-                $alerts->fill($alert_data);
-                //dd($alerts);
-                $alerts->save();
+            $event_id = $arrays['events'][$i]['event_id'];
+            $id = Event::where('event_id', $event_id)->value('id');
+            //Alertsテーブルにデータ保存
+            $alerts = Alert::firstOrNew([
+                'event_id' =>  $id,
+            ]);
+            $alert_data['number'] = $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'];
+            $event_accepted = Alert::where('event_id', $id)->value('number');
+            if (empty($event_accepted))  $alert_data['diff'] = $alerts->number;
+            $alert_data['diff'] = $alert_data['number'] - $event_accepted;
+            $alerts->fill($alert_data);
+            //dd($alerts);
+            $alerts->save();
         }
     }
 }

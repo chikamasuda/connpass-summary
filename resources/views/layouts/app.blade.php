@@ -7,6 +7,7 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- CoreUI CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" crossorigin="anonymous">
 
@@ -14,25 +15,22 @@
 
 </head>
 
-<body class="c-app">
-@include('layouts.sidebar')
-    <div class="c-wrapper">
-        <header class="c-header c-header-light c-header-fixed">
+<body class="">
+    <div class="footerFixed">
+        <header>
             @include('layouts.header')
         </header>
-
-        <div class="c-body">
+        <div class="">
             @yield('content')
         </div>
-        <footer class="c-footer">
+        <footer class="c-footer mt-2">
             <small class="mx-auto"> &copy; Connpass Summary</small>
         </footer>
     </div>
-    <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="js/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hooper@0.2.1/dist/hooper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
 </body>
 
 </html>

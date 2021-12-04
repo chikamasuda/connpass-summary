@@ -1,8 +1,16 @@
-<button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
-    <i class="c-icon c-icon-lg cil-menu ml-3"></i>
-    <span class="brand-text font-weight-bold ml-3" style="font-size: 18px;">Connpass Summary</span>
-</button>
+<nav class="navbar navbar-expand-sm navbar-light shadow-sm" style="background: #fff;">
+    <h1 class="brand-text title ml-5 pt-1"><a href="{{ route('home') }}" class="text-decoration-none">Connpass Summary</a></h1>
 
-<button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
-    <i class="c-icon c-icon-lg cil-menu"></i>
-</button>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end mr-5" id="nav-bar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">HOME</a></li>
+            <li class="nav-item"><a href="{{ route('popular') }}" class="nav-link">人気イベント</a></li>
+            <li class="nav-item"><a href="{{ route('php') }}" class="nav-link">PHPイベント</a></li>
+            <li class="nav-item"><a href="{{ route('contact.index') }}" class="nav-link">お問い合わせ</a></li>
+        </ul>
+    </div>
+</nav>

@@ -16,7 +16,6 @@ class CreateAlertsTable extends Migration
         Schema::create('alerts', function (Blueprint $table) {
             $table->id();
             $table->integer('event_id')->comment('イベントテーブルのID');
-            $table->date('date')->comment('日付');
             $table->integer('number')->comment('人数');
             $table->integer('diff')->comment('前日との差分');
         });

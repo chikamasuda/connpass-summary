@@ -2,9 +2,9 @@
 
 @section('content')
 @include('layouts.alert')
-<section class="row container mx-auto mt-4">
+<section class="row container mx-auto mt-4" style="height: 600px;">
     <main class="card col-md-7 p-0 mt-2 mx-auto">
-        <h2 class="card-header bg-light title">お問い合わせ</h2>
+        <h2 class="card-header title">お問い合わせ</h2>
         <div class="card-body">
             <p>リクエスト、バグなどありましたら、お問い合わせください。<br>
                 管理人から返信させていただきます。</p>
