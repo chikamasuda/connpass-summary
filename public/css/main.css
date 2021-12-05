@@ -70,4 +70,14 @@
 footer{
   position: absolute;/* ←絶対位置 */
   bottom: 0;
+  display: flex;
+  flex: 0 0 50px;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 50px;
+  color: #3c4b64;
+  background: #f8fafc;
+  border-top: 1px solid #d8dbe0;
+  padding: 0 1rem;
+  width: 100vw;
 }

@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-sm navbar-light shadow-sm" style="background: #fff;">
-    <h1 class="brand-text title ml-5 pt-1"><a href="{{ route('home') }}" class="text-decoration-none">Connpass Summary</a></h1>
+    <h1 class="brand-text title ml-3 pt-1"><a href="{{ route('home') }}" class="text-decoration-none">Connpass Summary</a></h1>
 
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end mr-5" id="nav-bar">
+    <div class="collapse navbar-collapse justify-content-end mr-3" id="nav-bar">
         <ul class="navbar-nav">
             <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">HOME</a></li>
             <li class="nav-item"><a href="{{ route('popular') }}" class="nav-link">人気イベント</a></li>

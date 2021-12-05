@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="row mt-4 container justify-content-center mx-auto">
-    <section class="col-md-7 p-0 mt-2">
-        <div class="card">
+<main class="row container justify-content-center mx-auto">
+    <section class="col-md-7 p-0 mt-4">
+        <div class="card mt-2">
             <div class="card-header font-weight-bold d-flex justify-content-between">
-                <h2 class="home-title font-weight-bold pb-1 pt-1"><i class="fas fa-home mr-2"></i>
+                <h2 class="home-title font-weight-bold"><i class="fas fa-home mr-2"></i>
                     HOME
                 </h2>
             </div>
@@ -23,14 +23,19 @@
                 @foreach($events as $list)
                 <ul class="list-unstyled border-bottom pb-3">
                     <li class="font-weight-bold home-title"><a href="{{ $list->event->url }}" target="_blank" class="text-body">{{ $list->event->title }}</a></li>
-                    <li class="pt-1 list-unstyled"><i class="far fa-clock text-success mr-2"></i>{{ Str::substr($list->event->date, 5, 2) }}/{{ Str::substr($list->event->date, 8, 2) }} {{ $list->event->begin_time }}〜{{ $list->event->end_time }}</li>
-                    <li class="pt-1 list-unstyled"><i class="fas fa-map-marker-alt text-danger mr-2"></i>{{$list->event->address }}</li>
+                    <li class="list-unstyled pt-2">
+                        <ul class="d-flex list-unstyled">
+                            <li class="list-unstyled mr-3"><i class="far fa-clock text-warning mr-2"></i>{{ Str::substr($list->event->date, 5, 2) }}/{{ Str::substr($list->event->date, 8, 2) }} {{ $list->event->begin_time }}〜{{ $list->end_time }}</li>
+                            <li class="list-unstyled"><i class="fas fa-map-marker-alt text-danger mr-2"></i>{{$list->event->address }}</li>
+                        </ul>
+                    </li>
                     <li class="pt-1 list-unstyled"><i class="fas fa-user-friends mr-1 text-dark"></i>{{ $list->event->group }}</li>
-                    <ul class="d-flex list-unstyled justify-content-between">
-                        <li class="pt-1 list-unstyled"><i class="fas fa-user-alt mr-2 mt-1 text-primary"></i>{{ $list->event->owner }}</li>
-                        <li class="font-weight-bold text-right pt-1"><i class="fas fa-users text-warning"></i>
-                            ＋{{ $list->diff }}人
-                    </ul>
+                    <li class="list-unstyled">
+                        <ul class="d-flex list-unstyled justify-content-between">
+                            <li class="pt-1 list-unstyled"><i class="fas fa-user-alt mr-2 mt-1 text-primary"></i>{{ $list->event->owner }}</li>
+                            <li class="font-weight-bold text-right pt-1"><i class="fas fa-users text-warning"></i>
+                                ＋{{ $list->diff }}人
+                        </ul>
                     </li>
                 </ul>
                 </ul>
@@ -38,8 +43,8 @@
             </div>
         </div>
     </section>
-    <aside class="offset-md-1 p-0 aside justify-content-center mt-2">
-        <h2 class="home-title font-weight-bold title-border pb-2 mb-4">
+    <aside class="offset-md-1 p-0 aside justify-content-center mt-4">
+        <h2 class="home-title font-weight-bold title-border pb-2 mb-4 mt-2">
             人気イベントランキング
         </h2>
         @foreach($lists as $i => $list)
@@ -55,7 +60,7 @@
             <img border="0" width="350" height="80" alt="" src="https://www28.a8.net/svt/bgt?aid=211201388709&wid=001&eno=01&mid=s00000000018015043000&mc=1" class="mt-1"></a>
         <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3HQS18+BQ4COI+50+2HK8J5" alt="">
         <a href="https://px.a8.net/svt/ejp?a8mat=3HQS18+BOC1V6+0K+116B0H" rel="nofollow">
-            <img border="0" width="350" height="240" alt="" src="https://www23.a8.net/svt/bgt?aid=211201388706&wid=001&eno=01&mid=s00000000002006244000&mc=1" class=""></a>
+            <img border="0" width="350" height="240" alt="" src="https://www23.a8.net/svt/bgt?aid=211201388706&wid=001&eno=01&mid=s00000000002006244000&mc=1" class="mt-2"></a>
         <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=3HQS18+BOC1V6+0K+116B0H" alt="">
     </aside>
 </main>

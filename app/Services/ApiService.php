@@ -141,8 +141,8 @@ class ApiService
      */
     public function alertBatch()
     {
-        try {
-            DB::beginTransaction();
+        // try {
+        //     DB::beginTransaction();
             $month = date('Ym');
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1';
             $this->apiRepository->apiAlert($url);
@@ -170,12 +170,12 @@ class ApiService
             $this->apiRepository->apiAlert($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1201';
             $this->apiRepository->apiAlert($url);
-            DB::commit();
-        } catch (\Throwable $e) {
-            DB::rollback();
-            // 全てのエラー・例外をキャッチしてログに残す
-            Log::error($e);
-        }
+        //     DB::commit();
+        // } catch (\Throwable $e) {
+        //     DB::rollback();
+        //     // 全てのエラー・例外をキャッチしてログに残す
+        //     Log::error($e);
+        // }
     }
 
     /**
@@ -185,8 +185,8 @@ class ApiService
      */
     public function alertSecondBatch()
     {
-        try {
-            DB::beginTransaction();
+        // try {
+        //     DB::beginTransaction();
             $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
             $month_after_next =  date('Ym', strtotime(date('Y-m-1') . '+2 month'));
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1';
@@ -217,11 +217,11 @@ class ApiService
             $this->apiRepository->apiAlert($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&order=2&start=101';
             $this->apiRepository->apiAlert($url);
-            DB::commit();
-        } catch (\Throwable $e) {
-            DB::rollback();
-            // 全てのエラー・例外をキャッチしてログに残す
-            Log::error($e);
-        }
+        //     DB::commit();
+        // } catch (\Throwable $e) {
+        //     DB::rollback();
+        //     // 全てのエラー・例外をキャッチしてログに残す
+        //     Log::error($e);
+        // }
     }
 }
