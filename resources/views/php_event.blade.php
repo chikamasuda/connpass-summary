@@ -2,7 +2,7 @@
 
 @section('content')
 <main class="row container mt-4 justify-content-between ml-4 mx-auto">
-    <aside class="card mt-2 mb-5 col-md-4 p-0" style="height: 380px;">
+    <aside class="card mt-2 mb-5 col-md-4 p-0" style="height: 450px;">
         <div class="card-header"><strong>絞り込み検索</strong></div>
         <div class="card-body">
             <form action="{{ route('php.search') }}" method="get">
@@ -13,11 +13,15 @@
                         <input type="text" class="form-control text-black" name="keyword" value="{{ old('keyword', request('keyword')) }}">
                     </div>
                     <div class="form-group">
-                        <label for="">日時</label>
+                        <label for="">開始日時</label>
                         <div class="d-flex form-group">
-                            <input type="date" class="text-dark form-control pr-0 pl-1" name="start_date" value="{{ old('start_date', request('start_date')) }}" style="width: 80%;">
-                            <span class="mt-1 pr-1 pl-1">ー</span>
-                            <input type="date" class="text-dark form-control pr-0 pl-1" name="end_date" value="{{ old('end_date', request('end_date')) }}" style="width: 80%;">
+                            <input type="date" class="text-dark form-control" name="start_date" value="{{ old('start_date', request('start_date')) }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">終了日時</label>
+                        <div class="d-flex form-group">
+                            <input type="date" class="text-dark form-control" name="end_date" value="{{ old('end_date', request('end_date')) }}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -26,8 +30,8 @@
                     </div>
                 </div>
                 <div class="text-center mx-auto mt-1 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-outline-primary pl-5 pr-5 mr-3">検索</button>
-                    <button type="submit" class="btn btn-outline-dark pl-5 pr-5" name="reset">リセット</button>
+                    <button type="submit" class="btn btn-outline-primary pl-4 pr-4 mr-3">検索</button>
+                    <button type="submit" class="btn btn-outline-dark pl-4 pr-4" name="reset">リセット</button>
                 </div>
             </form>
         </div>
