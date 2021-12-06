@@ -24,7 +24,7 @@ class ApiRepository
         $arrays = $response->getBody();
         $arrays = json_decode($arrays, true);
         $num = count($arrays['events']);
-        //dd($arrays);
+        dd($arrays);
         for ($i = 0; $i < $num; $i++) {
             if (isset($arrays['events'][$i]['event_id'])) {
                 $event_data['event_id'] = $arrays['events'][$i]['event_id'];

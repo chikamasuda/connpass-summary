@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="row container mt-4 justify-content-between ml-4 mx-auto">
-<aside class="card mt-2 mb-5 col-md-4 p-0" style="height: 450px;">
+<div class="row container mt-4 justify-content-between ml-4 mx-auto">
+<div class="card mt-2 mb-5 col-md-4 p-0" style="height: 380px;">
         <div class="card-header"><strong>絞り込み検索</strong></div>
         <div class="card-body">
             <form action="{{ route('popular.search') }}" method="get">
@@ -13,15 +13,9 @@
                         <input type="text" class="form-control text-black" name="keyword" value="{{ old('keyword', request('keyword')) }}">
                     </div>
                     <div class="form-group">
-                        <label for="">開始日時</label>
+                        <label for="">日時</label>
                         <div class="d-flex form-group">
-                            <input type="date" class="text-dark form-control" name="start_date" value="{{ old('start_date', request('start_date')) }}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="">終了日時</label>
-                        <div class="d-flex form-group">
-                            <input type="date" class="text-dark form-control" name="end_date" value="{{ old('end_date', request('end_date')) }}">
+                            <input type="date" class="text-dark form-control" name="date" value="{{ old('date', request('date')) }}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -35,8 +29,8 @@
                 </div>
             </form>
         </div>
-    </aside>
-    <section class="mt-2 col-md-7 p-0 mb-4">
+</div>
+    <div class="mt-2 col-md-7 p-0 mb-4">
         <h2 class="title title-border pb-2">人気イベント一覧</h2>
         <div class="mt-1">
             @if (!$lists->isEmpty())
@@ -62,6 +56,6 @@
             <p>検索結果は0件です。</p>
             @endif
         </div>
-    </section>
-</main>
+</div>
+</div>
 @endsection

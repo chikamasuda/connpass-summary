@@ -20,10 +20,10 @@
         <header>
             @include('layouts.header')
         </header>
-        <div class="">
+        <main class="">
             @yield('content')
-        </div>
-        <footer class="c-footer mt-2">
+</main>
+        <footer class="c-footer mt-2 bg-white shadow-sm">
             <small class="mx-auto"> &copy; Connpass Summary</small>
         </footer>
     </div>
