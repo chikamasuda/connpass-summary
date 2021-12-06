@@ -47,11 +47,10 @@ class EventController extends Controller
         }
 
         $keyword = $request->input('keyword');
-        $start_date = $request->input('start_date');
-        $end_date = $request->input('end_date');
+        $date = $request->input('date');
         $address = $request->input('address');
 
-        $lists = $this->searchService->searchPopularEvents($keyword, $start_date, $end_date, $address);
+        $lists = $this->searchService->searchPopularEvents($keyword, $date, $address);
 
         session()->flashInput($request->input());
 
@@ -88,12 +87,11 @@ class EventController extends Controller
             return redirect()->route('php');
         }
 
-        $keyword = $request->input('keyword');
-        $start_date = $request->input('start_date');
-        $end_date = $request->input('end_date');
-        $address = $request->input('address');
+        $keyword = $request->input('php_keyword');
+        $date = $request->input('php_date');
+        $address = $request->input('php_address');
 
-        $lists = $this->searchService->searchPhpEvents($keyword, $start_date, $end_date, $address);
+        $lists = $this->searchService->searchPhpEvents($keyword, $date, $address);
 
         session()->flashInput($request->input());
 

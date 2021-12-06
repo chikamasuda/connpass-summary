@@ -27,7 +27,7 @@ class SearchService
    *
    * @return void
    */
-  public function searchPopularEvents($keyword, $start_date, $end_date, $address)
+  public function searchPopularEvents($keyword, $date, $address)
   {
     $lists = Event::where('date', '>=', date('Y-m-d'))
       ->where('date', '<', date('Ymd', strtotime('first day of next month')))
@@ -52,12 +52,8 @@ class SearchService
     }
 
     //日付検索
-    if (!empty($start_date)) {
-      $lists->where('date', '>=', $start_date);
-    }
-
-    if (!empty($end_date)) {
-      $lists->where('date', '<=', $end_date);
+    if (!empty($date)) {
+      $lists->where('date', $date);
     }
 
     // 場所検索
@@ -73,7 +69,7 @@ class SearchService
    *
    * @return void
    */
-  public function searchPhpEvents($keyword, $start_date, $end_date, $address)
+  public function searchPhpEvents($keyword, $date, $address)
   {
     $lists = Event::where('date', '>', Carbon::yesterday())
       ->where('date', '<', date('Ymd', strtotime('first day of next month')))
@@ -98,12 +94,8 @@ class SearchService
     }
 
     //日付検索
-    if (!empty($start_date)) {
-      $lists->where('date', '>=', $start_date);
-    }
-
-    if (!empty($end_date)) {
-      $lists->where('date', '<=', $end_date);
+    if (!empty($date)) {
+      $lists->where('date',  $date);
     }
 
     // 場所検索
