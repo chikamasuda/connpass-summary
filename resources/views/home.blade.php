@@ -43,22 +43,25 @@
             </div>
         </div>
 </div>
-    <div class="offset-md-1 p-0 aside justify-content-center mt-4">
-        <h2 class="home-title font-weight-bold title-border pb-2 mb-4 mt-2">
-            人気イベントランキング
-        </h2>
-        @foreach($lists as $i => $list)
-        <ul class="d-flex list-unstyled border-bottom pb-3">
-            <li style="width: 24px;" class="number-{{ $i+1 }} mr-1">{{ $i+1 }}</li>
-            <li style="width: 90%;" class="font-weight-bold ml-2 text-dark"><a href="{{ $list->url }}" target="_blank" class="text-dark">{{ $list->title }}</a></li>
-        </ul>
-        @endforeach
-        <div class="text-right mb-3 text-primary">
-            <a href="{{ route('popular') }}" class="text-primary"><span>▶︎</span> 人気イベント一覧をみる</a>
+        <div class="offset-md-1 p-0 aside justify-content-center mt-4">
+            <h2 class="home-title font-weight-bold title-border pb-2 mb-4 mt-2">
+                人気イベントランキング
+            </h2>
+            @foreach($lists as $i => $list)
+            <ul class="d-flex list-unstyled border-bottom pb-3">
+                <li style="width: 24px;" class="number-{{ $i+1 }} mr-1">{{ $i+1 }}</li>
+                <li style="width: 90%;" class="font-weight-bold ml-2 text-dark"><a href="{{ $list->url }}" target="_blank" class="text-dark">{{ $list->title }}</a></li>
+            </ul>
+            @endforeach
+            <div class="text-right mb-3 text-primary">
+                <a href="{{ route('popular') }}" class="text-primary"><span>▶︎</span> 人気イベント一覧をみる</a>
+            </div>
+            <a href="https://px.a8.net/svt/ejp?a8mat=3HQS18+BQ4COI+50+2HK8J5" rel="nofollow">
+                <img border="0" width="350" height="80" alt="" src="https://www28.a8.net/svt/bgt?aid=211201388709&wid=001&eno=01&mid=s00000000018015043000&mc=1" class="mt-1"></a>
+            <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3HQS18+BQ4COI+50+2HK8J5" alt="">
+            <a href="https://px.a8.net/svt/ejp?a8mat=3HQS18+BOC1V6+0K+116B0H" rel="nofollow">
+                <img border="0" width="350" height="240" alt="" src="https://www23.a8.net/svt/bgt?aid=211201388706&wid=001&eno=01&mid=s00000000002006244000&mc=1" class="mt-2"></a>
+            <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=3HQS18+BOC1V6+0K+116B0H" alt="">
         </div>
-        <a href="https://px.a8.net/svt/ejp?a8mat=3HQS18+BOC1V6+0K+116B0H" rel="nofollow">
-            <img border="0" width="350" height="240" alt="" src="https://www23.a8.net/svt/bgt?aid=211201388706&wid=001&eno=01&mid=s00000000002006244000&mc=1" class="mt-2"></a>
-        <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=3HQS18+BOC1V6+0K+116B0H" alt="">
-</div>
-</div>
-@endsection
+    </div>
+    @endsection
