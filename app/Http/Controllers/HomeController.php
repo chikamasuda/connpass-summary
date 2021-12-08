@@ -17,7 +17,7 @@ class HomeController extends Controller
             ->where('date', '<', date('Ymd', strtotime('first day of next month')))
             ->where('accepted', '>=', 50)
             ->OrderBy('accepted', 'desc')
-            ->paginate(5);
+            ->paginate(10);
 
         $events = Alert::where('diff', '>=', 20)
             ->OrderBy('diff', 'desc')

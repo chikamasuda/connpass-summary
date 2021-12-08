@@ -22,7 +22,7 @@
         </header>
         <main class="">
             @yield('content')
-</main>
+        </main>
         <footer class="c-footer mt-2 bg-white shadow-sm">
             <small class="mx-auto"> &copy; Connpass Summary</small>
         </footer>
