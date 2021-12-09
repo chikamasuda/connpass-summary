@@ -16,17 +16,12 @@
 </head>
 
 <body class="">
-    <div class="footerFixed">
         <header>
             @include('layouts.header')
         </header>
         <main class="">
             @yield('content')
         </main>
-        <footer class="c-footer mt-2 bg-white shadow-sm">
-            <small class="mx-auto"> &copy; Connpass Summary</small>
-        </footer>
-    </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"></script>

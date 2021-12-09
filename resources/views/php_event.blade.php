@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="text-center mx-auto mt-1 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-outline-primary pl-4 pr-4 mr-3">検索</button>
+                    <button type="submit" class="btn btn-outline-dark pl-4 pr-4 mr-3">検索</button>
                     <button type="submit" class="btn btn-outline-dark pl-4 pr-4" name="reset">リセット</button>
                 </div>
             </form>
@@ -38,11 +38,11 @@
             @foreach($lists as $list)
             <ul class="list-unstyled event-card pb-4 pt-4 pl-4 pr-4">
                 <li style="font-size: 18px;" class="font-weight-bold"><a href="{{ $list->url }}" target="_blank" class="text-body">{{ $list->title }}</a></li>
-                <li class="list-unstyled mr-3 pt-2"><i class="far fa-clock text-warning mr-2"></i>{{ Str::substr($list->date, 5, 2) }}/{{ Str::substr($list->date, 8, 2) }} {{ $list->begin_time }}〜{{ $list->end_time }}</li>
+                <li class="list-unstyled mr-3 pt-2"><i class="far fa-clock text-primary mr-2"></i>{{ Str::substr($list->date, 5, 2) }}/{{ Str::substr($list->date, 8, 2) }} {{ $list->begin_time }}〜{{ $list->end_time }}</li>
                 <li class="list-unstyled pt-2"><i class="fas fa-map-marker-alt text-danger mr-2"></i>{{$list->address }}</li>
                 <li class="pt-2 list-unstyled"><i class="fas fa-user-friends mr-1 text-dark"></i>{{ $list->group }}</li>
-                <li class="pt-2 list-unstyled"><i class="fas fa-user-alt mr-2 mt-1 text-success"></i>{{ $list->owner }}</li>
-                <li class="font-weight-bold text-right"><i class="fas fa-users text-warning mr-1"></i>
+                <li class="pt-2 list-unstyled"><i class="fas fa-user-alt mr-2 mt-1 text-dark"></i>{{ $list->owner }}</li>
+                <li class="font-weight-bold text-right"><i class="fas fa-users text-dark mr-1"></i>
                     {{ $list->accepted }}@if($list->limit) / {{ $list->limit }}@endif人
                 </li>
             </ul>
