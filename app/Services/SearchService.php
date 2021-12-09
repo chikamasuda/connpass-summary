@@ -61,7 +61,7 @@ class SearchService
       $lists->where('address', 'LIKE', "%{$address}%");
     }
 
-    return $lists->paginate(50);
+    return $lists->paginate(20);
   }
 
   /**
@@ -103,6 +103,6 @@ class SearchService
       $lists->where('address', 'LIKE', "%{$address}%");
     }
 
-    return $lists->paginate(50);
+    return $lists->paginate(20);
   }
 }
