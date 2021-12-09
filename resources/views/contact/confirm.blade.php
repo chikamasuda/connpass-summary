@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<section class="container">
     <div class="row justify-content-center">
         <div class="col-md-7 mt-4">
             <div class="card mt-2">
-                <div class="card-header bg-light title">お問い合わせ内容確認</div>
+                <div class="card-header title">お問い合わせ内容確認</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('contact.send') }}">
                         @csrf
@@ -54,5 +54,5 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection

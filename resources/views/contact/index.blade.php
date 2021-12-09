@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row container mx-auto mt-4" style="height: 600px;">
+<section class="row container mx-auto mt-4" style="height: 600px;">
     <div class="card col-md-7 p-0 mt-2 mx-auto">
         <h2 class="card-header title">お問い合わせ</h2>
         <div class="card-body">
@@ -47,5 +47,5 @@
             </form>
         </div>
     </div>
-</div>
+</section>
 @endsection

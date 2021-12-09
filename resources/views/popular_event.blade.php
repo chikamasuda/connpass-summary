@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row container mt-4 justify-content-between ml-4 mx-auto">
+<section class="row container mt-4 justify-content-between ml-4 mx-auto">
     <div class="card mt-2 mb-5 col-md-4 p-0" style="height: 380px;">
         <div class="card-header"><strong>絞り込み検索</strong></div>
         <div class="card-body">
@@ -57,5 +57,5 @@
             @endif
         </div>
     </div>
-</div>
+</section>
 @endsection

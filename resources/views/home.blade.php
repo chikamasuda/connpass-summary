@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row container justify-content-center mx-auto">
+<section class="row container justify-content-center mx-auto pb-3">
     <div class="col-md-7 p-0 mt-4">
         <div class="card mt-2">
             <div class="card-header font-weight-bold d-flex justify-content-between">
@@ -57,5 +57,5 @@
             <a href="{{ route('popular') }}" class="text-primary"><span>▶︎</span> 人気イベント一覧をみる</a>
         </div>
     </div>
-</div>
+</section>
 @endsection
