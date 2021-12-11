@@ -49,7 +49,7 @@
         </h2>
         @foreach($lists as $i => $list)
         <ul class="d-flex list-unstyled border-bottom pb-3">
-            <li style="width: 24px;" class="number-{{ $i+1 }} mr-1">{{ $i+1 }}</li>
+            <li class="number-{{ $i+1 }} mr-1">{{ $i+1 }}</li>
             <li style="width: 90%;" class="font-weight-bold ml-2 text-dark"><a href="{{ $list->url }}" target="_blank" class="text-dark">{{ $list->title }}</a></li>
         </ul>
         @endforeach
