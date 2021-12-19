@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="row container mx-auto mt-4" style="height: 600px;">
+<section class="row container mx-auto mt-4 contact-container">
     <div class="card col-md-7 p-0 mt-2 mx-auto">
         <h2 class="card-header title">お問い合わせ</h2>
         <div class="card-body">
-            <p>リクエスト、バグなどありましたら、お問い合わせください。<br>
-                管理人から返信させていただきます。</p>
+            <p>リクエスト、バグなどありましたら、お問い合わせください。</p>
             <form method="POST" action="{{ route('contact.confirm') }}">
                 @csrf
                 <div class="form-group">
