@@ -9,14 +9,14 @@
                     HOME
                 </h2>
             </div>
-            <div class="card-body row text-center">
-                <div class="col-md-6 mt-2 bg-gray">
-                    <img src="images/image1.png" alt="" width="290px" height="160px">
+            <div class="card-body row">
+                <div class="col-md-6 mt-2 text-center">
+                    <div class=""><img src="images/image1.png" alt="" width="290px" height="160px"></div>
                     <p class="pt-2 m-0">
                         Connpass(https://connpass.com/)から情報を取得しています。
                     </p>
                 </div> 
-                <div class="col-md-6 mt-2">
+                <div class="col-md-6 mt-2 text-center">
                     <img src="images/image2.png" alt="" width="290px" height="160px">
                     <p class="pt-2 m-0">
                         50人以上参加のイベントや人気急上昇イベントをピックアップしています。
