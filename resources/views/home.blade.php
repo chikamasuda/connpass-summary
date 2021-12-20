@@ -9,8 +9,19 @@
                     HOME
                 </h2>
             </div>
-            <div class="card-body">
-                Connpass Summaryは技術勉強会まとめサイトです。Connpassの50人以上参加の人気イベントや人気急上昇イベント、PHPのイベントをピックアップしています。このサイトは、Connpass(https://connpass.com/)から情報を取得しています。
+            <div class="card-body row text-center">
+                <div class="col-md-6 mt-2 bg-gray">
+                    <img src="images/image1.png" alt="" width="290px" height="160px">
+                    <p class="pt-2 m-0">
+                        Connpass(https://connpass.com/)から情報を取得しています。
+                    </p>
+                </div> 
+                <div class="col-md-6 mt-2">
+                    <img src="images/image2.png" alt="" width="290px" height="160px">
+                    <p class="pt-2 m-0">
+                        50人以上参加のイベントや人気急上昇イベントをピックアップしています。
+                    </p>
+                </div> 
             </div>
         </div>
         <div class="card p-0 mt-3">
