@@ -10,15 +10,15 @@
                 </h2>
             </div>
             <div class="card-body row">
-                <div class="col-md-6 mt-2 text-center">
-                    <div class=""><img src="images/image1.png" alt="" width="290px" height="160px"></div>
-                    <p class="pt-2 m-0">
+                <div class="col-md-6 mt-2">
+                    <img src="images/image1.png" alt="" width="290px" height="160px">
+                    <p class="pt-2 m-0 text-left">
                         Connpass(https://connpass.com/)から情報を取得しています。
                     </p>
                 </div> 
-                <div class="col-md-6 mt-2 text-center">
-                    <img src="images/image2.png" alt="" width="290px" height="160px">
-                    <p class="pt-2 m-0">
+                <div class="col-md-6 mt-2">
+                    <img src="images/image3.png" alt="" width="290px" height="160px">
+                    <p class="pt-2 m-0 text-left">
                         50人以上参加のイベントや人気急上昇イベントをピックアップしています。
                     </p>
                 </div> 

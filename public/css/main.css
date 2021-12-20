@@ -107,3 +107,7 @@ footer{
 .contact-container {
   height: 550px;
 }
+
+.card-block {
+  width:290px; 
+}
