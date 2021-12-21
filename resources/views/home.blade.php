@@ -6,20 +6,20 @@
         <div class="card mt-2">
             <div class="card-header font-weight-bold d-flex justify-content-between">
                 <h2 class="home-title font-weight-bold">
-                    HOME
+                    Connpass Summaryとは
                 </h2>
             </div>
             <div class="card-body row">
                 <div class="col-md-6 mt-2">
-                    <img src="images/image1.png" alt="" width="290px" height="160px">
+                    <div><img src="images/image1.png" alt="" class="image-block"></div>
                     <p class="pt-2 m-0 text-left">
-                        Connpass(https://connpass.com/)から情報を取得しています。
+                        IT勉強会支援プラットフォームConnpassの情報を取得し、まとめたツールです。
                     </p>
                 </div> 
                 <div class="col-md-6 mt-2">
-                    <img src="images/image3.png" alt="" width="290px" height="160px">
+                    <div><img src="images/image2.png" alt="" class="image-block"></div>
                     <p class="pt-2 m-0 text-left">
-                        50人以上参加のイベントや人気急上昇イベントをピックアップしています。
+                        Connpassの参加人数50人以上のイベントや人気急上昇イベントをまとめています。
                     </p>
                 </div> 
             </div>
@@ -31,7 +31,7 @@
                 </h2>
             </div>
             <div class="card-body mt-1">
-                @foreach($events as $list)
+                @foreach($lists as $list)
                 <ul class="list-unstyled border-bottom pb-3">
                     <li class="font-weight-bold home-title"><a href="{{ $list->event->url }}" target="_blank" class="text-body">{{ $list->event->title }}</a></li>
                     <li class="list-unstyled pt-2">
@@ -55,17 +55,28 @@
         </div>
     </div>
     <div class="offset-md-1 p-0 col-md-4 justify-content-center mt-4">
-        <h2 class="home-title font-weight-bold title-border pb-2 mb-4 mt-2">
-            人気イベントランキング
+        <h2 class="home-title font-weight-bold title-border pb-2 mt-2">
+            ランキング
         </h2>
-        @foreach($lists as $i => $list)
+        <h3 class="mt-3 mb-3 rank-title">人気イベントランキング</h3>
+        @foreach($events as $i => $event)
         <ul class="d-flex list-unstyled border-bottom pb-3">
             <li class="number-{{ $i+1 }} mr-1">{{ $i+1 }}</li>
-            <li style="width: 90%;" class="font-weight-bold ml-2 text-dark"><a href="{{ $list->url }}" target="_blank" class="text-dark">{{ $list->title }}</a></li>
+            <li class="ml-2 text-dark event-title"><a href="{{ $event->url }}" target="_blank" class="text-dark">{{ $event->title }}</a></li>
         </ul>
         @endforeach
         <div class="text-right mb-3 text-primary">
-            <a href="{{ route('popular') }}" class="text-primary"><span>▶︎</span> 人気イベント一覧をみる</a>
+            <a href="{{ route('popular') }}" class="text-primary"><span>▶︎</span>人気イベント一覧をみる</a>
+        </div>
+        <h3 class="mt-3 mb-3 rank-title">PHPの人気イベントランキング</h3>
+        @foreach($php_events as $i => $php_event)
+        <ul class="d-flex list-unstyled border-bottom pb-3">
+            <li class="number-{{ $i+1 }} mr-1">{{ $i+1 }}</li>
+            <li class="ml-2 text-dark event-title"><a href="{{ $php_event->url }}" target="_blank" class="text-dark">{{ $php_event->title }}</a></li>
+        </ul>
+        @endforeach
+        <div class="text-right mb-3 text-primary">
+            <a href="{{ route('php') }}" class="text-primary"><span>▶︎</span>PHPイベント一覧をみる</a>
         </div>
     </div>
 </section>
