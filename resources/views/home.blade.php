@@ -13,7 +13,7 @@
                 <div class="col-md-6 mt-2">
                     <div><img src="images/image1.png" alt="" class="image-block"></div>
                     <p class="pt-2 m-0 text-left">
-                        IT勉強会支援プラットフォームConnpassの情報を取得し、まとめたツールです。
+                        IT勉強会支援プラットフォームのConnpassの情報をConnpassAPIで取得しています。
                     </p>
                 </div> 
                 <div class="col-md-6 mt-2">
