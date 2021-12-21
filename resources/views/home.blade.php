@@ -19,7 +19,7 @@
                 <div class="col-md-6 mt-2">
                     <div><img src="images/image2.png" alt="" class="image-block"></div>
                     <p class="pt-2 m-0 text-left">
-                        Connpass上の参加人数50人以上のイベントや人気急上昇中のイベントをまとめました。
+                        Connpass上の50人以上参加の人気イベントや人気急上昇中のイベントをまとめました。
                     </p>
                 </div> 
             </div>
