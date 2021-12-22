@@ -6,7 +6,7 @@
         <div class="card mt-2">
             <div class="card-header font-weight-bold d-flex justify-content-between">
                 <h2 class="home-title font-weight-bold">
-                    Connpass Summaryとは
+                    HOME
                 </h2>
             </div>
             <div class="card-body row">
@@ -15,16 +15,16 @@
                     <p class="pt-2 m-0 text-left">
                         IT勉強会支援プラットフォームのConnpassの情報をConnpassAPIで取得しています。
                     </p>
-                </div> 
+                </div>
                 <div class="col-md-6 mt-2">
                     <div><img src="images/image2.png" alt="" class="image-block"></div>
                     <p class="pt-2 m-0 text-left">
-                        Connpass上の50人以上参加の人気イベントや人気急上昇中のイベントをまとめました。
+                        Connpassの50人以上参加の人気イベントや人気急上昇中のイベント等をまとめました。
                     </p>
-                </div> 
+                </div>
             </div>
         </div>
-        <div class="card p-0 mt-3">
+        <div class="card p-0 mt-2">
             <div class="pb-2 card-header font-weight-bold d-flex justify-content-between">
                 <h2 class="home-title font-weight-bold pb-1 pt-1"><i class="fas fa-exclamation-triangle mr-1"></i>
                     人気急上昇イベント(直近24時間）
@@ -41,14 +41,13 @@
                         </ul>
                     </li>
                     <li class="pt-1 list-unstyled"><i class="fas fa-user-friends mr-1 text-dark"></i>{{ $list->event->group }}</li>
-                    <li class="list-unstyled">
-                        <ul class="d-flex list-unstyled justify-content-between">
-                            <li class="pt-1 list-unstyled"><i class="fas fa-user-alt mr-2 mt-1 text-dark"></i>{{ $list->event->owner }}</li>
-                            <li class="font-weight-bold text-right pt-1"><i class="fas fa-users text-dark"></i>
+                    <li class="pt-1 list-unstyled"><i class="fas fa-user-alt mr-2 mt-1 text-dark"></i>{{ $list->event->owner }}</li>
+                    <li class="list-unstyled mt-1">
+                        <ul class="list-unstyled">
+                            <li class="font-weight-bold text-right mt-1"><i class="fas fa-users text-dark"></i>
                                 ＋{{ $list->diff }}人
                         </ul>
                     </li>
-                </ul>
                 </ul>
                 @endforeach
             </div>
