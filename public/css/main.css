@@ -45,6 +45,7 @@
 .home-title {
   font-size: 16px;
   margin: 0;
+  padding:16px 0 0 20px;
 }
 
 .title-url {
@@ -112,8 +113,9 @@ footer{
   width:290px; 
 }
 
-.event-title {
-  width: 90%;
+.card-title {
+  font-size: 16px;
+  margin: 0;
 }
 
 .rank-title {
@@ -125,6 +127,7 @@ footer{
 }
 
 .event-title {
+  width: 90%;
   display: block;
   color: inherit;
   line-height: 24px;
@@ -136,4 +139,9 @@ footer{
 .image-block {
   width: 100%;
   height: auto;
+}
+
+.home-block {
+  padding-top: 10px; 
+  padding-bottom: 0;
 }
