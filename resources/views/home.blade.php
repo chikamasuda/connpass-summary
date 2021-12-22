@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="card p-0 mt-2">
+        <div class="card p-0 mt-4">
             <div class="pb-2 card-header font-weight-bold d-flex justify-content-between">
                 <h2 class="home-title font-weight-bold pb-1 pt-1"><i class="fas fa-exclamation-triangle mr-1"></i>
                     人気急上昇イベント(直近24時間）
@@ -36,7 +36,7 @@
                     <li class="font-weight-bold home-title"><a href="{{ $list->event->url }}" target="_blank" class="text-body">{{ $list->event->title }}</a></li>
                     <li class="list-unstyled pt-2">
                         <ul class="d-flex list-unstyled">
-                            <li class="list-unstyled mr-3"><i class="far fa-clock text-primary mr-2"></i>{{ Str::substr($list->event->date, 5, 2) }}/{{ Str::substr($list->event->date, 8, 2) }} {{ $list->event->begin_time }}〜{{ $list->end_time }}</li>
+                            <li class="list-unstyled mr-3"><i class="far fa-clock text-primary mr-2"></i>{{ Str::substr($list->event->date, 5, 2) }}/{{ Str::substr($list->event->date, 8, 2) }} {{ $list->event->begin_time }}〜{{ $list->event->end_time }}</li>
                             <li class="list-unstyled"><i class="fas fa-map-marker-alt text-danger mr-2"></i>{{$list->event->address }}</li>
                         </ul>
                     </li>
@@ -54,29 +54,37 @@
         </div>
     </div>
     <div class="offset-md-1 p-0 col-md-4 justify-content-center mt-4">
-        <h2 class="home-title font-weight-bold title-border pb-2 mt-2">
-            ランキング
-        </h2>
-        <h3 class="mt-3 mb-3 rank-title">人気イベントランキング</h3>
-        @foreach($events as $i => $event)
-        <ul class="d-flex list-unstyled border-bottom pb-3">
-            <li class="number-{{ $i+1 }} mr-1">{{ $i+1 }}</li>
-            <li class="ml-2 text-dark event-title"><a href="{{ $event->url }}" target="_blank" class="text-dark">{{ $event->title }}</a></li>
-        </ul>
-        @endforeach
-        <div class="text-right mb-3 text-primary">
-            <a href="{{ route('popular') }}" class="text-primary"><span>▶︎</span>人気イベント一覧をみる</a>
+        <div class="card mt-2">
+            <div class="card-header">
+                <h2 class="home-title font-weight-bold">人気イベントランキング</h2>
+            </div>
+            <div class="card-body">
+                @foreach($events as $i => $event)
+                <ul class="d-flex list-unstyled border-bottom pb-3">
+                    <li class="number-{{ $i+1 }} mr-1">{{ $i+1 }}</li>
+                    <li class="ml-2 text-dark event-title"><a href="{{ $event->url }}" target="_blank" class="text-dark">{{ $event->title }}</a></li>
+                </ul>
+                @endforeach
+                <div class="text-right text-primary">
+                    <a href="{{ route('popular') }}" class="text-primary"><span>▶︎</span>人気イベント一覧をみる</a>
+                </div>
+            </div>
         </div>
-        <h3 class="mt-3 mb-3 rank-title">PHPの人気イベントランキング</h3>
-        @foreach($php_events as $i => $php_event)
-        <ul class="d-flex list-unstyled border-bottom pb-3">
-            <li class="number-{{ $i+1 }} mr-1">{{ $i+1 }}</li>
-            <li class="ml-2 text-dark event-title"><a href="{{ $php_event->url }}" target="_blank" class="text-dark">{{ $php_event->title }}</a></li>
-        </ul>
-        @endforeach
-        <div class="text-right mb-3 text-primary">
-            <a href="{{ route('php') }}" class="text-primary"><span>▶︎</span>PHPイベント一覧をみる</a>
+        <div class="card mt-4">
+            <div class="card-header">
+                <h2 class="home-title font-weight-bold">PHPの人気イベントランキング</h2>
+            </div>
+            <div class="card-body">
+                @foreach($php_events as $i => $php_event)
+                <ul class="d-flex list-unstyled border-bottom pb-3">
+                    <li class="number-{{ $i+1 }} mr-1">{{ $i+1 }}</li>
+                    <li class="ml-2 text-dark event-title"><a href="{{ $php_event->url }}" target="_blank" class="text-dark">{{ $php_event->title }}</a></li>
+                </ul>
+                @endforeach
+                <div class="text-right text-primary">
+                    <a href="{{ route('php') }}" class="text-primary"><span>▶︎</span>PHPイベント一覧をみる</a>
+                </div>
+            </div>
         </div>
-    </div>
 </section>
 @endsection
