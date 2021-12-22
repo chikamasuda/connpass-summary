@@ -5,7 +5,7 @@
     <div class="col-md-7 p-0 mt-4">
         <div class="card mt-2">
             <h2 class="home-title font-weight-bold">
-                HOME
+                このサイトについて
             </h2>
             <div class="card-body row home-block">
                 <div class="col-md-6 mb-4">
@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    <div class="offset-md-1 p-0 col-md-4 justify-content-center mt-4">
+    <div class="offset-md-1 p-0 col-md-4 justify-content-center mt-4 mb-4">
         <div class="card mt-2">
             <h2 class="home-title font-weight-bold">
                 人気イベントランキング
