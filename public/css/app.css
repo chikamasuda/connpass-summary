@@ -26,7 +26,7 @@
  * License MIT  (https://coreui.io/license/)
  */
 :root {
-  --primary: #321fdb;
+  --primary: #007bff;
   --secondary: #ced2d8;
   --success: #2eb85c;
   --info: #39f;
@@ -45,7 +45,7 @@
 }
 
 .c-app {
-  --primary: #321fdb;
+  --primary: #007bff;
   --secondary: #ced2d8;
   --success: #2eb85c;
   --info: #39f;

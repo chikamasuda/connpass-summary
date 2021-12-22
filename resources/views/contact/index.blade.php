@@ -3,7 +3,7 @@
 @section('content')
 <section class="row container mx-auto mt-4 contact-container">
     <div class="card col-md-7 p-0 mt-2 mx-auto">
-        <h2 class="card-header title">お問い合わせ</h2>
+        <h2 class="card-header contact-header title text-white">お問い合わせ</h2>
         <div class="card-body">
             <p>リクエスト、バグなどありましたら、お問い合わせください。</p>
             <form method="POST" action="{{ route('contact.confirm') }}">
@@ -40,7 +40,7 @@
                     @endif
                 </div>
 
-                <button type="submit" class="btn btn-primary mt-4 mb-4 pl-4 pr-4">
+                <button type="submit" class="btn  mt-4 mb-4 pl-4 pr-4 submit text-white">
                     入力内容確認
                 </button>
             </form>
