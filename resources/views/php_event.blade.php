@@ -24,7 +24,8 @@
                     </div>
                 </div>
                 <div class="text-center mx-auto mt-1 d-flex justify-content-center">
-                    <button type="submit" class="btn submit text-white pr-5 pl-5">検索</button>
+                    <button type="submit" class="btn submit text-white pr-4 pl-4 mr-3">検索</button>
+                    <button type="submit" class="btn btn-dark text-white pr-3 pl-3" name="reset">リセット</button>
                 </div>
             </form>
         </div>
