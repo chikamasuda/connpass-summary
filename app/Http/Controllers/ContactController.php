@@ -51,6 +51,10 @@ class ContactController extends Controller
 
         Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactForm($data));
         Mail::to($data['email'])->send(new ContactForm($data));
+        //送信失敗した時、送信失敗しましたのページに飛ぶ
+        if (count(Mail::failures()) > 0) {
+            return view('contact.fail');
+        };
 
         //再送信を防ぐためにトークンを再発行
         $request->session()->regenerateToken();
