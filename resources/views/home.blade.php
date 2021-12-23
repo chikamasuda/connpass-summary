@@ -44,8 +44,8 @@
     </div>
     <div class="offset-md-1 p-0 col-md-4 justify-content-center mt-4 mb-4">
         <div class="card mt-2">
-            <div class="card-header ranking-header">
-                <h2 class="card-title font-weight-bold text-white">
+            <div class="card-header">
+                <h2 class="card-title font-weight-bold">
                     <i class="fas fa-fire mr-2"></i>ランキング
                 </h2>
             </div>
