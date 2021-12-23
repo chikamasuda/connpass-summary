@@ -95,9 +95,9 @@ class ApiService
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1101';
             $this->apiRepository->apiConnpass($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&order=2&start=1';
-            $this->apiRepository->apiAlert($url);
+            $this->apiRepository->apiConnpass($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&order=2&start=101';
-            $this->apiRepository->apiAlert($url);
+            $this->apiRepository->apiConnpass($url);
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
@@ -117,6 +117,7 @@ class ApiService
             DB::beginTransaction();
             $month = date('Ym');
             $next_month = $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
+            $month_after_next =  date('Ym', strtotime(date('Y-m-1') . '+2 month'));
 
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&keyword=PHP&start=1';
             $this->apiRepository->apiConnpassPHP($url);
@@ -125,6 +126,8 @@ class ApiService
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&keyword=PHP&start=1';
             $this->apiRepository->apiConnpassPHP($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&keyword=PHP&start=101';
+            $this->apiRepository->apiConnpassPHP($url);
+            $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&keyword=PHP&start=1';
             $this->apiRepository->apiConnpassPHP($url);
             DB::commit();
         } catch (\Throwable $e) {

@@ -15,7 +15,6 @@ class HomeController extends Controller
     {
         //人気イベントランキングの表示
         $events = Event::where('date', '>', Carbon::yesterday())
-            ->where('date', '<', date('Ymd', strtotime('first day of next month')))
             ->where('accepted', '>=', 50)
             ->OrderBy('accepted', 'desc')
             ->paginate(5);
