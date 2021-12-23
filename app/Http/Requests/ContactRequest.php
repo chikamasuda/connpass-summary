@@ -40,7 +40,7 @@ class ContactRequest extends FormRequest
     {
         return [
             'name'  => ['required','max:255'],
-            'email' => ['required', 'email:strict,dns,spoof'],
+            'email' => ['required', 'email'],
             'title' => ['required','max:255'],
             'body'  => ['required'],
         ];
