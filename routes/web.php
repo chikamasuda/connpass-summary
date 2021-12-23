@@ -27,5 +27,4 @@ Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])
 //問い合わせ確認ページ
 Route::post('/contact/confirm', [App\Http\Controllers\ContactController::class, 'confirm'])->name('contact.confirm');
 //問い合わせ送信完了ページ
-Route::get('/contact/send', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
 Route::post('/contact/send', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
