@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContactRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactForm;
+use Illuminate\Support\Facades\Log;
 
 class ContactController extends Controller
 {
@@ -17,7 +18,7 @@ class ContactController extends Controller
     {
         return view('contact.index');
     }
-    
+
     /**
      * お問い合わせ内容確認画面表示
      *
@@ -41,21 +42,27 @@ class ContactController extends Controller
      */
     public function send(ContactRequest $request)
     {
-         //メール送信
-         $data = [
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'title' => $request->input('title'),
-            'body' => $request->input('body')
-        ];
+        try {
+            //メール送信
+            $data = [
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'title' => $request->input('title'),
+                'body' => $request->input('body')
+            ];
 
-        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactForm($data));
-        Mail::to($data['email'])->send(new ContactForm($data));
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactForm($data));
+            Mail::to($data['email'])->send(new ContactForm($data));
 
-        //再送信を防ぐためにトークンを再発行
-        $request->session()->regenerateToken();
-    
-        //リダイレクト
-        return view('contact.thanks');
+            //再送信を防ぐためにトークンを再発行
+            $request->session()->regenerateToken();
+
+            //リダイレクト
+            return view('contact.thanks');
+        } catch (\Throwable $e) {
+            return back()->with('flash_alert', 'メール送信に失敗しました。');
+            // 全てのエラー・例外をキャッチしてログに残す
+            Log::error($e);
+        }
     }
 }
