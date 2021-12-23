@@ -30,14 +30,9 @@
         @foreach($lists as $list)
         <ul class="list-unstyled event-card pb-4 pt-4 pl-4 pr-4 mt-3">
             <li class="font-weight-bold card-title"><a href="{{ $list->event->url }}" target="_blank" class="text-body">{{ $list->event->title }}</a></li>
-            <li class="list-unstyled pt-2">
-                <ul class="d-flex list-unstyled">
-                    <li class="list-unstyled mr-3"><i class="far fa-clock text-primary mr-2"></i>{{ Str::substr($list->event->date, 5, 2) }}/{{ Str::substr($list->event->date, 8, 2) }} {{ $list->event->begin_time }}〜{{ $list->event->end_time }}</li>
-                    <li class="list-unstyled"><i class="fas fa-map-marker-alt text-danger mr-2"></i>{{$list->event->address }}</li>
-                </ul>
-            </li>
+            <li class="list-unstyled mr-3 pt-2"><i class="far fa-clock text-primary mr-1"></i>{{ Str::substr($list->event->date, 5, 2) }}/{{ Str::substr($list->event->date, 8, 2) }} {{ $list->event->begin_time }}〜{{ $list->event->end_time }}</li>
+            <li class="list-unstyled pt-1"><i class="fas fa-map-marker-alt text-danger mr-2"></i>{{$list->event->address }}</li>
             <li class="pt-1 list-unstyled"><i class="fas fa-user-friends mr-1 text-dark"></i>{{ $list->event->group }}</li>
-            <li class="pt-1 list-unstyled"><i class="fas fa-user-alt mr-2 mt-1 text-dark"></i>{{ $list->event->owner }}</li>
             <li class="list-unstyled mt-1">
                 <ul class="list-unstyled">
                     <li class="font-weight-bold text-right mt-1"><i class="fas fa-users text-dark"></i>
