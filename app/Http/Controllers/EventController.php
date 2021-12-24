@@ -65,7 +65,6 @@ class EventController extends Controller
     public function phpEvent()
     {
         $lists = Event::where('date', '>', Carbon::yesterday())
-            ->where('date', '<', date('Ymd', strtotime('first day of next month')))
             ->where('php_flag', 1)
             ->orderBy('date', 'asc')
             ->paginate(20);
