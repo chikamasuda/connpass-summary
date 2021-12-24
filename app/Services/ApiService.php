@@ -22,9 +22,9 @@ class ApiService
      */
     public function popularEventBatch()
     {
-        //URLの末尾をfor文でループしようとすると情報が取得できないため以下のようにURLを列挙
-        // try {
-        //     DB::beginTransaction();
+        //URLの末尾でfor文でループしようとすると情報が取得できないため以下のようにURLを列挙（以下同)
+        try {
+            DB::beginTransaction();
             $month = date('Ym');
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1';
             $this->apiRepository->apiConnpass($url);
@@ -52,12 +52,12 @@ class ApiService
             $this->apiRepository->apiConnpass($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1201';
             $this->apiRepository->apiConnpass($url);
-        //     DB::commit();
-        // } catch (\Throwable $e) {
-        //     DB::rollback();
-        //     // 全てのエラー・例外をキャッチしてログに残す
-        //     Log::error($e);
-        // }
+            DB::commit();
+        } catch (\Throwable $e) {
+            DB::rollback();
+            // 全てのエラー・例外をキャッチしてログに残す(以下同)
+            Log::error($e);
+        }
     }
 
     /**
@@ -67,10 +67,11 @@ class ApiService
      */
     public function popularEventBatchSecond()
     {
-        // try {
-        //     DB::beginTransaction();
+        try {
+            DB::beginTransaction();
             $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
             $month_after_next =  date('Ym', strtotime(date('Y-m-1') . '+2 month'));
+
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1';
             $this->apiRepository->apiConnpass($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=101';
@@ -99,12 +100,11 @@ class ApiService
             $this->apiRepository->apiConnpass($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&order=2&start=101';
             $this->apiRepository->apiConnpass($url);
-        //     DB::commit();
-        // } catch (\Throwable $e) {
-        //     DB::rollback();
-        //     // 全てのエラー・例外をキャッチしてログに残す
-        //     Log::error($e);
-        // }
+            DB::commit();
+        } catch (\Throwable $e) {
+            DB::rollback();
+            Log::error($e);
+        }
     }
 
     /**
@@ -114,8 +114,8 @@ class ApiService
      */
     public function phpEventBatch()
     {
-        // try {
-        //     DB::beginTransaction();
+        try {
+            DB::beginTransaction();
             $month = date('Ym');
             $next_month = $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
             $month_after_next =  date('Ym', strtotime(date('Y-m-1') . '+2 month'));
@@ -130,12 +130,11 @@ class ApiService
             $this->apiRepository->apiConnpassPHP($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&keyword=PHP&start=1';
             $this->apiRepository->apiConnpassPHP($url);
-        //     DB::commit();
-        // } catch (\Throwable $e) {
-        //     DB::rollback();
-        //     // 全てのエラー・例外をキャッチしてログに残す
-        //     Log::error($e);
-        // }
+            DB::commit();
+        } catch (\Throwable $e) {
+            DB::rollback();
+            Log::error($e);
+        }
     }
 
     /**
@@ -177,7 +176,6 @@ class ApiService
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
-            // 全てのエラー・例外をキャッチしてログに残す
             Log::error($e);
         }
     }
@@ -193,6 +191,7 @@ class ApiService
             DB::beginTransaction();
             $next_month = date('Ym', strtotime(date('Y-m-1') . '+1 month'));
             $month_after_next =  date('Ym', strtotime(date('Y-m-1') . '+2 month'));
+
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1';
             $this->apiRepository->apiAlert($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=101';
@@ -224,7 +223,6 @@ class ApiService
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
-            // 全てのエラー・例外をキャッチしてログに残す
             Log::error($e);
         }
     }

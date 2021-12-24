@@ -22,11 +22,14 @@ class SearchService
     }
   }
 
-  /**
-   * 人気イベント検索
-   *
-   * @return void
-   */
+ /**
+  *人気イベント検索
+  *
+  * @param string $keyword
+  * @param string $date
+  * @param string $address
+  * @return void
+  */
   public function searchPopularEvents($keyword, $date, $address)
   {
     $lists = Event::where('date', '>=', date('Y-m-d'))
@@ -67,6 +70,9 @@ class SearchService
   /**
    * PHPイベント検索
    *
+   * @param string $keyword
+   * @param string $date
+   * @param string $address
    * @return void
    */
   public function searchPhpEvents($keyword, $date, $address)
