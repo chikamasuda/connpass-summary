@@ -11,7 +11,7 @@
                 <div class="col-md-6 mb-4">
                     <div><img src="images/image1.png" alt="" class="image-block"></div>
                     <p class="pt-2 m-0 text-left">
-                        IT勉強会支援プラットホームConnpassの情報をConnpassAPIで取得し、自動更新します。
+                        IT勉強会支援プラットホームConnpassの情報を、APIで取得・自動更新しています。
                     </p>
                 </div>
                 <div class="col-md-6 mb-4">
