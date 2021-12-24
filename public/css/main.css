@@ -39,7 +39,6 @@
 .event-card {
   background-color: #fff;
   border: 1px solid #d8dbe0;
-  border-radius: 0.25rem;
 }
 
 .home-title {
@@ -151,10 +150,11 @@ footer{
   padding: 10px 0 10px 20px;
 }
 
-.alert-header {
-  background: linear-gradient(45deg , #bdb9ff, #67b8ff);
+.home-title-second {
+  background:  #333;
   padding: 10px 0 10px 20px;
-  border-radius: 3px;
+  font-size: 14px;
+  margin-bottom: 0;
 }
 
 .nav-item:hover {
@@ -164,4 +164,8 @@ footer{
 
 .submit {
   background-color: #58a9ef;
+}
+
+h3 {
+  color: #333;
 }
