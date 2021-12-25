@@ -5,19 +5,19 @@
     <div class="col-md-7 p-0 mt-4">
         <div class="card mt-2 bg-white">
             <h2 class="home-title font-weight-bold">
-                このツールについて
+                コンセプト
             </h2>
             <div class="card-body row home-block">
                 <div class="col-md-6 mb-4">
                     <div><img src="images/image1.png" alt="" class="image-block"></div>
                     <p class="pt-2 m-0 text-left">
-                        IT勉強会支援プラットホームConnpassの情報を、APIで取得・自動更新しています。
+                        コンセプトは「自分が好きそうなイベントを逃さないためのAPI駆動アプリ」です。
                     </p>
                 </div>
                 <div class="col-md-6 mb-4">
                     <div><img src="images/image2.png" alt="" class="image-block"></div>
                     <p class="pt-2 m-0 text-left">
-                        Connpassの50人以上参加の人気イベントや人気急上昇中のイベント等をまとめました。
+                        ConnpassのITイベントの情報をConnpassAPIで取得し、自動更新しています。
                     </p>
                 </div>
             </div>
