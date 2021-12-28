@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\ConnpassApiController;
 
 class ConnpassApiBatch extends Command
 {
@@ -22,17 +22,17 @@ class ConnpassApiBatch extends Command
      */
     protected $description = 'コンパスAPIのバッチ処理';
 
-    protected $apiController;
+    protected $ConnpassApiController;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(ApiController $apiController)
+    public function __construct(ConnpassApiController $ConnpassApiController)
     {
         parent::__construct();
-        $this->apiController = $apiController;
+        $this->ConnpassApiController = $ConnpassApiController;
     }
 
     /**

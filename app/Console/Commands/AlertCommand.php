@@ -31,7 +31,7 @@ class AlertCommand extends Command
     public function __construct(ConnpassApiController $ConnpassApiController)
     {
         parent::__construct();
-        $this->connpassApiController = $ConnpassApiController;
+        $this->ConnpassApiController = $ConnpassApiController;
     }
 
     /**
