@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Services;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Models\Event;
 use App\Models\Alert;
-use Carbon\Carbon;
 use GuzzleHttp\Client;
 
-class ApiRepository
+class ConnpassAPIService
 {
     /**
      * connpassAPIの情報取得・保存

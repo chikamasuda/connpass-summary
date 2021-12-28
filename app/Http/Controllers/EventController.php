@@ -24,7 +24,6 @@ class EventController extends Controller
     public function popularEvent()
     {
         $lists = Event::where('date', '>', Carbon::yesterday())
-            ->where('date', '<', date('Ymd', strtotime('first day of next month')))
             ->where('accepted', '>=', 50)
             ->OrderBy('accepted', 'desc')
             ->paginate(20);

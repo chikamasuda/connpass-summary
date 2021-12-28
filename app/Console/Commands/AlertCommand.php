@@ -41,7 +41,7 @@ class AlertCommand extends Command
      */
     public function handle()
     {
-      $this->apiController->alertBatch();
-      $this->apiController->alertSecondBatch();
+      $this->ConnpassApiController->alertBatch();
+      $this->ConnpassApiController->alertSecondBatch();
     }
 }

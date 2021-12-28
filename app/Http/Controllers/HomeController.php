@@ -18,12 +18,12 @@ class HomeController extends Controller
             ->where('accepted', '>=', 50)
             ->OrderBy('accepted', 'desc')
             ->paginate(5);
-        
+      
+        //PHPイベントランキングの表示
         $php_events = Event::where('date', '>', Carbon::yesterday())
-        ->where('date', '<', date('Ymd', strtotime('first day of next month')))
-        ->where('php_flag', 1)
-        ->OrderBy('accepted', 'desc')
-        ->paginate(5);
+            ->where('php_flag', 1)
+            ->OrderBy('accepted', 'desc')
+            ->paginate(5);
 
         //人気急上昇イベントのリスト
         $lists = Alert::where('diff', '>=', 20)
