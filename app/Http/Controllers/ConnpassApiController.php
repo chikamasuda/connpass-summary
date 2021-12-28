@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ConnPassApiService;
+use App\Services\ConnpassApiService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -147,7 +147,7 @@ class ConnpassApiController extends Controller
         try {
             DB::beginTransaction();
             $month = date('Ym');
-            
+
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1';
             $this->ConnpassApiService->apiAlert($url);
             $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=101';
