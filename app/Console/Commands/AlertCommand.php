@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\ConnpassApiController;
 
 class AlertCommand extends Command
 {
@@ -21,17 +21,17 @@ class AlertCommand extends Command
      */
     protected $description = 'コンパスAPIのアラート表示バッチ処理';
 
-    protected $apiController;
+    protected $ConnpassApiController;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(ApiController $apiController)
+    public function __construct(ConnpassApiController $ConnpassApiController)
     {
         parent::__construct();
-        $this->apiController = $apiController;
+        $this->connpassApiController = $ConnpassApiController;
     }
 
     /**
