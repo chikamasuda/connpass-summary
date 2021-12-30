@@ -40,7 +40,7 @@
                     @endif
                 </div>
 
-                <button type="submit" class="btn  mt-4 mb-4 pl-4 pr-4 btn-primary">
+                <button type="submit" class="btn mt-4 mb-4 pl-4 pr-4 site-btn text-white">
                     入力内容確認
                 </button>
             </form>

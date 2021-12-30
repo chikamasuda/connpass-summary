@@ -44,7 +44,7 @@
                             </div>
 
                             <div class="col-md-5">
-                                <button type="submit" class="btn btn-primary btn-block">
+                                <button type="submit" class="btn site-btn text-white btn-block">
                                     送信
                                 </button>
                             </div>

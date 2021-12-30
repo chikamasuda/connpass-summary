@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-sm header-nav">
-    <h1 class="brand-text text-white title ml-3 pt-1"><a href="{{ route('home') }}" class="text-decoration-none">Connpass Summary</a></h1>
+<nav class="navbar navbar-expand-sm header-nav shadow-sm">
+    <h1 class="brand-text ml-3 pt-1 logo"><a href="{{ route('home') }}" class="text-decoration-none">Connpass Summary</a></h1>
 
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
         <span class="navbar-toggler-icon"></span>
