@@ -8,19 +8,19 @@
                 <div class="row pt-2 pl-3 pr-3">
                     <div class="col-md-4 pt-2 mb-3">
                         <div><img src="images/image1.png" alt="" class="image-block"></div>
-                        <p class="pt-2 m-0 text-left">
+                        <p class="pt-2 m-0 text-left top-text">
                             コンセプトは「自分が好きそうなイベントを逃さないためのAPI駆動アプリ」です。
                         </p>
                     </div>
                     <div class="col-md-4 pt-2 mb-3">
                         <div><img src="images/image2.png" alt="" class="image-block"></div>
-                        <p class="pt-2 m-0 text-left">
+                        <p class="pt-2 m-0 text-left top-text">
                             IT勉強会支援プラットフォームConnpassの情報をConnpassAPIで取得し、自動更新しています。
                         </p>
                     </div>
                     <div class="col-md-4 pt-2 mb-3">
                         <div><img src="images/image3.png" alt="" class="image-block"></div>
-                        <p class="pt-2 m-0 text-left">
+                        <p class="pt-2 m-0 text-left top-text">
                             Connpassの人気急上昇イベントや参加人数50名以上の人気イベントなどをまとめています。
                         </p>
                     </div>
@@ -36,21 +36,24 @@
                 人気急上昇イベント(直近24時間)
             </h2>
             <div class="mb-4">
+                @if (!$lists->isEmpty())
                 @foreach($lists as $list)
                 <ul class="list-unstyled border-bottom pb-3 pt-3 m-0">
-                    <li class="card-title text-dark"><a href="{{ $list->event->url }}" target="_blank" class="text-body">{{ $list->event->title }}</a></li>
-                    <li class="list-unstyled">{{ $list->event->catch }}</li>
-                    <li class="list-unstyled mr-3 pt-2"><i class="far fa-clock mr-1 text-dark"></i>{{ Str::substr($list->event->date, 5, 2) }}/{{ Str::substr($list->event->date, 8, 2) }} {{ $list->event->begin_time }}〜{{ $list->event->end_time }}</li>
-                    <li class="list-unstyled pt-1"><i class="fas fa-map-marker-alt text-danger mr-2"></i>{{$list->event->address }}</li>
-                    <li class="pt-1 list-unstyled"><i class="fas fa-user-friends mr-1 text-dark"></i>{{ $list->event->group }}</li>
-                    <li class="list-unstyled mt-1">
+                    <li class=""><a href="{{ $list->event->url }}" target="_blank" class="home-card-title">{{ $list->event->title }}</a></li>
+                    <li class="list-unstyled home-catch">{{ $list->event->catch }}</li>
+                    <li class="list-unstyled mr-3 pt-2 home-item text-dark"><i class="far fa-clock mr-1 text-dark"></i>{{ Str::substr($list->event->date, 0, 4) }}年{{ Str::substr($list->event->date, 5, 2) }}月{{ Str::substr($list->event->date, 8, 2) }}日 {{ $list->event->begin_time }}〜{{ $list->event->end_time }}</li>
+                    <li class="list-unstyled pt-1 home-item text-dark"><i class="fas fa-map-marker-alt mr-2 text-dark"></i>{{$list->event->address }}</li>
+                    <li class="pt-1 list-unstyled home-item text-dark"><i class="fas fa-user-friends mr-1 text-dark"></i>{{ $list->event->group }}</li>
+                    <li class="list-unstyled mt-1 home-item">
                         <ul class="list-unstyled">
-                            <li class="text-right mt-1"><i class="fas fa-users text-dark"></i>
-                                ＋{{ $list->diff }}人
+                            <li class="text-right mt-1"><span class="number">＋ {{ $list->diff }}</span>人</li>
                         </ul>
                     </li>
                 </ul>
                 @endforeach
+                @else
+                <p class="home-card-title">検索結果は0件です。</p>
+                @endif
             </div>
         </div>
         <div class="offset-md-1 p-0 col-md-4 justify-content-center mt-4 mb-4">

@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-sm header-nav shadow-sm">
-    <h1 class="ml-3 pt-1 logo"><a href="{{ route('home') }}" class="text-decoration-none">Connpass Summary</a></h1>
+    <h1 class="ml-3 pt-1 logo"><a href="{{ route('home') }}" class="text-decoration-none">
+        <img src="images/logo.png" alt="" class="logo-block">
+    </a></h1>
 
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
         <span class="navbar-toggler-icon"></span>
@@ -13,4 +15,3 @@
             <li class="nav-item"><a href="{{ route('contact.index') }}" class="nav-link">お問い合わせ</a></li>
         </ul>
     </div>
-</nav>

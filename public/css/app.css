@@ -8140,7 +8140,7 @@ html:not([dir=rtl]) .navbar-nav {
   font-size: 1.09375rem;
   line-height: 1;
   background-color: transparent;
-  border: 1px solid transparent;
+  border: 1px solid #333;
   border-radius: 0.25rem;
 }
 .navbar-toggler:hover, .navbar-toggler:focus {
@@ -18565,10 +18565,6 @@ a.text-light:hover, a.text-light:focus {
 
 a.text-dark:hover, a.text-dark:focus {
   color: #424a57 !important;
-}
-
-.text-body {
-  color: #3c4b64 !important;
 }
 
 .text-muted {

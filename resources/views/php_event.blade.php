@@ -36,17 +36,21 @@
             <div class="text-right pb-2"> {{ $lists->links('pagination::bootstrap-4') }}</div>
             @foreach($lists as $list)
             <ul class="list-unstyled event-card pb-4 pt-4 pl-4 pr-4">
-                <li class="font-weight-bold card-title"><a href="{{ $list->url }}" target="_blank" class="text-body">{{ $list->title }}</a></li>
-                <li class="list-unstyled">{{ $list->catch }}</li>
-                <li class="list-unstyled pt-2"><i class="far fa-clock text-dark mr-1"></i>{{ Str::substr($list->date, 5, 2) }}/{{ Str::substr($list->date, 8, 2) }} {{ $list->begin_time }}〜{{ $list->end_time }}</li>
-                <li class="list-unstyled pt-1"><i class="fas fa-map-marker-alt text-danger mr-2"></i>{{$list->address }}</li>
-                <li class="pt-1 list-unstyled"><i class="fas fa-user-friends mr-1 text-dark"></i>{{ $list->group }}</li>
-                <li class="font-weight-bold text-right"><i class="fas fa-users text-dark mr-1"></i>
-                    {{ $list->accepted }}@if($list->limit) / {{ $list->limit }}@endif人
+                <li class=""><a href="{{ $list->url }}" target="_blank" class="card-title">{{ $list->title }}</a></li>
+                <li class="list-unstyled catch text-dark">{{ $list->catch }}</li>
+                <li class="list-unstyled mr-3 pt-2 text-dark card-item"><i class="far fa-clock text-dark mr-1 "></i>{{ Str::substr($list->date, 0, 4) }}年{{ Str::substr($list->date, 5, 2) }}月{{ Str::substr($list->date, 8, 2) }}日 {{ $list->begin_time }}〜{{ $list->end_time }}</li>
+                <li class="list-unstyled pt-1 text-dark card-item"><i class="fas fa-map-marker-alt text-dark mr-2"></i>{{$list->address }}</li>
+                <li class="pt-1 list-unstyled text-dark card-item"><i class="fas fa-user-friends mr-1 text-dark"></i>{{ $list->group }}</li>
+                <li class="list-unstyled mt-1">
+                    <ul class="list-unstyled">
+                        <li class="text-right">
+                            <span class="number">{{ $list->accepted }}@if($list->limit) / {{ $list->limit }}@endif</span>人
+                        </li>
+                    </ul>
                 </li>
             </ul>
             @endforeach
-            <div class="text-center mt-2"> {{ $lists->links('pagination::bootstrap-4') }}</div>
+            <div class="text-center mt-4"> {{ $lists->links('pagination::bootstrap-4') }}</div>
             @else
             <p>検索結果は0件です。</p>
             @endif

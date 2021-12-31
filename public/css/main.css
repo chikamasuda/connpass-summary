@@ -79,19 +79,6 @@ footer{
   color: #333;
 }
 
-.navbar-toggler {
-  padding: 0.25rem 0.75rem;
-  font-size: 1.25rem;
-  line-height: 1;
-  background-color: transparent;
-  border: 1px solid #fff;
-  border-radius: 0.25rem;
-}
-
-.navbar-toggler .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-
 .header-nav {
   background: #fff;
 }
@@ -105,9 +92,16 @@ footer{
 }
 
 .card-title {
-  font-size: 15px;
+  font-size: 17px;
   margin: 0;
-  font-weight: bold;
+  color: #16a085!important;
+  font-weight: 700;
+}
+
+.home-card-title {
+  font-size: 18px;
+  margin: 0;
+  color: #322b29!important;
 }
 
 .rank-title {
@@ -121,7 +115,6 @@ footer{
 .event-title {
   width: 90%;
   display: block;
-  color: inherit;
   line-height: 24px;
   height: 24px;
   overflow: hidden;
@@ -177,10 +170,6 @@ h3 {
   height: 330px;
 }
 
-.logo {
-  font-size: 18px;
-}
-
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
@@ -228,4 +217,49 @@ h3 {
   border: 1px solid #b6b6b6;
   color: #333;
   text-shadow: 0 1px 1px rgb(255 255 255 / 75%);
+}
+
+.number {
+  font-size: 20px;
+}
+.date {
+  color: #c0392b;
+}
+
+.top-text {
+  color: #666!important;
+}
+
+.connpass-block {
+  width: 90px;
+  height: auto;
+}
+
+.home-catch {
+  font-size: 12px;
+  color: #666;
+}
+
+.catch {
+  font-size: 12px;
+}
+
+.navbar-toggler{
+  border-color: #333;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(51,51,51,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.logo-block {
+  width: 170px;
+  height: auto;
+}
+
+.home-item {
+  font-size: 13px;
+}
+.card-item {
+  font-size: 13px;
 }
