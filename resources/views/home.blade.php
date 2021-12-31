@@ -52,7 +52,7 @@
                 </ul>
                 @endforeach
                 @else
-                <p class="home-card-title">検索結果は0件です。</p>
+                <p class="home-card-title pt-3">該当イベントはありません。</p>
                 @endif
             </div>
         </div>
