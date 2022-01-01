@@ -67,7 +67,7 @@
                 </ul>
                 @endforeach
                 <div class="text-right text-primary mb-4">
-                    <a href="{{ route('popular') }}" class="text-primary"><span>▶︎</span>人気イベント一覧をみる</a>
+                    <a href="{{ route('popular') }}" class="main-color"><span>▶︎</span>人気イベント一覧をみる</a>
                 </div>
                 <h3 class="rank-title pb-2">PHP人気イベントランキング</h3>
                 @foreach($php_events as $i => $php_event)
@@ -77,7 +77,7 @@
                 </ul>
                 @endforeach
                 <div class="text-right text-primary">
-                    <a href="{{ route('php') }}" class="text-primary"><span>▶︎</span>PHPイベント一覧をみる</a>
+                    <a href="{{ route('php') }}" class="main-color"><span>▶︎</span>PHPイベント一覧をみる</a>
                 </div>
             </div>
         </div>

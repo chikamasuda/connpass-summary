@@ -33,7 +33,6 @@
         <h2 class="title pb-2 title-border">PHPイベント一覧</h2>
         <div class="mt-1">
             @if (!$lists->isEmpty())
-            <div class="text-right pb-2"> {{ $lists->links('pagination::bootstrap-4') }}</div>
             @foreach($lists as $list)
             <ul class="list-unstyled event-card pb-4 pt-4 pl-4 pr-4">
                 <li class=""><a href="{{ $list->url }}" target="_blank" class="card-title">{{ $list->title }}</a></li>

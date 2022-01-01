@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm header-nav shadow-sm">
-    <h1 class="ml-3 pt-1 logo"><a href="{{ route('home') }}" class="text-decoration-none">
+    <h1 class="ml-3 pt-1"><a href="{{ route('home') }}" class="text-decoration-none">
         <img src="images/logo3.png" alt="" class="logo-block">
     </a></h1>
 
