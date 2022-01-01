@@ -26,7 +26,7 @@ class HomeController extends Controller
             ->paginate(5);
 
         //人気急上昇イベントのリスト
-        $lists = Alert::where('diff', '>=', 20)
+        $lists = Alert::where('diff', '>=', 10)
             ->OrderBy('diff', 'desc')
             ->whereHas('event', function ($query) {
                 $query->where('date', '>=',  Carbon::today()->format('Y-m-d'))

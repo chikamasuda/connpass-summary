@@ -46,7 +46,7 @@
                     <li class="pt-1 list-unstyled home-item"><i class="fas fa-user-alt mr-1 text-dark"></i>{{ $list->event->group }}</li>
                     <li class="list-unstyled mt-1 home-item">
                         <ul class="list-unstyled d-flex justify-content-between">
-                            <li><a href="#" class="like-border mt-1"><i class="fas fa-heart mr-1"></i>お気に入りに追加</a></li>
+                            <li><a href="#" class="like-button mt-1"><i class="fas fa-heart mr-1"></i>お気に入り</a></li>
                             <li class="text-right mt-1"><span class="number">＋ {{ $list->diff }}</span>人</li>
                         </ul>
                     </li>

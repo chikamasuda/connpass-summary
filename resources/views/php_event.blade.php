@@ -42,7 +42,7 @@
                 <li class="pt-1 list-unstyled text-dark card-item"><i class="fas fa-user-friends mr-1 text-dark"></i>{{ $list->group }}</li>
                 <li class="list-unstyled mt-1">
                     <ul class="list-unstyled d-flex justify-content-between">
-                        <li><a href="#" class="like-border mt-1"><i class="fas fa-heart mr-1 heart"></i>お気に入りに追加</a></li>
+                        <li><a href="#" class="like-button mt-1"><i class="fas fa-heart mr-1 heart"></i>お気に入り</a></li>
                         <li><span class="number mt-1">{{ $list->accepted }}@if($list->limit) / {{ $list->limit }}@endif</span>人</li>
                     </ul>
                 </li>

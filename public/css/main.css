@@ -277,16 +277,15 @@ h3 {
   font-size: 13px;
 }
 
-.like-border {
+.like-button {
   display: inline-block;
   font-size: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 4px 8px;
-  background: #fff;
- 
+  color: #343a40!important;
 }
 
-.like-border:hover {
+.like-button:hover {
   text-decoration: none;
 }
