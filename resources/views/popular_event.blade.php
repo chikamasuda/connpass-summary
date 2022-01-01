@@ -36,15 +36,14 @@
             @foreach($lists as $list)
             <ul class="list-unstyled event-card pb-4 pt-4 pl-4 pr-4">
                 <li class=""><a href="{{ $list->url }}" target="_blank" class="card-title">{{ $list->title }}</a></li>
-                <li class="list-unstyled catch text-dark">{{ $list->catch }}</li>
-                <li class="list-unstyled mr-3 pt-2 card-item text-dark"><i class="far fa-clock mr-1 text-dark"></i>{{ Str::substr($list->date, 0, 4) }}年{{ Str::substr($list->date, 5, 2) }}月{{ Str::substr($list->date, 8, 2) }}日 {{ $list->begin_time }}〜{{ $list->end_time }}</li>
-                <li class="list-unstyled pt-1 text-dark card-item"><i class="fas fa-map-marker-alt text-dark mr-2"></i>{{$list->address }}</li>
-                <li class="pt-1 list-unstyled text-dark card-item"><i class="fas fa-user-friends mr-1 text-dark"></i>{{ $list->group }}</li>
+                <li class="list-unstyled catch">{{ $list->catch }}</li>
+                <li class="list-unstyled mr-3 pt-2 card-item"><i class="far fa-clock mr-1 text-dark"></i>{{ Str::substr($list->date, 0, 4) }}年{{ Str::substr($list->date, 5, 2) }}月{{ Str::substr($list->date, 8, 2) }}日 {{ $list->begin_time }}〜{{ $list->end_time }}</li>
+                <li class="list-unstyled pt-1 card-item"><i class="fas fa-map-marker-alt text-dark mr-2"></i>{{$list->address }}</li>
+                <li class="pt-1 list-unstyled card-item"><i class="fas fa-user-friends mr-1 text-dark"></i>{{ $list->group }}</li>
                 <li class="list-unstyled mt-1">
-                    <ul class="list-unstyled">
-                        <li class="text-right">
-                            <span class="number">{{ $list->accepted }}@if($list->limit) / {{ $list->limit }}@endif</span>人
-                        </li>
+                    <ul class="list-unstyled d-flex justify-content-between">
+                        <li><a href="#" class="like-border mt-1"><i class="fas fa-heart mr-1 heart"></i>お気に入りに追加</a></li>
+                        <li><span class="number mt-1">{{ $list->accepted }}@if($list->limit) / {{ $list->limit }}@endif</span>人</li>
                     </ul>
                 </li>
             </ul>

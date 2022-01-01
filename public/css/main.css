@@ -244,13 +244,9 @@ h3 {
   height: auto;
 }
 
-.home-catch {
-  font-size: 12px;
-  color: #666;
-}
-
 .catch {
   font-size: 12px;
+  color: #666;
 }
 
 .main-color {
@@ -279,4 +275,18 @@ h3 {
 }
 .card-item {
   font-size: 13px;
+}
+
+.like-border {
+  display: inline-block;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px 8px;
+  background: #fff;
+ 
+}
+
+.like-border:hover {
+  text-decoration: none;
 }

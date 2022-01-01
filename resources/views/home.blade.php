@@ -29,7 +29,7 @@
         </div>
     </div>
 </div>
-<div class="" style="background: #fff;">
+<section class="" style="background: #fff;">
     <div class="row container justify-content-center pb-3 mx-auto">
         <div class="col-md-7 p-0 mt-4">
             <h2 class="title pb-2 title-border pt-2 mb-1">
@@ -40,12 +40,13 @@
                 @foreach($lists as $list)
                 <ul class="list-unstyled border-bottom pb-3 pt-3 m-0">
                     <li class=""><a href="{{ $list->event->url }}" target="_blank" class="home-card-title">{{ $list->event->title }}</a></li>
-                    <li class="list-unstyled home-catch">{{ $list->event->catch }}</li>
-                    <li class="list-unstyled mr-3 pt-2 home-item text-dark"><i class="far fa-clock mr-1 text-dark"></i>{{ Str::substr($list->event->date, 0, 4) }}年{{ Str::substr($list->event->date, 5, 2) }}月{{ Str::substr($list->event->date, 8, 2) }}日 {{ $list->event->begin_time }}〜{{ $list->event->end_time }}</li>
-                    <li class="list-unstyled pt-1 home-item text-dark"><i class="fas fa-map-marker-alt mr-2 text-dark"></i>{{$list->event->address }}</li>
-                    <li class="pt-1 list-unstyled home-item text-dark"><i class="fas fa-user-friends mr-1 text-dark"></i>{{ $list->event->group }}</li>
+                    <li class="list-unstyled catch">{{ $list->event->catch }}</li>
+                    <li class="list-unstyled mr-3 pt-2 home-item"><i class="far fa-clock mr-1 text-dark"></i>{{ Str::substr($list->event->date, 0, 4) }}年{{ Str::substr($list->event->date, 5, 2) }}月{{ Str::substr($list->event->date, 8, 2) }}日 {{ $list->event->begin_time }}〜{{ $list->event->end_time }}</li>
+                    <li class="list-unstyled pt-1 home-item"><i class="fas fa-map-marker-alt mr-2 text-dark"></i>{{$list->event->address }}</li>
+                    <li class="pt-1 list-unstyled home-item"><i class="fas fa-user-alt mr-1 text-dark"></i>{{ $list->event->group }}</li>
                     <li class="list-unstyled mt-1 home-item">
-                        <ul class="list-unstyled">
+                        <ul class="list-unstyled d-flex justify-content-between">
+                            <li><a href="#" class="like-border mt-1"><i class="fas fa-heart mr-1"></i>お気に入りに追加</a></li>
                             <li class="text-right mt-1"><span class="number">＋ {{ $list->diff }}</span>人</li>
                         </ul>
                     </li>
@@ -82,5 +83,5 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection
