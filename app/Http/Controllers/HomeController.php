@@ -29,7 +29,8 @@ class HomeController extends Controller
         $lists = Alert::where('diff', '>=', 20)
             ->OrderBy('diff', 'desc')
             ->whereHas('event', function ($query) {
-                $query->where('date', '>=',  Carbon::today()->format('Y-m-d'));
+                $query->where('date', '>=',  Carbon::today()->format('Y-m-d'))
+                ->where('date', '<=', date('Y-m-d', strtotime('last day of next month')));
             })
             ->get();
 
