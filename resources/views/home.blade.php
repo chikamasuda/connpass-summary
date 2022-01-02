@@ -41,9 +41,9 @@
                 <ul class="list-unstyled border-bottom pb-3 pt-3 m-0">
                     <li class=""><a href="{{ $list->event->url }}" target="_blank" class="home-card-title">{{ $list->event->title }}</a></li>
                     <li class="list-unstyled catch">{{ $list->event->catch }}</li>
-                    <li class="list-unstyled mr-3 pt-2 home-item"><i class="far fa-clock mr-1 text-dark"></i>{{ Str::substr($list->event->date, 0, 4) }}年{{ Str::substr($list->event->date, 5, 2) }}月{{ Str::substr($list->event->date, 8, 2) }}日 {{ $list->event->begin_time }}〜{{ $list->event->end_time }}</li>
+                    <li class="list-unstyled mr-3 pt-2 home-item"><i class="far fa-clock mr-2 text-dark"></i>{{ Str::substr($list->event->date, 0, 4) }}年{{ Str::substr($list->event->date, 5, 2) }}月{{ Str::substr($list->event->date, 8, 2) }}日 {{ $list->event->begin_time }}〜{{ $list->event->end_time }}</li>
                     <li class="list-unstyled pt-1 home-item"><i class="fas fa-map-marker-alt mr-2 text-dark"></i>{{$list->event->address }}</li>
-                    <li class="pt-1 list-unstyled home-item"><i class="fas fa-user-alt mr-1 text-dark"></i>{{ $list->event->group }}</li>
+                    <li class="pt-1 list-unstyled home-item"><i class="fas fa-users mr-1 text-dark"></i>{{ $list->event->group }}</li>
                     <li class="list-unstyled mt-1 home-item">
                         <ul class="list-unstyled d-flex justify-content-between">
                             <li><a href="#" class="like-button mt-1"><i class="fas fa-heart mr-1"></i>お気に入り</a></li>
