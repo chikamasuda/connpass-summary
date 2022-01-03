@@ -101,7 +101,6 @@ footer{
 .card-title {
   font-size: 17px;
   margin: 0;
-  color: #16a085!important;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -109,7 +108,8 @@ footer{
 .home-card-title {
   font-size: 18px;
   margin: 0;
-  color: #16a085!important;
+  color: #666;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -182,8 +182,8 @@ h3 {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #16a085;
-  border-color: #16a085;
+  background-color: #0e7ac4;
+  border-color: #0e7ac4;
 }
 
 .page-link {
@@ -207,7 +207,7 @@ h3 {
 }
 
 .site-btn {
-  background: #16a085;
+  background: #0e7ac4;
 }
 
 .card-header:first-child {
@@ -250,11 +250,11 @@ h3 {
 }
 
 .main-color {
-  color: #16a085;
+  color: #0e7ac4;
 }
 
 .main-color:hover  {
-  color: #16a085;
+  color: #0e7ac4;
   text-decoration: underline;
 }
 .navbar-toggler{
@@ -283,7 +283,7 @@ h3 {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 4px 16px;
-  color: #B8B6B6!important;
+  color: #BCBABA!important;
 }
 
 .like-button:hover {
