@@ -52,7 +52,7 @@
                     <li class="list-unstyled mt-2 pb-2">
                         <ul class="list-unstyled d-flex justify-content-between">
                             <li class="pl-4 pr-4"><a href="#" class="like-button"><i class="fas fa-heart mr-1 heart"></i>お気に入り</a></li>
-                            <li class="pl-4 pr-4"><img class="connpass-logo" src="images/connpass_logo_1.png" alt=""></li>
+                            <li class="pl-4 pr-4"><img class="connpass-logo" src="images/connpass_logo.png" alt=""></li>
                         </ul>
                     </li>
                 </ul>
