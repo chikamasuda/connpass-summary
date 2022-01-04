@@ -64,6 +64,7 @@ class ConnpassAPIService
         $response = $client->request($method, $url);
         $arrays = $response->getBody();
         $arrays = json_decode($arrays, true);
+        //dd($arrays);
         $num = count($arrays['events']);
 
         for ($i = 0; $i < $num; $i++) {

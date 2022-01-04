@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm header-nav shadow-sm">
     <h1 class="ml-3 pt-1"><a href="{{ route('home') }}" class="text-decoration-none">
-        <img src="images/logo3.png" alt="" class="logo-block">
+        <img src="images/logo5.png" alt="" class="logo-block">
     </a></h1>
 
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
