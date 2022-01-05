@@ -3,7 +3,7 @@
 @section('content')
 <section class="row container mt-4 justify-content-between ml-4 mx-auto">
     <div class="mt-2 mb-5 col-md-4 p-0">
-    <h2 class="title title-border pb-2">イベントを絞りこむ</h2>
+    <h2 class="title title-border pb-2">イベントを絞り込む</h2>
         <div class="pt-4 pr-4 pl-4 pb-4 search-card">
             <form action="{{ route('php.search') }}" method="get">
                 @csrf
