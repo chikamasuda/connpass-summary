@@ -39,7 +39,7 @@
                 @if (!$lists->isEmpty())
                 @foreach($lists as $list)
                 <ul class="list-unstyled event-card">
-                    <li class="pt-4 pl-4 pr-4"><a href="{{ $list->url }}" target="_blank" class="card-title">{{ $list->event->title }}</a></li>
+                    <li class="pt-4 pl-4 pr-4"><a href="{{ $list->event->url }}" target="_blank" class="card-title">{{ $list->event->title }}</a></li>
                     <li class="list-unstyled catch pl-4 pr-4">{{ $list->event->catch }}</li>
                     <li class="list-unstyled mt-2 pl-4 pr-4">
                         <ul class="list-unstyled d-flex">
