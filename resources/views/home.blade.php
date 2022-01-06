@@ -43,15 +43,15 @@
                     <li class="list-unstyled catch pl-4 pr-4">{{ $list->event->catch }}</li>
                     <li class="list-unstyled mt-2 pl-4 pr-4">
                         <ul class="list-unstyled d-flex">
-                            <li class="list-unstyled mr-3 pt-2 card-item"><i class="far fa-calendar-alt mr-2 text-dark"></i>{{ Str::substr($list->event->date, 5, 2) }}月{{ Str::substr($list->event->date, 8, 2) }}日 {{ $list->event->begin_time }}〜{{ $list->event->end_time }}</li>
-                            <li class="card-item pt-2"><i class="fas fa-user mr-1 text-dark"></i>＋{{ $list->diff }}人</li>
+                            <li class="list-unstyled mr-3 pt-2 card-item"><i class="fa fa-fw fa-calendar-alt mr-2 text-dark"></i>{{ Str::substr($list->event->date, 5, 2) }}月{{ Str::substr($list->event->date, 8, 2) }}日 {{ $list->event->begin_time }}〜{{ $list->event->end_time }}</li>
+                            <li class="card-item pt-2"><i class="fa fa-w fa-user mr-1 text-dark"></i>＋{{ $list->diff }}人</li>
                         </ul>
                     </li>
-                    <li class="list-unstyled pt-1 card-item pl-4 pr-4"><i class="fas fa-map-marker-alt text-dark mr-2"></i>{{$list->event->address }}</li>
-                    <li class="pt-1 list-unstyled card-item border-bottom pl-4 pr-4 pb-3"><i class="fas fa-users mr-1 text-dark"></i>{{ $list->event->group }}</li>
+                    <li class="list-unstyled pt-1 card-item pl-4 pr-4"><i class="fa fa-fw fa-map-marker-alt text-dark mr-2"></i>{{$list->event->address }}</li>
+                    <li class="pt-1 list-unstyled card-item border-bottom pl-4 pr-4 pb-3"><i class="fa fa-fw fa-users mr-2 text-dark"></i>{{ $list->event->group }}</li>
                     <li class="list-unstyled mt-2 pb-2">
                         <ul class="list-unstyled d-flex justify-content-between">
-                            <li class="pl-4 pr-4"><a href="#" class="like-button"><i class="fas fa-heart mr-1 heart"></i>お気に入り</a></li>
+                            <li class="pl-4 pr-4"><a href="#" class="like-button"><i class="fa fa-fw fa-heart mr-1 heart"></i>お気に入り</a></li>
                             <li class="pl-4 pr-4"><img class="connpass-logo" src="images/connpass_logo.png" alt=""></li>
                         </ul>
                     </li>
