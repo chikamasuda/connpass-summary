@@ -21,7 +21,7 @@
                     <div class="col-md-4 pt-2 mb-3">
                         <div><img src="images/image3.png" alt="" class="image-block"></div>
                         <p class="pt-2 m-0 text-left top-text">
-                            Connpassの人気急上昇イベントや参加人数50名以上の人気イベント、PHPイベントをまとめています。
+                            人気急上昇イベントや参加人数50名以上の人気イベント、PHPイベントの情報をピックアップしています。
                         </p>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                 </ul>
                 @endforeach
                 <div class="text-right text-primary mb-4">
-                    <a href="{{ route('popular') }}" class=""><span>▶︎</span>人気イベント一覧をみる</a>
+                    <a href="{{ route('popular') }}" class=""><i class="fa fa-caret-right mr-1"></i>人気イベント一覧をみる</a>
                 </div>
                 <h3 class="rank-title pb-2">PHP人気イベントランキング</h3>
                 @foreach($php_events as $i => $php_event)
@@ -83,7 +83,7 @@
                 </ul>
                 @endforeach
                 <div class="text-right text-primary">
-                    <a href="{{ route('php') }}" class=""><span>▶︎</span>PHPイベント一覧をみる</a>
+                    <a href="{{ route('php') }}" class=""><i class="fa fa-caret-right mr-1"></i>PHPイベント一覧をみる</a>
                 </div>
             </div>
         </div>
