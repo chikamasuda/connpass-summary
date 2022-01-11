@@ -14,8 +14,8 @@ class CreateAlertsTable extends Migration
     public function up()
     {
         Schema::create('alerts', function (Blueprint $table) {
-            $table->id();
-            $table->integer('event_id')->nullable()->comment('イベントテーブルのID');
+            $table->id('id');
+            $table->unsignedBigInteger('event_id')->unique()->comment('イベントテーブルのID');
             $table->integer('number')->comment('人数');
             $table->integer('diff')->comment('前日との差分');
         });
