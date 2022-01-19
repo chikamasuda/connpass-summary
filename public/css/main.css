@@ -53,32 +53,6 @@ body, html {
   font-size: 14px;
 }
 
-.aside {
-  width: 350px;
-}
-
-.footerFixed{
-  min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
-  position: relative;/* ←相対位置 */
-  padding-bottom: 60px; /* ←フッターの高さを指定 */
-  box-sizing: border-box;
-  /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
-}
-
-footer{
-  position: absolute;/* ←絶対位置 */
-  bottom: 0;
-  display: flex;
-  flex: 0 0 50px;
-  flex-wrap: wrap;
-  align-items: center;
-  height: 50px;
-  color: #3c4b64;
-  background: #f8fafc;
-  padding: 0 1rem;
-  width: 100vw;
-}
-
 .nav-link {
   color: #333;
 }
@@ -93,10 +67,6 @@ footer{
 
 .contact-container {
   height: 550px;
-}
-
-.card-block {
-  width:290px; 
 }
 
 .card-title {
@@ -178,7 +148,8 @@ h3 {
 .search-card {
   background-color: #fff;
   border: 2px solid #e9e9e9;
-  height: 330px;
+  height: 380px;
+  padding: 20px 24px 0 24px;
 }
 
 .page-item.active .page-link {
@@ -283,4 +254,14 @@ h3 {
 .connpass-logo {
   width: 60px;
   height: auto;
+}
+
+.form-control option[selected] {
+  background-color: #fff;
+}
+
+.btn-dark {
+  color: #fff;
+  background-color: #636f83;
+  border-color: #636f83;
 }

@@ -31,12 +31,12 @@ class EventController extends Controller
         return view('popular_event', compact('lists'));
     }
 
-   /**
-    * 人気イベント検索
-    *
-    * @param Request $request
-    * @return void
-    */
+    /**
+     * 人気イベント検索
+     *
+     * @param Request $request
+     * @return void
+     */
     public function popularEventSearch(Request $request)
     {
         // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
@@ -46,10 +46,13 @@ class EventController extends Controller
         }
 
         $keyword = $request->input('keyword');
-        $date = $request->input('date');
-        $address = $request->input('address');
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        $sort = $request->input('sort');
+        $lists = Event::where('date', '>=', date('Y-m-d'))
+            ->where('accepted', '>=', 50);
 
-        $lists = $this->searchService->searchPopularEvents($keyword, $date, $address);
+        $lists = $this->searchService->searchEvents($lists, $keyword, $start_date, $end_date, $sort);
 
         session()->flashInput($request->input());
 
@@ -79,17 +82,20 @@ class EventController extends Controller
      */
     public function phpEventSearch(Request $request)
     {
-         // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
-         if ($request->has('reset')) {
+        // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
+        if ($request->has('reset')) {
             $this->searchService->forgetOld();
             return redirect()->route('php');
         }
 
         $keyword = $request->input('php_keyword');
-        $date = $request->input('php_date');
-        $address = $request->input('php_address');
+        $start_date = $request->input('php_start_date');
+        $end_date = $request->input('php_end_date');
+        $sort = $request->input('php_sort');
+        $lists = Event::where('date', '>', Carbon::yesterday())
+            ->where('php_flag', 1);
 
-        $lists = $this->searchService->searchPhpEvents($keyword, $date, $address);
+        $lists = $this->searchService->searchEvents($lists, $keyword, $start_date, $end_date, $sort);
 
         session()->flashInput($request->input());
 

@@ -23,27 +23,23 @@ class SearchService
   }
 
  /**
-  *人気イベント検索
+  * イベント検索
   *
   * @param string $keyword
-  * @param string $date
-  * @param string $address
+  * @param string $start_date
+  * @param string $end_date
+  * @param string $sort
   * @return void
   */
-  public function searchPopularEvents($keyword, $date, $address)
+  public function searchEvents($lists, $keyword, $start_date, $end_date, $sort)
   {
-    $lists = Event::where('date', '>=', date('Y-m-d'))
-      ->where('date', '<', date('Ymd', strtotime('first day of next month')))
-      ->where('accepted', '>=', 50)
-      ->OrderBy('accepted', 'desc');
-
     // キーワード検索
     if (!empty($keyword)) {
       // 全角スペースを半角に変換
       $spaceConversion = mb_convert_kana($keyword, 's');
       //キーワードを半角スペースごとに区切る
       $array_keyword = explode(' ', $spaceConversion);
-
+      //キーワード絞り込み
       $lists->where(function ($query) use ($array_keyword) {
         foreach ($array_keyword as $keyword_item) {
           $query->orWhere('title', 'like', "%{$keyword_item}%")
@@ -55,60 +51,13 @@ class SearchService
     }
 
     //日付検索
-    if (!empty($date)) {
-      $lists->where('date', $date);
-    }
-
-    // 場所検索
-    if (!empty($address)) {
-      $lists->where('address', 'LIKE', "%{$address}%");
-    }
-
-    return $lists->paginate(20);
-  }
-
-  /**
-   * PHPイベント検索
-   *
-   * @param string $keyword
-   * @param string $date
-   * @param string $address
-   * @return void
-   */
-  public function searchPhpEvents($keyword, $date, $address)
-  {
-    $lists = Event::where('date', '>', Carbon::yesterday())
-      ->where('date', '<', date('Ymd', strtotime('first day of next month')))
-      ->where('php_flag', 1)
-      ->orderBy('date', 'asc');
-
-    // キーワード検索
-    if (!empty($keyword)) {
-      // 全角スペースを半角に変換
-      $spaceConversion = mb_convert_kana($keyword, 's');
-      //キーワードを半角スペースごとに区切る
-      $array_keyword = explode(' ', $spaceConversion);
-
-      $lists->where(function ($query) use ($array_keyword) {
-        foreach ($array_keyword as $keyword_item) {
-          $query->orWhere('title', 'like', "%{$keyword_item}%")
-            ->orWhere('group', 'like', "%{$keyword_item}%")
-            ->orWhere('owner', 'like', "%{$keyword_item}%")
-            ->orWhere('address', 'like', "%{$keyword_item}%");
-        }
-      });
-    }
-
-    //日付検索
-    if (!empty($date)) {
-      $lists->where('date',  $date);
-    }
-
-    // 場所検索
-    if (!empty($address)) {
-      $lists->where('address', 'LIKE', "%{$address}%");
-    }
-
+    if (!empty($start_date)) $lists->where('date', '>=', $start_date);
+    if (!empty($end_date)) $lists->where('date', '<=', $end_date);
+    
+    //並び替え
+    if($sort === 'popular') $lists->OrderBy('accepted', 'desc');
+    if($sort === 'date') $lists->OrderBy('date', 'asc')->OrderBy('accepted', 'desc');
+      
     return $lists->paginate(20);
   }
 }

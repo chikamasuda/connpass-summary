@@ -3,29 +3,37 @@
 @section('content')
 <section class="row container mt-4 justify-content-between ml-4 mx-auto">
     <div class="mt-2 mb-5 col-md-4 p-0">
-    <h2 class="title title-border pb-2">イベントを絞り込む</h2>
-        <div class="pt-4 pr-4 pl-4 pb-4 search-card">
+        <h2 class="title title-border pb-2">イベントを絞り込む</h2>
+        <div class="search-card">
             <form action="{{ route('popular.search') }}" method="get">
                 @csrf
-                <div class="mb-0">
+                <div>
                     <div class="form-group">
-                        <label for="">キーワード検索</label>
-                        <input type="text" class="form-control text-black" name="keyword" value="{{ old('keyword', request('keyword')) }}">
+                        <label for="">キーワード</label>
+                        <input type="text" class="form-control text-black" name="keyword" value="{{ old('keyword', request('keyword')) }}" placeholder="キーワードを入力">
                     </div>
                     <div class="form-group">
-                        <label for="">日時検索</label>
+                        <label for="">開催日</label>
                         <div class="d-flex form-group">
-                            <input type="date" class="text-dark form-control" name="date" value="{{ old('date', request('date')) }}">
+                        <input placeholder="From" class="form-control text-black" type="text" onfocus="(this.type='date')" onfocusout="this.type='text'"   name="start_date" value="{{ old('start_date', request('start_date')) }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">開催場所検索</label>
-                        <input type="text" class="form-control text-black" name="address" value="{{ old('address', request('address')) }}">
+                        <div class="d-flex form-group">
+                        <input placeholder="To" class="form-control text-black" type="text" onfocus="(this.type='date')" onfocusout="this.type='text'" name="end_date" value="{{ old('end_date', request('end_date')) }}">
+                        </div>
                     </div>
-                </div>
-                <div class="text-center mx-auto mt-2 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-default pr-5 pl-5">検索</button>
-                    <!-- <button type="submit" class="btn btn-outline-dark  pr-3 pl-3" name="reset">リセット</button> -->
+                    <div class="form-group">
+                        <label>表示順</label>
+                        <select class="form-control" name="sort">
+                            <option value="popular" class="bg-white" @if(old('sort') === 'popular' ) selected @endif>人気イベント順</option>
+                            <option value="date" class="bg-white" @if(old('sort') === 'date' ) selected @endif>開催日順</option>
+                        </select>
+                    </div>
+                    <div class="text-center mx-auto mt-3">
+                        <button type="submit" class="btn site-btn text-white btn-block">絞り込む</button>
+                        <!-- <button type="submit" class="btn btn-block btn-dark mt-3" name="reset">リセット</button> -->
+                    </div>
                 </div>
             </form>
         </div>
@@ -34,6 +42,7 @@
         <h2 class="title title-border pb-2">人気イベント一覧</h2>
         <div class="mt-1">
             @if (!$lists->isEmpty())
+            <a class="btn btn-default pr-5 pl-5 mb-3" href="">CSVダウンロード</a>
             @foreach($lists as $list)
             <ul class="list-unstyled event-card">
                 <li class="pt-4 pl-4 pr-4"><a href="{{ $list->url }}" target="_blank" class="card-title">{{ $list->title }}</a></li>
