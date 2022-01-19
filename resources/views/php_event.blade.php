@@ -26,7 +26,8 @@
                     <div class="form-group">
                         <label>表示順</label>
                         <select class="form-control" name="php_sort">
-                            <option value="date" class="bg-white" @if(old('php_sort') === 'date' ) selected @endif>開催日順</option>
+                            <option value="date_asc" class="bg-white" @if(old('php_sort') === 'date_asc' ) selected @endif>開催日昇順</option>
+                            <option value="date_desc" class="bg-white" @if(old('php_sort') === 'date_desc' ) selected @endif>開催日降順</option>
                             <option value="popular" class="bg-white" @if(old('php_sort') === 'popular' ) selected @endif>人気イベント順</option>
                         </select>
                     </div>

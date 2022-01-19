@@ -24,7 +24,7 @@ class CreateEventsTable extends Migration
             $table->string('group')->index()->nullable()->comment('グループ名');
             $table->string('owner')->index()->comment('管理者名');
             $table->string('address')->index()->nullable()->comment('住所');
-            $table->integer('accepted')->comment('参加者人数');
+            $table->integer('accepted')->index()->comment('参加者人数');
             $table->integer('limit')->nullable()->comment('定員人数');
         });
     }
