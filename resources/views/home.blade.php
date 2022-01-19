@@ -9,7 +9,7 @@
                     <div class="col-md-4 pt-2 mb-3">
                         <div><img src="images/image1.png" alt="" class="image-block"></div>
                         <p class="pt-2 m-0 text-left top-text">
-                            コンセプトは「自分が好きそうなイベントを逃さないためのAPI駆動アプリ」です。
+                            コンセプトは「自分が好きそうなイベントを逃さないためのAPI駆動ツール」です。
                         </p>
                     </div>
                     <div class="col-md-4 pt-2 mb-3">
@@ -51,7 +51,7 @@
                     <li class="pt-1 list-unstyled card-item border-bottom pl-4 pr-4 pb-3"><i class="fa fa-fw fa-users mr-2 text-dark"></i>{{ $list->event->group }}</li>
                     <li class="list-unstyled mt-2 pb-2">
                         <ul class="list-unstyled d-flex justify-content-between">
-                            <li class="pl-4 pr-4"><a href="#" class="like-button"><i class="fa fa-fw fa-heart mr-1 heart"></i>お気に入り</a></li>
+                            <li class="pl-4 pr-4"><event-like></event-like></li>
                             <li class="pl-4 pr-4"><img class="connpass-logo" src="images/connpass_logo.png" alt=""></li>
                         </ul>
                     </li>

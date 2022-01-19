@@ -43,14 +43,14 @@
         <h2 class="title title-border pb-2">PHPイベント一覧</h2>
         <div class="mt-1">
             @if (!$lists->isEmpty())
-            <a class="btn btn-default pr-5 pl-5 mb-3" href="">CSVダウンロード</a>
+            <a class="btn btn-default pr-3 pl-3 mb-3" href="">CSVダウンロード</a>
             @foreach($lists as $list)
             <ul class="list-unstyled event-card">
                 <li class="pt-4 pl-4 pr-4"><a href="{{ $list->url }}" target="_blank" class="card-title">{{ $list->title }}</a></li>
                 <li class="list-unstyled catch pl-4 pr-4">{{ $list->catch }}</li>
-                <li class="list-unstyled mt-2 pl-4 pr-4">
+                <li class="list-unstyled mt-2 pl-4 pr-2">
                     <ul class="list-unstyled d-flex">
-                        <li class="list-unstyled mr-3 pt-2 card-item"><i class="fa fa-fw fa-calendar-alt mr-2 text-dark"></i>{{ Str::substr($list->date, 5, 2) }}月{{ Str::substr($list->date, 8, 2) }}日 {{ $list->begin_time }}〜{{ $list->end_time }}</li>
+                        <li class="list-unstyled mr-3 pt-2 card-item"><i class="fa fa-fw fa-calendar-alt mr-2 text-dark"></i>{{ (int)Str::substr($list->date, 5, 2) }}月{{ Str::substr($list->date, 8, 2) }}日 {{ $list->begin_time }}〜{{ $list->end_time }}</li>
                         <li class="card-item pt-2"><i class="fas fa-user mr-2 text-dark"></i>{{ $list->accepted }}@if($list->limit) / {{ $list->limit }}@endif人</li>
                     </ul>
                 </li>
@@ -58,7 +58,7 @@
                 <li class="pt-1 list-unstyled card-item border-bottom pl-4 pr-4 pb-3"><i class="fa fa-fw fa-users mr-2 text-dark"></i>{{ $list->group }}</li>
                 <li class="list-unstyled mt-2 pb-2">
                     <ul class="list-unstyled d-flex justify-content-between">
-                        <li class="pl-4 pr-4"><a href="#" class="like-button"><i class="fa fa-fw fa-heart mr-1 heart"></i>お気に入り</a></li>
+                        <li class="pl-4 pr-4"><event-like></event-like></li>
                         <li class="pl-4 pr-4"><img class="connpass-logo" src="images/connpass_logo.png" alt=""></li>
                     </ul>
                 </li>
