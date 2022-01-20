@@ -14,8 +14,8 @@ class CreateEventsTable extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->id('id');
-            $table->unsignedBigInteger('event_id')->unique()->comment('コンパスのサイト上のイベントID');
+            $table->id();
+            $table->foreignId('event_id')->unique()->comment('コンパスのサイト上のイベントID');
             $table->date('date')->index()->comment('日程');
             $table->time('begin_time')->comment('開始時間');
             $table->time('end_time')->comment('終了時間');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSitesTable extends Migration
+class CreateLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateSitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sites', function (Blueprint $table) {
+        Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->string('site_name')->comment('サイト名');
+            $table->foreignId('event_id')->comment('イベントID');
+            $table->string('ip')->comment('IPアドレス');
             $table->timestamps();
+
+            // イベントID外部キー制約
+            $table->foreign('event_id')->references('id')->on('events');
         });
     }
 
@@ -27,6 +31,6 @@ class CreateSitesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sites');
+        Schema::dropIfExists('likes');
     }
 }

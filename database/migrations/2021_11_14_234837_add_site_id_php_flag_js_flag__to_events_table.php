@@ -14,7 +14,7 @@ class AddSiteIdPhpFlagJsFlagToEventsTable extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->unsignedBigInteger('site_id')->comment('サイトID');
+            $table->foreignId('site_id')->comment('サイトID');
             $table->integer('php_flag')->nullable()->comment('PHPフラグ');
         });
     }
