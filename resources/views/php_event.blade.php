@@ -32,7 +32,7 @@
                         </select>
                     </div>
                     <div class="text-center mx-auto mt-3">
-                        <button type="submit" class="btn site-btn text-white btn-block">絞り込む</button>
+                        <button type="submit" class="btn btn-default btn-block">絞り込む</button>
                         <!-- <button type="submit" class="btn btn-block btn-dark mt-3" name="reset">リセット</button> -->
                     </div>
                 </div>
