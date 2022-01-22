@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Event extends Model
 {
@@ -24,8 +25,33 @@ class Event extends Model
         'limit'
     ];
 
+    /**
+     * alertsテーブルとのリレーション
+     *
+     * @return void
+     */
     public function alert()
     {
         return $this->hasOne(Alert::class);
+    }
+
+    /**
+     * likesテーブルとのリレーション
+     *
+     * @return void
+     */
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    /**
+     * いいねされてるか判定するメソッド
+     *
+     * @return boolean
+     */
+    public function isLikedBy($event_id)
+    {
+        return (bool)Like::where('ip', request()->ip())->where('event_id', $event_id)->first();
     }
 }

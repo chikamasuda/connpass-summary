@@ -3,9 +3,9 @@
 @section('content')
 <section class="row container mt-4 justify-content-between ml-4 mx-auto">
     <div class="mt-2 mb-5 col-md-4 p-0">
-    <h2 class="title title-border pb-2">イベントを絞り込む</h2>
+        <h2 class="title title-border pb-2">イベントを絞り込む</h2>
         <div class="search-card">
-        <form action="{{ route('php.search') }}" method="get">
+            <form action="{{ route('php.search') }}" method="get">
                 @csrf
                 <div>
                     <div class="form-group">
@@ -15,23 +15,23 @@
                     <div class="form-group">
                         <label for="">開催日</label>
                         <div class="d-flex form-group">
-                        <input placeholder="From" class="form-control text-black" type="text" onfocus="(this.type='date')" onfocusout="this.type='text'"   name="php_start_date" value="{{ old('php_start_date', request('php_start_date')) }}">
+                            <input placeholder="From" class="form-control text-black" type="text" onfocus="(this.type='date')" onfocusout="this.type='text'" name="php_start_date" value="{{ old('php_start_date', request('php_start_date')) }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="d-flex form-group">
-                        <input placeholder="To" class="form-control text-black" type="text" onfocus="(this.type='date')" onfocusout="this.type='text'" name="php_end_date" value="{{ old('php_end_date', request('php_end_date')) }}">
+                            <input placeholder="To" class="form-control text-black" type="text" onfocus="(this.type='date')" onfocusout="this.type='text'" name="php_end_date" value="{{ old('php_end_date', request('php_end_date')) }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>表示順</label>
                         <select class="form-control" name="php_sort">
-                            <option value="date_asc" class="bg-white" @if(old('php_sort') === 'date_asc' ) selected @endif>開催日昇順</option>
-                            <option value="date_desc" class="bg-white" @if(old('php_sort') === 'date_desc' ) selected @endif>開催日降順</option>
-                            <option value="popular" class="bg-white" @if(old('php_sort') === 'popular' ) selected @endif>人気イベント順</option>
+                            <option value="date_asc" class="bg-white" @if(old('php_sort')==='date_asc' ) selected @endif>開催日昇順</option>
+                            <option value="date_desc" class="bg-white" @if(old('php_sort')==='date_desc' ) selected @endif>開催日降順</option>
+                            <option value="popular" class="bg-white" @if(old('php_sort')==='popular' ) selected @endif>人気イベント順</option>
                         </select>
                     </div>
-                    <div class="text-center mx-auto mt-3">
+                    <div class="text-center mx-auto mt-4">
                         <button type="submit" class="btn btn-default btn-block">絞り込む</button>
                         <!-- <button type="submit" class="btn btn-block btn-dark mt-3" name="reset">リセット</button> -->
                     </div>
@@ -58,7 +58,10 @@
                 <li class="pt-1 list-unstyled card-item border-bottom pl-4 pr-4 pb-3"><i class="fa fa-fw fa-users mr-2 text-dark"></i>{{ $list->group }}</li>
                 <li class="list-unstyled mt-2 pb-2">
                     <ul class="list-unstyled d-flex justify-content-between">
-                        <li class="pl-4 pr-4"><event-like></event-like></li>
+                        <li class="pl-4 pr-4">
+                            <event-like :initial-is-liked-by='@json(\App\Models\Event::isLikedBy($list->id))' endpoint="{{ route('events.like', ['event' => $list]) }}">
+                            </event-like>
+                        </li>
                         <li class="pl-4 pr-4"><img class="connpass-logo" src="images/connpass_logo.png" alt=""></li>
                     </ul>
                 </li>

@@ -10,7 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.19",
+        "axios": "^0.19.2",
         "bootstrap": "^4.1.0",
         "cross-env": "^5.1",
         "jquery": "^3.2",
@@ -24,5 +24,8 @@
         "vue-loader": "^15.9.8",
         "vue-template-compiler": "^2.6.11",
         "webpack": "^5.66.0"
+    },
+    "dependencies": {
+        "update": "^0.7.4"
     }
 }

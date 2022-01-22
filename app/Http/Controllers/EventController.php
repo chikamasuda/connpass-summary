@@ -7,6 +7,7 @@ use Illuminate\Support\Carbon;
 use App\Services\SearchService;
 use App\Models\Event;
 
+
 class EventController extends Controller
 {
     public $searchService;
@@ -21,14 +22,14 @@ class EventController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function popularEvent()
+    public function popularEvent(Event $event)
     {
         $lists = Event::where('date', '>', Carbon::yesterday())
             ->where('accepted', '>=', 50)
             ->OrderBy('accepted', 'desc')
             ->paginate(20);
-
-        return view('popular_event', compact('lists'));
+        
+        return view('popular_event', compact('lists', 'event'));
     }
 
     /**

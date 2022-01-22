@@ -41,7 +41,7 @@
                 <ul class="list-unstyled event-card">
                     <li class="pt-4 pl-4 pr-4"><a href="{{ $list->event->url }}" target="_blank" class="card-title">{{ $list->event->title }}</a></li>
                     <li class="list-unstyled catch pl-4 pr-4">{{ $list->event->catch }}</li>
-                    <li class="list-unstyled mt-2 pl-4 pr-4">
+                    <li class="list-unstyled mt-2 pl-4 pr-2">
                         <ul class="list-unstyled d-flex">
                             <li class="list-unstyled mr-3 pt-2 card-item"><i class="fa fa-fw fa-calendar-alt mr-2 text-dark"></i>{{ Str::substr($list->event->date, 5, 2) }}月{{ Str::substr($list->event->date, 8, 2) }}日 {{ $list->event->begin_time }}〜{{ $list->event->end_time }}</li>
                             <li class="card-item pt-2"><i class="fa fa-w fa-user mr-1 text-dark"></i>＋{{ $list->diff }}人</li>
@@ -51,7 +51,8 @@
                     <li class="pt-1 list-unstyled card-item border-bottom pl-4 pr-4 pb-3"><i class="fa fa-fw fa-users mr-2 text-dark"></i>{{ $list->event->group }}</li>
                     <li class="list-unstyled mt-2 pb-2">
                         <ul class="list-unstyled d-flex justify-content-between">
-                            <li class="pl-4 pr-4"><event-like></event-like></li>
+                            <li class="pl-4 pr-4"><event-like :initial-is-liked-by='@json(\App\Models\Event::isLikedBy($list->id))' endpoint="{{ route('events.like', ['event' => $list->event]) }}">
+                            </event-like></li>
                             <li class="pl-4 pr-4"><img class="connpass-logo" src="images/connpass_logo.png" alt=""></li>
                         </ul>
                     </li>
@@ -72,8 +73,8 @@
                     <li class="ml-2 event-title"><a href="{{ $event->url }}" target="_blank" class="text-dark">{{ $event->title }}</a></li>
                 </ul>
                 @endforeach
-                <div class="text-right text-primary mb-4">
-                    <a href="{{ route('popular') }}" class=""><i class="fa fa-caret-right mr-1"></i>人気イベント一覧をみる</a>
+                <div class="text-right mb-4">
+                    <a href="{{ route('popular') }}" class="text-dark"><i class="fa fa-caret-right mr-1"></i>人気イベント一覧をみる</a>
                 </div>
                 <h3 class="rank-title pb-2">PHP人気イベントランキング</h3>
                 @foreach($php_events as $i => $php_event)
@@ -82,8 +83,8 @@
                     <li class="ml-2 event-title"><a href="{{ $php_event->url }}" target="_blank" class="text-dark">{{ $php_event->title }}</a></li>
                 </ul>
                 @endforeach
-                <div class="text-right text-primary">
-                    <a href="{{ route('php') }}" class=""><i class="fa fa-caret-right mr-1"></i>PHPイベント一覧をみる</a>
+                <div class="text-right text-dark">
+                    <a href="{{ route('php') }}" class="text-dark"><i class="fa fa-caret-right mr-1"></i>PHPイベント一覧をみる</a>
                 </div>
             </div>
         </div>

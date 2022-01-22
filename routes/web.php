@@ -28,3 +28,8 @@ Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])
 Route::post('/contact/confirm', [App\Http\Controllers\ContactController::class, 'confirm'])->name('contact.confirm');
 //問い合わせ送信完了ページ
 Route::post('/contact/send', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
+//いいね機能・いいね削除機能
+Route::prefix('events')->name('events.')->group(function () {
+    Route::put('/{event}/like', [App\Http\Controllers\LikeController::class, 'like'])->name('like');
+    Route::delete('/{event}/like', [App\Http\Controllers\LikeController::class, 'unlike'])->name('unlike');
+});

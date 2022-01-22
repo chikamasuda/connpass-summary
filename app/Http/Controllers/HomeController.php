@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\Event;
 use App\Models\Alert;
-use GuzzleHttp\Client;
 
 class HomeController extends Controller
 {
@@ -17,13 +16,15 @@ class HomeController extends Controller
         $events = Event::where('date', '>', Carbon::yesterday())
             ->where('accepted', '>=', 50)
             ->OrderBy('accepted', 'desc')
-            ->paginate(5);
+            ->limit(5)
+            ->get();
       
         //PHPイベントランキングの表示
         $php_events = Event::where('date', '>', Carbon::yesterday())
             ->where('php_flag', 1)
             ->OrderBy('accepted', 'desc')
-            ->paginate(5);
+            ->limit(5)
+            ->get();
 
         //人気急上昇イベントのリスト
         $lists = Alert::where('diff', '>=', 20)
@@ -32,6 +33,7 @@ class HomeController extends Controller
                 $query->where('date', '>=',  Carbon::today()->format('Y-m-d'))
                 ->where('date', '<=', date('Y-m-d', strtotime('last day of next month')));
             })
+            ->limit(20)
             ->get();
 
         return view('home', compact('lists', 'events', 'php_events'));

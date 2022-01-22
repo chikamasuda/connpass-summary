@@ -1,8 +1,22 @@
 body, html {
-  font-family: "Hiragino Sans W4","ヒラギノ角ゴシック W4",sans-serif;
+  font-family: sans-serif, "Hiragino Sans W4","ヒラギノ角ゴシック W4";
   color: #3d3f44;
   line-height: 1.5;
+  font-size: 14px;
   word-wrap: break-word;
+  background-color: #f8fafc;
+  font-weight: normal;
+}
+.btn {
+  font-size: 14px;
+}
+
+.text-dark {
+  color: #636f83 !important;
+}
+
+button {
+  font-size: 14px;
 }
 
 .number-1, .number-2, .number-3, .number-4, .number-5, .number-6, .number-7, .number-8, .number-9, .number-10  {
@@ -63,10 +77,11 @@ body, html {
 
 .header-nav {
   background: #fff;
+  padding:5px 0;
 }
 
-.contact-container {
-  height: 550px;
+.contact-card {
+  height: 480px;
 }
 
 .card-title {
@@ -75,6 +90,10 @@ body, html {
   color: #3d3f44;
   font-weight: 700;
   line-height: 1.2;
+}
+
+.card-title:hover {
+  color: #3d3f44;
 }
 
 .home-card-title {
@@ -99,7 +118,8 @@ body, html {
   line-height: 24px;
   height: 24px;
   overflow: hidden;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 13px;
 }
 
 .image-block {
@@ -148,8 +168,8 @@ h3 {
 .search-card {
   background-color: #fff;
   border: 2px solid #e9e9e9;
-  height: 380px;
-  padding: 20px 24px 0 24px;
+  height: 370px;
+  padding: 24px 24px 0 24px;
 }
 
 .page-item.active .page-link {
@@ -210,6 +230,7 @@ h3 {
 
 .top-text {
   color: #666!important;
+  font-family: sans-serif;
 }
 
 .connpass-block {
@@ -244,11 +265,15 @@ h3 {
 
 .like-button {
   font-size: 13px;
-  color: #BCBABA!important;
+  color: #ccc;
 }
 
 .like-button:hover {
-  text-decoration: none;
+  color: #ccc;
+}
+
+.page-item {
+  margin-right: 7px;
 }
 
 .connpass-logo {
@@ -264,4 +289,22 @@ h3 {
   color: #fff;
   background-color: #636f83;
   border-color: #636f83;
+}
+
+.liked {
+  color:#ea3f60;
+}
+
+.liked:hover {
+  color:#ea3f60;
+}
+
+@media screen and (max-width:440px){
+  .logo{
+      margin-left: 14px;
+  }
+
+  .navbar-nav {
+    margin-left: 14px;
+  }
 }
