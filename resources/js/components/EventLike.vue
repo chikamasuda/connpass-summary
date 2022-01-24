@@ -32,11 +32,11 @@ export default {
       this.isLikedBy ? this.unlike() : this.like()
     },
     async like() {
-      const response = await axios.put(this.endpoint)
+      await axios.put(this.endpoint)
       this.isLikedBy = true
     },
     async unlike() {
-      const response = await axios.delete(this.endpoint)
+      await axios.delete(this.endpoint)
       this.isLikedBy = false
     },
   },

@@ -13,6 +13,7 @@
                 <li class="nav-item"><a href="{{ route('home') }}" class="nav-link mr-3">ホーム</a></li>
                 <li class="nav-item"><a href="{{ route('popular') }}" class="nav-link mr-3">人気イベント</a></li>
                 <li class="nav-item"><a href="{{ route('php') }}" class="nav-link mr-3">PHPイベント</a></li>
+                <li class="nav-item"><a href="{{ route('like') }}" class="nav-link mr-3">お気に入り</a></li>
                 <li class="nav-item"><a href="{{ route('contact.index') }}" class="nav-link">お問い合わせ</a></li>
             </ul>
         </div>

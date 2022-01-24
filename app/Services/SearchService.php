@@ -22,16 +22,32 @@ class SearchService
     }
   }
 
- /**
-  * イベント検索
-  *
-  * @param string $keyword
-  * @param string $start_date
-  * @param string $end_date
-  * @param string $sort
-  * @return void
-  */
-  public function searchEvents($lists, $keyword, $start_date, $end_date, $sort)
+  /**
+   * お気に入り登録順並び替え
+   *
+   * @param object $lists
+   * @param string $sort
+   * @return void
+   */
+  public function likeSort($lists, $sort)
+  {
+    if ($sort === 'like_asc') $lists->orderBy('like_id');
+    if ($sort === 'like_desc') $lists->orderByDesc('like_id');
+
+    return $lists;
+  }
+
+  /**
+   * イベント検索
+   * 
+   * @param object $lists
+   * @param string $keyword
+   * @param string $start_date
+   * @param string $end_date
+   * @param string $sort
+   * @return void
+   */
+  public function eventSearch($lists, $keyword, $start_date, $end_date, $sort)
   {
     // キーワード検索
     if (!empty($keyword)) {
@@ -53,12 +69,12 @@ class SearchService
     //日付検索
     if (!empty($start_date)) $lists->where('date', '>=', $start_date);
     if (!empty($end_date)) $lists->where('date', '<=', $end_date);
-    
+
     //並び替え
-    if($sort === 'popular') $lists->OrderBy('accepted', 'desc');
-    if($sort === 'date_asc') $lists->OrderBy('date', 'asc')->OrderBy('accepted', 'desc');
-    if($sort === 'date_desc') $lists->OrderBy('date', 'desc')->OrderBy('accepted', 'desc');
-      
+    if ($sort === 'popular') $lists->OrderBy('accepted', 'desc');
+    if ($sort === 'date_asc') $lists->OrderBy('date', 'asc')->OrderBy('accepted', 'desc');
+    if ($sort === 'date_desc') $lists->OrderBy('date', 'desc')->OrderBy('accepted', 'desc');
+
     return $lists->paginate(20);
   }
 }

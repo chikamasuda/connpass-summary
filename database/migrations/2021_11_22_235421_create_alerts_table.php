@@ -14,10 +14,11 @@ class CreateAlertsTable extends Migration
     public function up()
     {
         Schema::create('alerts', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('event_id')->unique()->comment('イベントテーブルのID');
+            $table->id('alert_id');
+            $table->unsignedBigInteger('event_id')->index()->constrained()->onDelete('cascade')->comment('イベントテーブルID');
             $table->integer('number')->comment('人数');
-            $table->integer('diff')->comment('前日との差分');
+            $table->integer('diff')->index()->comment('前日との差分');
+            $table->timestamps();
         });
     }
 

@@ -9,14 +9,19 @@ use Illuminate\Http\Request;
 class Event extends Model
 {
     use HasFactory;
-    public $timestamps = false;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
     protected $fillable = [
         'event_id',
         'date',
         'begin_time',
         'end_time',
         'title',
+        'catch',
         'group',
         'url',
         'owner',
@@ -40,7 +45,7 @@ class Event extends Model
      *
      * @return void
      */
-    public function likes()
+    public function like()
     {
         return $this->hasMany(Like::class);
     }

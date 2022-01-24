@@ -11,6 +11,8 @@ class Like extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'like_id';
+
      /**
      * The attributes that are mass assignable.
      *

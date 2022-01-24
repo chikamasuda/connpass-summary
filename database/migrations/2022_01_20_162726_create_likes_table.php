@@ -14,9 +14,9 @@ class CreateLikesTable extends Migration
     public function up()
     {
         Schema::create('likes', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('event_id')->constrained()->onDelete('cascade')->comment('イベントID');
-            $table->string('ip')->comment('IPアドレス');
+            $table->id('like_id');
+            $table->unsignedBigInteger('event_id')->index()->constrained()->onDelete('cascade')->comment('イベントID');
+            $table->string('ip')->index()->comment('IPアドレス');
             $table->timestamps();
         });
     }

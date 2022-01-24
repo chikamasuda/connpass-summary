@@ -18,10 +18,12 @@ Route::get('/', function () {
 });
 //Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/popular', [App\Http\Controllers\EventController::class, 'popularEvent'])->name('popular');
-Route::get('/search', [App\Http\Controllers\EventController::class, 'popularEventSearch'])->name('popular.search');
-Route::get('/php', [App\Http\Controllers\EventController::class, 'phpEvent'])->name('php');
-Route::get('/php_search', [App\Http\Controllers\EventController::class, 'phpEventSearch'])->name('php.search');
+Route::get('/popular', [App\Http\Controllers\PopularEventController::class, 'index'])->name('popular');
+Route::get('/search', [App\Http\Controllers\PopularEventController::class, 'search'])->name('popular.search');
+Route::get('/php', [App\Http\Controllers\PhpEventController::class, 'index'])->name('php');
+Route::get('/php_search', [App\Http\Controllers\PhpEventController::class, 'search'])->name('php.search');
+Route::get('/like', [App\Http\Controllers\LikeController::class, 'index'])->name('like');
+Route::get('/like_search', [App\Http\Controllers\LikeController::class, 'search'])->name('like.search');
 //問い合わせ入力ページ
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
 //問い合わせ確認ページ

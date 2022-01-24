@@ -9,8 +9,13 @@ class Alert extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    protected $primaryKey = 'alert_id';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
     protected $fillable = [
         'event_id',
         'date',
@@ -18,6 +23,11 @@ class Alert extends Model
         'diff'
     ];
 
+    /**
+     * eventsテーブルとのリレーション
+     *
+     * @return void
+     */
     public function event()
     {
         return $this->belongsTo(Event::class);
