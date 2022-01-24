@@ -20378,11 +20378,7 @@ var render = function () {
     {
       staticClass: "m-0 p-0 btn shadow-none trash",
       attrs: { type: "button" },
-      on: {
-        click: function ($event) {
-          return _vm.deleteLike()
-        },
-      },
+      on: { click: _vm.deleteLike },
     },
     [_c("i", { staticClass: "fa fa-fw fa-trash" }), _vm._v("\n  削除する\n")]
   )
