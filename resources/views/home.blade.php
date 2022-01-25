@@ -65,7 +65,7 @@
                     <li class="list-unstyled mt-2 pb-2">
                         <ul class="list-unstyled d-flex justify-content-between">
                             <li class="pl-4 pr-4">
-                                <event-like :initial-is-liked-by='@json(\App\Models\Event::isLikedBy($alert->event->id))' endpoint="{{ route('events.like', ['event' => $alert->event->id]) }}">
+                                <event-like :initial-is-liked-by='@json(\App\Models\Like::isLikedBy($alert->event->id))' endpoint="{{ route('events.like', ['event' => $alert->event->id]) }}">
                                 </event-like>
                             </li>
                             <li class="pl-4 pr-4">
@@ -75,6 +75,7 @@
                     </li>
                 </ul>
                 @endforeach
+                <div class="text-center mt-4"> {{ $alerts->appends(request()->query())->links('pagination::bootstrap-4') }}</div>
                 @else
                 <p>該当イベントはありません。</p>
                 @endif
@@ -95,7 +96,7 @@
                 </ul>
                 @endforeach
                 <div class="text-right mb-4">
-                    <a href="{{ route('popular') }}" class="ranking-text">
+                    <a href="{{ route('popular.index') }}" class="ranking-text">
                         <i class="fa fa-caret-right mr-1"></i>
                         人気イベント一覧をみる
                     </a>
@@ -112,7 +113,7 @@
                 </ul>
                 @endforeach
                 <div class="text-right">
-                    <a href="{{ route('php') }}" class="ranking-text">
+                    <a href="{{ route('php.index') }}" class="ranking-text">
                         <i class="fa fa-caret-right mr-1"></i>
                         PHPイベント一覧をみる
                     </a>

@@ -13,7 +13,7 @@ class Event extends Model
     protected $dates = [
         'date'
     ];
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -52,15 +52,5 @@ class Event extends Model
     public function like()
     {
         return $this->hasMany(Like::class);
-    }
-
-    /**
-     * いいねされてるか判定するメソッド
-     *
-     * @return boolean
-     */
-    public function isLikedBy($event_id)
-    {
-        return (bool)Like::where('ip', request()->ip())->where('event_id', $event_id)->first();
     }
 }

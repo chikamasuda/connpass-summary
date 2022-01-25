@@ -47,7 +47,7 @@ class PopularEventController extends Controller
         // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
         if ($request->has('reset')) {
             $this->search_service->forgetOld();
-            return redirect()->route('popular');
+            return redirect()->route('popular.index');
         }
 
         $keyword = $request->input('keyword');
@@ -72,8 +72,6 @@ class PopularEventController extends Controller
     public function downloadPopularEvent(Request $request)
     {
         $csvData = $this->csv_download_service->getPopularEvent($request);
-
         return Response::make($csvData['csv'], 200, $csvData['headers']);
     }
-
 }

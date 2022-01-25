@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-7 mt-4">
             <div class="card mt-2">
-                <div class="card-header title">お問い合わせ内容確認</div>
+                <div class="card-header title bg-light">お問い合わせ内容確認</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('contact.send') }}">
                         @csrf

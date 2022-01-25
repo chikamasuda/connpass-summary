@@ -13,25 +13,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+//TOPページ
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//人気イベントページ
+Route::prefix('popular')->name('popular.')->group(function () {
+    Route::get('/index', [App\Http\Controllers\PopularEventController::class, 'index'])->name('index');
+    Route::get('/csv', [App\Http\Controllers\PopularEventController::class, 'downloadPopularEvent'])->name('csv');
+    Route::get('/search', [App\Http\Controllers\PopularEventController::class, 'search'])->name('search');
 });
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/popular', [App\Http\Controllers\PopularEventController::class, 'index'])->name('popular');
-Route::get('/popular/csv', [App\Http\Controllers\PopularEventController::class, 'downloadPopularEvent'])->name('popular.csv');
-Route::get('/search', [App\Http\Controllers\PopularEventController::class, 'search'])->name('popular.search');
-Route::get('/php', [App\Http\Controllers\PhpEventController::class, 'index'])->name('php');
-Route::get('/php_search', [App\Http\Controllers\PhpEventController::class, 'search'])->name('php.search');
-Route::get('/php/csv', [App\Http\Controllers\PhpEventController::class, 'downloadPhpEvent'])->name('php.csv');
-Route::get('/like', [App\Http\Controllers\LikeController::class, 'index'])->name('like');
-Route::get('/like_search', [App\Http\Controllers\LikeController::class, 'search'])->name('like.search');
-//問い合わせ入力ページ
-Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
-//問い合わせ確認ページ
-Route::post('/contact/confirm', [App\Http\Controllers\ContactController::class, 'confirm'])->name('contact.confirm');
-//問い合わせ送信完了ページ
-Route::post('/contact/send', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
+//PHPイベントページ
+Route::prefix('php')->name('php.')->group(function () {
+    Route::get('/index', [App\Http\Controllers\PhpEventController::class, 'index'])->name('index');
+    Route::get('/search', [App\Http\Controllers\PhpEventController::class, 'search'])->name('search');
+    Route::get('/csv', [App\Http\Controllers\PhpEventController::class, 'downloadPhpEvent'])->name('csv');
+});
+
+//お気に入りページ
+Route::prefix('like')->name('like.')->group(function () {
+    Route::get('/index', [App\Http\Controllers\LikeController::class, 'index'])->name('index');
+    Route::get('/search', [App\Http\Controllers\LikeController::class, 'search'])->name('search');
+    Route::get('/csv', [App\Http\Controllers\LikeController::class, 'downloadLikeEvent'])->name('csv');
+});
+
+//問い合わせページ
+Route::prefix('contact')->name('contact.')->group(function () {
+    Route::get('/index', [App\Http\Controllers\ContactController::class, 'index'])->name('index');
+    Route::post('/confirm', [App\Http\Controllers\ContactController::class, 'confirm'])->name('confirm');
+    Route::post('/send', [App\Http\Controllers\ContactController::class, 'send'])->name('send');
+});
+
 //いいね機能・いいね削除機能
 Route::prefix('events')->name('events.')->group(function () {
     Route::put('/{event}/like', [App\Http\Controllers\LikeController::class, 'like'])->name('like');

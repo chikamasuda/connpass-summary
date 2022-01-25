@@ -53,7 +53,13 @@
         <h2 class="title title-border pb-2">お気に入り一覧</h2>
         <div class="mt-1">
             @if (!$lists->isEmpty())
-            <a class="btn btn-default pr-3 pl-3 mb-3" href="">CSVダウンロード</a>
+            <form action="{{ route('like.csv') }}" method="get">
+                <input type="hidden" name="like_keyword" value="{{ old('like_keyword', request('like_keyword')) }}">
+                <input type="hidden" name="like_start_date" value="{{ old('like_start_date', request('like_start_date')) }}">
+                <input type="hidden" name="like_end_date" value="{{ old('like_end_date', request('like_end_date')) }}">
+                <input type="hidden" name="like_sort" value="{{ old('like_sort', request('like_sort')) }}">
+                <button type="submit" class="btn btn-default pr-3 pl-3 mb-3" href="">CSVダウンロード</button>
+            </form>
             @foreach($lists as $i => $list)
 
             <!-- modal -->

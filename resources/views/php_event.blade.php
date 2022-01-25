@@ -41,7 +41,13 @@
         <h2 class="title title-border pb-2">PHPイベント一覧</h2>
         <div class="mt-1">
             @if (!$lists->isEmpty())
-            <a class="btn btn-default pr-3 pl-3 mb-3" href="{{ route('php.csv') }}">CSVダウンロード</a>
+            <form action="{{ route('php.csv') }}" method="get">
+                <input type="hidden" name="php_keyword" value="{{ old('php_keyword', request('php_keyword')) }}">
+                <input type="hidden" name="php_start_date" value="{{ old('php_start_date', request('php_start_date')) }}">
+                <input type="hidden" name="php_end_date" value="{{ old('php_end_date', request('php_end_date')) }}">
+                <input type="hidden" name="php_sort" value="{{ old('php_sort', request('php_sort')) }}">
+                <button type="submit" class="btn btn-default pr-3 pl-3 mb-3" href="">CSVダウンロード</button>
+            </form>
             @foreach($lists as $list)
             <ul class="list-unstyled event-card">
                 <li class="pt-4 pl-4 pr-4">
@@ -76,7 +82,7 @@
                 <li class="list-unstyled mt-2 pb-2">
                     <ul class="list-unstyled d-flex justify-content-between">
                         <li class="pl-4 pr-4">
-                            <event-like :initial-is-liked-by='@json(\App\Models\Event::isLikedBy($list->id))' endpoint="{{ route('events.like', ['event' => $list]) }}">
+                            <event-like :initial-is-liked-by='@json(\App\Models\Like::isLikedBy($list->id))' endpoint="{{ route('events.like', ['event' => $list]) }}">
                             </event-like>
                         </li>
                         <li class="pl-4 pr-4"><img class="connpass-logo" src="images/connpass_logo.png" alt=""></li>

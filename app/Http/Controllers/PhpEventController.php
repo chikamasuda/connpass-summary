@@ -46,7 +46,7 @@ class PhpEventController extends Controller
         // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
         if ($request->has('reset')) {
             $this->search_service->forgetOld();
-            return redirect()->route('php');
+            return redirect()->route('php.index');
         }
 
         $keyword = $request->input('php_keyword');

@@ -33,4 +33,13 @@ class Like extends Model
         return $this->belongsTo(Event::class);
     }
 
+    /**
+     * いいねされてるか判定するメソッド
+     *
+     * @return boolean
+     */
+    public function isLikedBy($event_id)
+    {
+        return (bool)Like::where('ip', request()->ip())->where('event_id', $event_id)->first();
+    }
 }

@@ -3,17 +3,17 @@
 @section('content')
 <section class="row container mt-4 justify-content-between ml-4 mx-auto">
     <div class="mt-2 mb-5 col-md-4 p-0">
-        <h2 class="title title-border pb-2">イベントを絞り込む</h2>
+    <h2 class="title title-border pb-2">イベントを絞り込む</h2>
         <div class="search-card">
             <form action="{{ route('popular.search') }}" method="get">
                 @csrf
                 <div>
                     <div class="form-group">
-                        <label for="">キーワード</label>
+                        <label for="">キーワード検索</label>
                         <input type="text" class="form-control text-black" name="keyword" value="{{ old('keyword', request('keyword')) }}" placeholder="キーワードを入力">
                     </div>
                     <div class="form-group">
-                        <label for="">開催日</label>
+                        <label for="">開催日検索</label>
                         <div class="form-group">
                             <input class="form-control" type="text" id="datepicker" name="start_date" value="{{ old('start_date', request('start_date')) }}" placeholder="From" class="pb-3">
                         </div>
@@ -41,7 +41,13 @@
         <h2 class="title title-border pb-2">人気イベント一覧</h2>
         <div class="mt-1">
             @if (!$lists->isEmpty())
-            <a class="btn btn-default pr-3 pl-3 mb-3" href="{{ route('popular.csv') }}">CSVダウンロード</a>
+            <form action="{{ route('popular.csv') }}" method="get">
+                <input type="hidden" name="keyword" value="{{ old('keyword', request('keyword')) }}">
+                <input type="hidden" name="start_date" value="{{ old('start_date', request('start_date')) }}">
+                <input type="hidden" name="end_date" value="{{ old('end_date', request('end_date')) }}">
+                <input type="hidden" name="sort" value="{{ old('sort', request('sort')) }}">
+                <button type="submit" class="btn btn-default pr-3 pl-3 mb-3" href="">CSVダウンロード</button>
+            </form>
             @foreach($lists as $list)
             <ul class="list-unstyled event-card">
                 <li class="pt-4 pl-4 pr-4">
@@ -76,7 +82,7 @@
                 <li class="list-unstyled mt-2 pb-2">
                     <ul class="list-unstyled d-flex justify-content-between">
                         <li class="pl-4 pr-4">
-                            <event-like :initial-is-liked-by='@json(\App\Models\Event::isLikedBy($list->id))' endpoint="{{ route('events.like', ['event' => $list]) }}">
+                            <event-like :initial-is-liked-by='@json(\App\Models\Like::isLikedBy($list->id))' endpoint="{{ route('events.like', ['event' => $list]) }}">
                             </event-like>
                         </li>
                         <li class="pl-4 pr-4">

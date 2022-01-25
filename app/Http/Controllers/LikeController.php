@@ -8,16 +8,20 @@ use App\Services\SearchService;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Models\Like;
+use App\Services\CsvDownloadService;
+use Illuminate\Support\Facades\Response;
 
 class LikeController extends Controller
 {
     public $search_service;
     public $event;
+    public $csv_download_service;
 
-    public function __construct(SearchService $search_service, Event $event)
+    public function __construct(SearchService $search_service, Event $event, CsvDownloadService $csv_download_service)
     {
         $this->search_service = $search_service;
         $this->event = $event;
+        $this->csv_download_service = $csv_download_service;
     }
 
     /**
@@ -84,7 +88,7 @@ class LikeController extends Controller
         // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
         if ($request->has('reset')) {
             $this->search_service->forgetOld();
-            return redirect()->route('like');
+            return redirect()->route('like.index');
         }
 
         $keyword = $request->input('like_keyword');
@@ -103,5 +107,17 @@ class LikeController extends Controller
         session()->flashInput($request->input());
         
         return view('like_event', compact('lists'));
+    }
+
+    /**
+     * お気に入り一覧ダウンロード
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function downloadLikeEvent(Request $request)
+    {
+        $csvData = $this->csv_download_service->getLikeEvent($request);
+        return Response::make($csvData['csv'], 200, $csvData['headers']);
     }
 }
