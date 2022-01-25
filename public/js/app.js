@@ -1828,7 +1828,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     endpoint: {
@@ -1840,9 +1839,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     deleteLike: function deleteLike() {
-      if (confirm('お気に入りを削除してもよろしいですか?')) {
-        this.unlike();
-      }
+      this.unlike();
     },
     unlike: function unlike() {
       var _this = this;
@@ -20376,11 +20373,11 @@ var render = function () {
   return _c(
     "button",
     {
-      staticClass: "m-0 p-0 btn shadow-none trash",
+      staticClass: "btn btn-danger",
       attrs: { type: "button" },
       on: { click: _vm.deleteLike },
     },
-    [_c("i", { staticClass: "fa fa-fw fa-trash" }), _vm._v("\n  削除する\n")]
+    [_vm._v("\n  削除する\n")]
   )
 }
 var staticRenderFns = []

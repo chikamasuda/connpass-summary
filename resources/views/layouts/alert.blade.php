@@ -9,9 +9,3 @@
         {{ session('status') }}
     </div>
 @endif
-
-@if (session('flash_message'))
-<div class="alert alert-success" role="alert">
-    {{ session('flash_message') }}
-</div>
-@endif

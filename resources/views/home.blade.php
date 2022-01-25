@@ -80,7 +80,7 @@
                 @endif
             </div>
         </div>
-        <div class="offset-md-1 p-0 col-md-4 justify-content-center mt-4 mb-4">
+        <aside class="offset-md-1 p-0 col-md-4 justify-content-center mt-4 mb-4">
             <h2 class="title pb-2 title-border pt-2 mb-3">ランキング</h2>
             <div class="bg-white">
                 <h3 class="rank-title pb-2">人気イベントランキング</h3>
@@ -118,7 +118,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </aside>
     </div>
 </section>
 @endsection

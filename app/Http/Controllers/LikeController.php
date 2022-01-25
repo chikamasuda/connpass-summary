@@ -50,6 +50,10 @@ class LikeController extends Controller
         $like->event_id = $event->id;
         $like->ip = $request->ip();
         $like->save();
+
+        return [
+            'id' => $event->id,
+        ];
     }
 
     /**
@@ -63,6 +67,10 @@ class LikeController extends Controller
     {
         $like = Like::where('event_id', $event->id)->where('ip', $request->ip())->first();
         $like->delete();
+
+        return [
+            'id' => $event->id,
+        ];
     }
 
     /**

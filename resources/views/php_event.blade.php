@@ -29,7 +29,7 @@
                         </select>
                     </div>
                     <div class="text-center mx-auto mt-4">
-                        <button type="submit" class="btn  site-btn text-white btn-block">絞り込む</button>
+                        <button type="submit" class="btn site-btn text-white btn-block">絞り込む</button>
                         <button type="submit" class="btn btn-block btn-default mt-3" name="reset">リセット</button>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                 </li>
             </ul>
             @endforeach
-            <div class="text-center mt-4"> {{ $lists->links('pagination::bootstrap-4') }}</div>
+            <div class="text-center mt-4"> {{ $lists->appends(request()->query())->links('pagination::bootstrap-4') }}</div>
             @else
             <p>検索結果は0件です。</p>
             @endif

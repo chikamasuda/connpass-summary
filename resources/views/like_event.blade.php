@@ -58,6 +58,34 @@
             @if (!$lists->isEmpty())
             <a class="btn btn-default pr-3 pl-3 mb-3" href="">CSVダウンロード</a>
             @foreach($lists as $i => $list)
+
+            <!-- modal -->
+            <div id="modal-delete-{{ $list->id }}" class="modal" tabindex="-1" role="dialog">
+                <div id="modal-dialog" class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {{ $list->title }}をお気に入りから削除します。よろしいですか？
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
+                            <delete-like 
+                             endpoint="{{ route('events.like', ['event' => $list->id]) }}"
+                             index = "{{ $i }}"
+                             data-toggle="modal" 
+                             data-target="#modal-delete-{{ $list->id }}"
+                            >
+                            </delete-like>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal -->
+
             <ul id="event-card-{{ $i }}" class="list-unstyled event-card">
                 <li class="pt-4 pl-4 pr-4">
                     <a href="{{ $list->url }}" target="_blank" class="card-title">
@@ -91,10 +119,9 @@
                 <li class="list-unstyled mt-2 pb-2">
                     <ul class="list-unstyled d-flex justify-content-between">
                         <li class="pl-4 pr-4">
-                            <delete-like 
-                             endpoint="{{ route('events.like', ['event' => $list->id]) }}"
-                             index = "{{ $i }}"
-                            ></delete-like>
+                            <a class="m-0 p-0 btn shadow-none trash" data-toggle="modal" data-target="#modal-delete-{{ $list->id }}">
+                                <i class="fas fa-trash-alt mr-2"></i>削除する
+                            </a>
                         </li>
                         <li class="pl-4 pr-4">
                             <img class="connpass-logo" src="images/connpass_logo.png" alt="">
@@ -103,7 +130,8 @@
                 </li>
             </ul>
             @endforeach
-            <div class="text-center mt-4"> {{ $lists->links('pagination::bootstrap-4') }}</div>
+
+            <div class="text-center mt-4"> {{ $lists->appends(request()->query())->links('pagination::bootstrap-4') }}</div>
             @else
             <p>お気に入りはありません。</p>
             @endif

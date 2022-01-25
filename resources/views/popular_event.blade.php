@@ -13,13 +13,13 @@
                         <input type="text" class="form-control text-black" name="keyword" value="{{ old('keyword', request('keyword')) }}" placeholder="キーワードを入力">
                     </div>
                     <div class="form-group">
-                        <label for="">開催日  開始</label>
+                        <label for="">開催日 開始</label>
                         <div class="d-flex form-group">
                             <input class="form-control" type="date" name="start_date" value="{{ old('start_date', request('start_date')) }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>開催日  終了</label>
+                        <label>開催日 終了</label>
                         <div class="d-flex form-group">
                             <input class="form-control" type="date" name="end_date" value="{{ old('end_date', request('end_date')) }}">
                         </div>
@@ -89,7 +89,7 @@
                 </li>
             </ul>
             @endforeach
-            <div class="text-center mt-4"> {{ $lists->links('pagination::bootstrap-4') }}</div>
+            <div class="text-center mt-4"> {{ $lists->appends(request()->query())->links('pagination::bootstrap-4') }}</div>
             @else
             <p>検索結果は0件です。</p>
             @endif
