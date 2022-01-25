@@ -13,12 +13,13 @@
                         <input type="text" class="form-control text-black" name="php_keyword" value="{{ old('php_keyword', request('keyword')) }}" placeholder="キーワードを入力">
                     </div>
                     <div class="form-group">
-                        <label>開催日 開始</label>
-                        <input class="form-control text-black" type="date" name="php_start_date" value="{{ old('php_start_date', request('php_start_date')) }}">
-                    </div>
-                    <div class="form-group">
-                        <label>開催日 終了</label>
-                        <input class="form-control text-black" type="date" name="php_end_date" value="{{ old('php_end_date', request('php_end_date')) }}">
+                        <label for="">開催日</label>
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="datepicker" name="php_start_date" value="{{ old('php_start_date', request('php_start_date')) }}" placeholder="From" class="pb-3">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="datepicker-2" name="php_end_date" value="{{ old('php_end_date', request('php_end_date')) }}" placeholder="To" class="pb-3">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>表示順</label>
@@ -40,7 +41,7 @@
         <h2 class="title title-border pb-2">PHPイベント一覧</h2>
         <div class="mt-1">
             @if (!$lists->isEmpty())
-            <a class="btn btn-default pr-3 pl-3 mb-3" href="">CSVダウンロード</a>
+            <a class="btn btn-default pr-3 pl-3 mb-3" href="{{ route('php.csv') }}">CSVダウンロード</a>
             @foreach($lists as $list)
             <ul class="list-unstyled event-card">
                 <li class="pt-4 pl-4 pr-4">

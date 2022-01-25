@@ -13,15 +13,12 @@
                         <input type="text" class="form-control text-black" name="like_keyword" value="{{ old('like_keyword', request('like_keyword')) }}" placeholder="キーワードを入力">
                     </div>
                     <div class="form-group">
-                        <label for="">開催日 開始</label>
-                        <div class="d-flex form-group">
-                            <input class="form-control" type="date" name="like_start_date" value="{{ old('like_start_date', request('like_start_date')) }}">
+                        <label for="">開催日</label>
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="datepicker" name="like_start_date" value="{{ old('like_start_date', request('like_start_date')) }}" placeholder="From" class="pb-3">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>開催日 終了</label>
-                        <div class="d-flex form-group">
-                            <input class="form-control" type="date" name="like_end_date" value="{{ old('like_end_date', request('like_end_date')) }}">
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="datepicker-2" name="like_end_date" value="{{ old('like_end_date', request('like_end_date')) }}" placeholder="To" class="pb-3">
                         </div>
                     </div>
                     <div class="form-group">
@@ -45,7 +42,7 @@
                         </select>
                     </div>
                     <div class="text-center mx-auto mt-4">
-                        <button type="submit" class="btn  site-btn text-white btn-block">絞り込む</button>
+                        <button type="submit" class="btn site-btn text-white btn-block">絞り込む</button>
                         <button type="submit" class="btn btn-block mt-3 btn-default" name="reset">リセット</button>
                     </div>
                 </div>

@@ -10,6 +10,10 @@ class Event extends Model
 {
     use HasFactory;
 
+    protected $dates = [
+        'date'
+    ];
+    
     /**
      * The attributes that are mass assignable.
      *

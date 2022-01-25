@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('./datepicker')
 import Vue from 'vue';
 import EventLike from './components/EventLike'
 import DeleteLike from './components/DeleteLike'

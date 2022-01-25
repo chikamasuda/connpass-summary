@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Services\SearchService;
+use App\Services\CsvDownloadService;
 use App\Models\Event;
-
+use Illuminate\Support\Facades\Response;
 
 class PhpEventController extends Controller
 {
     public $search_service;
+    public $csv_download_service;
 
-    public function __construct(SearchService $search_service)
+    public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service)
     {
         $this->search_service = $search_service;
+        $this->csv_download_service = $csv_download_service;
     }
     
     /**
@@ -58,5 +61,17 @@ class PhpEventController extends Controller
         session()->flashInput($request->input());
 
         return view('php_event', compact('lists'));
+    }
+
+    /**
+     * PHPイベント一覧ダウンロード
+     *
+     * @return void
+     */
+    public function downloadPhpEvent(Request $request)
+    {
+        $csvData = $this->csv_download_service->getPhpEvent($request);
+
+        return Response::make($csvData['csv'], 200, $csvData['headers']);
     }
 }

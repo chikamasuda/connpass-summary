@@ -6,15 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Services\SearchService;
 use App\Models\Event;
+use App\Services\CsvDownloadService;
+use Illuminate\Support\Facades\Response;
 
 
 class PopularEventController extends Controller
 {
     public $search_service;
+    public $csv_download_service;
 
-    public function __construct(SearchService $search_service)
+    public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service)
     {
         $this->search_service = $search_service;
+        $this->csv_download_service = $csv_download_service;
     }
 
     /**
@@ -58,6 +62,18 @@ class PopularEventController extends Controller
         session()->flashInput($request->input());
 
         return view('popular_event', compact('lists'));
+    }
+
+    /**
+     * 人気イベント一覧ダウンロード
+     *
+     * @return void
+     */
+    public function downloadPopularEvent(Request $request)
+    {
+        $csvData = $this->csv_download_service->getPopularEvent($request);
+
+        return Response::make($csvData['csv'], 200, $csvData['headers']);
     }
 
 }

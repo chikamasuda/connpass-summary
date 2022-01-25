@@ -13,15 +13,12 @@
                         <input type="text" class="form-control text-black" name="keyword" value="{{ old('keyword', request('keyword')) }}" placeholder="キーワードを入力">
                     </div>
                     <div class="form-group">
-                        <label for="">開催日 開始</label>
-                        <div class="d-flex form-group">
-                            <input class="form-control" type="date" name="start_date" value="{{ old('start_date', request('start_date')) }}">
+                        <label for="">開催日</label>
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="datepicker" name="start_date" value="{{ old('start_date', request('start_date')) }}" placeholder="From" class="pb-3">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>開催日 終了</label>
-                        <div class="d-flex form-group">
-                            <input class="form-control" type="date" name="end_date" value="{{ old('end_date', request('end_date')) }}">
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="datepicker-2" name="end_date" value="{{ old('end_date', request('end_date')) }}" placeholder="To" class="pb-3">
                         </div>
                     </div>
                     <div class="form-group">
@@ -44,7 +41,7 @@
         <h2 class="title title-border pb-2">人気イベント一覧</h2>
         <div class="mt-1">
             @if (!$lists->isEmpty())
-            <a class="btn btn-default pr-3 pl-3 mb-3" href="">CSVダウンロード</a>
+            <a class="btn btn-default pr-3 pl-3 mb-3" href="{{ route('popular.csv') }}">CSVダウンロード</a>
             @foreach($lists as $list)
             <ul class="list-unstyled event-card">
                 <li class="pt-4 pl-4 pr-4">

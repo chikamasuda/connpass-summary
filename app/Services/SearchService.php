@@ -75,6 +75,6 @@ class SearchService
     if ($sort === 'date_asc') $lists->OrderBy('date', 'asc')->OrderBy('accepted', 'desc');
     if ($sort === 'date_desc') $lists->OrderBy('date', 'desc')->OrderBy('accepted', 'desc');
 
-    return $lists->paginate(20);
+    return $lists->paginate();
   }
 }

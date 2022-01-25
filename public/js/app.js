@@ -1983,6 +1983,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_DeleteLike__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/DeleteLike */ "./resources/js/components/DeleteLike.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./datepicker */ "./resources/js/datepicker.js");
+
 
 
 
@@ -2024,6 +2026,27 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/datepicker.js":
+/*!************************************!*\
+  !*** ./resources/js/datepicker.js ***!
+  \************************************/
+/***/ (() => {
+
+$(function () {
+  $("#datepicker").datepicker({
+    monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+    dateFormat: 'yy/mm/dd',
+    showMonthAfterYear: true
+  });
+  $("#datepicker-2").datepicker({
+    monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+    dateFormat: 'yy/mm/dd',
+    showMonthAfterYear: true
+  });
+});
 
 /***/ }),
 
