@@ -167,7 +167,7 @@ class CsvDownloadService
       //上記をまとめてデータ化。
       $data[] = array_values($arrayData);
     }
-
+    
     return $this->baseCSV($data, $csvHeader, $name);
   }
 

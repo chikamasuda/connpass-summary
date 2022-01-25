@@ -86,7 +86,7 @@
                             </event-like>
                         </li>
                         <li class="pl-4 pr-4">
-                            <img class="connpass-logo" src="images/connpass_logo.png" alt="">
+                            <img class="connpass-logo" src="/images/connpass_logo.png" alt="">
                         </li>
                     </ul>
                 </li>

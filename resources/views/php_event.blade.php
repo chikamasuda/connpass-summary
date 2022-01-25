@@ -85,7 +85,7 @@
                             <event-like :initial-is-liked-by='@json(\App\Models\Like::isLikedBy($list->id))' endpoint="{{ route('events.like', ['event' => $list]) }}">
                             </event-like>
                         </li>
-                        <li class="pl-4 pr-4"><img class="connpass-logo" src="images/connpass_logo.png" alt=""></li>
+                        <li class="pl-4 pr-4"><img class="connpass-logo" src="/images/connpass_logo.png" alt=""></li>
                     </ul>
                 </li>
             </ul>
