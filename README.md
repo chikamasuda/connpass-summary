@@ -1,10 +1,10 @@
 # Connpass Summary
 
-ConnpassAPIを活用したツールです。コンセプトは「自分が好きそうなイベントを逃さないためのAPI駆動ツール」です。  
-IT勉強会支援プラットフォームConnpassの情報をConnpassAPIで取得し、  人気急上昇イベントや参加人数50名  
-以上の人気イベント、PHPイベントの情報をピックアップしてバッチ処理で自動更新しています。  
+ConnpassAPIを活用したツールです。コンセプトは「自分が好きそうなイベントを逃さないためのConnpassAPI駆動  
+ツール」です。IT勉強会支援プラットフォームConnpassの情報をConnpassAPIで取得し、人気急上昇イベントや参  
+加人数50名以上の人気イベント、PHPイベントの情報をピックアップしてバッチ処理で自動更新しています。  
 
-<img width="800" alt="スクリーンショット 2022-01-26 21 17 36" src="https://user-images.githubusercontent.com/66733811/151169156-256c452a-5bcc-41a6-9940-abfa867db8ff.png">
+<img width="820" alt="スクリーンショット 2022-01-26 21 17 36" src="https://user-images.githubusercontent.com/66733811/151169156-256c452a-5bcc-41a6-9940-abfa867db8ff.png">
 
 ## 使い方
 イベント情報に対して、検索・CSVダウンロード・お気に入りの登録・削除ができます。   
@@ -22,31 +22,33 @@ https://connpass-summary.work/
 
 
 ## 機能一覧
-・外部API連携  
-・バッチ処理  
-・メール送信機能  
-・お気に入り機能  
-・検索機能  
-・CSVダウンロード機能
+•外部API連携  
+•バッチ処理  
+•メール送信機能  
+•お気に入り追加機能   
+•お気に入り削除機能  
+•イベント情報一覧表示    
+•検索機能  
+•CSVダウンロード機能
 
 ## 使用技術
-フロントエンド  
+### フロントエンド  
 •HTML/CSS  
 •JavaScript  
 •Bootstrap 4.5.1  
 •Vue.js 2.6.11  
 •jQuery 3.6.0    
 
-バックエンド  
+### バックエンド  
 •PHP 7.4  
 •Laravel 8.65  
 •Mysql 8.0  
 
-サーバー  
+### サーバー  
 •ConoHa VPS(CentOS8)  
 
-開発環境  
+### 開発環境  
 •Docker(Laradock)  
 
-外部API  
+### 外部API  
 •Connpass API 
