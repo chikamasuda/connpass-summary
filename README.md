@@ -39,7 +39,7 @@ https://connpass-summary.work/
 インフラ  
 •ConoHa VPS(CentOS8)
 
-API  
+外部API  
 •Connpass API  
 
 
