@@ -1,8 +1,10 @@
 <nav class="navbar navbar-expand-sm header-nav shadow-sm">
     <div class="container">
-        <h1 class="logo"><a href="{{ route('home') }}" class="text-decoration-none">
-                <img src="/images/logo.png" alt="" class="logo-block">
-            </a></h1>
+        <h1 class="logo">
+            <a href="{{ route('home') }}" class="text-decoration-none">
+                Connpass Summary
+            </a>
+        </h1>
 
         <button type="button" class="navbar-toggler mr-3" data-toggle="collapse" data-target="#nav-bar">
             <span class="navbar-toggler-icon"></span>

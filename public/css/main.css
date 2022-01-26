@@ -211,7 +211,7 @@ h3 {
 }
 
 .site-btn {
-  background: #0e7ac4;
+  background: #EF8376;
 }
 .site-btn:hover {
   filter: brightness(85%);
@@ -269,9 +269,17 @@ h3 {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(51,51,51,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-.logo-block {
-  height: auto;
-  width: 180px;
+.logo {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  line-height: 1;
+  padding: 15px 0;
+  margin: 0;
+  vertical-align:middle;
+}
+
+.logo a {
+  color: #333;
 }
 
 .home-item {

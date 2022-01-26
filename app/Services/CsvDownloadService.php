@@ -28,7 +28,7 @@ class CsvDownloadService
   public function getPopularEvent(Request $request)
   {
     //CSVの1行目にタイトルを入れる
-    $csvHeader = ['No.', '参加希望人数', '定員人数', '日付', '開始時間', '終了時間', 'タイトル', 'URL', 'グループ', '管理者名', '場所'];
+    $csvHeader = ['No.', '参加希望人数', '定員人数', '開催日', '開始時間', '終了時間', 'タイトル', 'URL', 'グループ', '管理者名', '場所'];
     $timestamp = Carbon::now()->format('ymdhis');
     //ダウンロードファイル名
     $name = "人気イベント一覧_" . $timestamp . ".csv";
@@ -52,7 +52,7 @@ class CsvDownloadService
       $arrayData['rank']       = $index + 1;
       $arrayData['accepted']   = $d->accepted;
       $arrayData['limit']      = $d->limit;
-      $arrayData['date']       = $d->date->format('Y年m月d日');
+      $arrayData['date']       = $d->date->format('m月d日');
       $arrayData['begin_time'] = substr($d->begin_time, 0, 5);
       $arrayData['end_time']   = substr($d->end_time, 0, 5);
       $arrayData['title']      = $d->title;
@@ -75,7 +75,7 @@ class CsvDownloadService
   public function getPhpEvent(Request $request)
   {
     //CSVの1行目にタイトを入れる
-    $csvHeader = ['No.', '参加希望人数', '定員人数', '日付', '開始時間', '終了時間', 'タイトル', 'URL', 'グループ', '管理者名', '場所'];
+    $csvHeader = ['No.', '参加希望人数', '定員人数', '開催日', '開始時間', '終了時間', 'タイトル', 'URL', 'グループ', '管理者名', '場所'];
     $timestamp = Carbon::now()->format('ymdhis');
     //ダウンロードファイル名
     $name = "PHPイベント一覧_" . $timestamp . ".csv";
@@ -102,7 +102,7 @@ class CsvDownloadService
       $arrayData['rank']       = $index + 1;
       $arrayData['accepted']   = $d->accepted;
       $arrayData['limit']      = $d->limit;
-      $arrayData['date']       = $d->date->format('Y年m月d日');
+      $arrayData['date']       = $d->date->format('m月d日');
       $arrayData['begin_time'] = substr($d->begin_time, 0, 5);
       $arrayData['end_time']   = substr($d->end_time, 0, 5);
       $arrayData['title']      = $d->title;
@@ -127,7 +127,7 @@ class CsvDownloadService
   public function getLikeEvent(Request $request)
   {
     //CSVの1行目にタイトルを入れる
-    $csvHeader = ['No.', '参加希望人数', '定員人数', '日付', '開始時間', '終了時間', 'タイトル', 'URL', 'グループ', '管理者名', '場所'];
+    $csvHeader = ['No.', '参加希望人数', '定員人数', '開催日', '開始時間', '終了時間', 'タイトル', 'URL', 'グループ', '管理者名', '場所'];
     $timestamp = Carbon::now()->format('ymdhis');
     //ダウンロードファイル名
     $name = "お気に入りイベント一覧_" . $timestamp . ".csv";
@@ -158,7 +158,7 @@ class CsvDownloadService
       $arrayData['rank']       = $index + 1;
       $arrayData['accepted']   = $d->accepted;
       $arrayData['limit']      = $d->limit;
-      $arrayData['date']       = $d->date->format('Y年m月d日');
+      $arrayData['date']       = $d->date->format('m月d日');
       $arrayData['begin_time'] = substr($d->begin_time, 0, 5);
       $arrayData['end_time']   = substr($d->end_time, 0, 5);
       $arrayData['title']      = $d->title;
