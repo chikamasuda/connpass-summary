@@ -38,7 +38,7 @@ https://connpass-summary.work/
 •Mysql 8.0.23  
 
 インフラ  
-•ConoHa VPS(CentOS8)
+•ConoHa VPS(CentOS8)  
 •Docker(開発環境)
 
 外部API  
