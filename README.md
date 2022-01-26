@@ -4,7 +4,7 @@ ConnpassAPIを活用したツールです。コンセプトは「自分が好き
 IT勉強会支援プラットフォームConnpassの情報をConnpassAPIで取得し、  人気急上昇イベントや参加人数50名  
 以上の人気イベント、PHPイベントの情報をピックアップしてバッチ処理で自動更新しています。  
 
-<img width="800" alt="スクリーンショット 2022-01-26 21 17 36" src="https://user-images.githubusercontent.com/66733811/151169156-256c452a-5bcc-41a6-9940-abfa867db8ff.png">
+<img width="820" alt="スクリーンショット 2022-01-26 21 17 36" src="https://user-images.githubusercontent.com/66733811/151169156-256c452a-5bcc-41a6-9940-abfa867db8ff.png">
 
 ## 使い方
 イベント情報に対して、検索・CSVダウンロード・お気に入りの登録・削除ができます。   
