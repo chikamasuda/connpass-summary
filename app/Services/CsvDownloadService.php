@@ -28,7 +28,7 @@ class CsvDownloadService
   public function getPopularEvent(Request $request)
   {
     //CSVの1行目にタイトルを入れる
-    $csvHeader = ['順位', '参加希望人数', '定員人数', '日付', '開始時間', '終了時間', 'タイトル', 'URL', 'グループ', '管理者名', '場所'];
+    $csvHeader = ['No.', '参加希望人数', '定員人数', '日付', '開始時間', '終了時間', 'タイトル', 'URL', 'グループ', '管理者名', '場所'];
     $timestamp = Carbon::now()->format('ymdhis');
     //ダウンロードファイル名
     $name = "人気イベント一覧_" . $timestamp . ".csv";
