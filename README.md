@@ -27,17 +27,17 @@ https://connpass-summary.work/
 ## 使用技術
 フロントエンド
 
-•HTML/CSS
-•JavaScript
-•Vue.js 2.6.12
-•jQuery 3.6.0
+•HTML/CSS  
+•JavaScript  
+•Vue.js 2.6.12  
+•jQuery 3.6.0  
 
 
 バックエンド
 
-•PHP 7.4
-•Laravel 8.12
-•Mysql 8.0.23
+•PHP 7.4  
+•Laravel 8.12  
+•Mysql 8.0.23  
 
 
 インフラ
