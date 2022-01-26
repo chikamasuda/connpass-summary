@@ -32,7 +32,7 @@ https://connpass-summary.work/
 ## 使用技術
 フロントエンド  
 •HTML/CSS  
-•JavaScript 
+•JavaScript  
 •Bootstrap 4.5.1  
 •Vue.js 2.6.12  
 •jQuery 3.5.1   
