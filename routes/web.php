@@ -44,7 +44,7 @@ Route::prefix('contact')->name('contact.')->group(function () {
     Route::post('/send', [App\Http\Controllers\ContactController::class, 'send'])->name('send');
 });
 
-//いいね機能・いいね削除機能
+//お気に入り機能・お気に入り削除機能
 Route::prefix('events')->name('events.')->group(function () {
     Route::put('/{event}/like', [App\Http\Controllers\LikeController::class, 'like'])->name('like');
     Route::delete('/{event}/like', [App\Http\Controllers\LikeController::class, 'unlike'])->name('unlike');

@@ -62,7 +62,7 @@ class ContactValidationTest extends TestCase
       ],
       'email形式エラー' => [
         ['name', 'email', 'password', 'password_confirmation', 'language', 'address', 'self_introduction'],
-        ['testuser', 'test@example.', 'password', 'password', 'PHP', '東京都', 'テストユーザーです。'],
+        ['testuser', 'test@example.com', 'password', 'password', 'PHP', '東京都', 'テストユーザーです。'],
         false
       ],
       'title必須エラー' => [
@@ -77,7 +77,7 @@ class ContactValidationTest extends TestCase
       ],
       'ok' => [
         ['name', 'email', 'title', 'body'],
-        [ 'testuser', 'test@example.com', str_repeat('a', 255), 'テストユーザーです。'],
+        [ 'testuser', 'c.m.062820@gmail.com', str_repeat('a', 255), 'テストユーザーです。'],
         true
       ],
       'body必須エラー' => [
