@@ -39,11 +39,11 @@ https://connpass-summary.work/
 •Laravel 8.12  
 •Mysql 8.0.23  
 
-サーバー 
+サーバー  
 •ConoHa VPS(CentOS8)  
 
 開発環境  
-•Docker(開発環境)  
+•Docker(Laradock)  
 
 外部API  
 •Connpass API 
