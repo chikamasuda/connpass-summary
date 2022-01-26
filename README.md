@@ -34,13 +34,13 @@ https://connpass-summary.work/
 •HTML/CSS  
 •JavaScript  
 •Bootstrap 4.5.1  
-•Vue.js 2.6.12  
-•jQuery 3.5.1   
+•Vue.js 2.6.11  
+•jQuery 3.6.0    
 
 バックエンド  
 •PHP 7.4  
-•Laravel 8.12  
-•Mysql 8.0.23  
+•Laravel 8.65  
+•Mysql 8.0  
 
 サーバー  
 •ConoHa VPS(CentOS8)  
