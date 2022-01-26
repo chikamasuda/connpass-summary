@@ -32,23 +32,23 @@ https://connpass-summary.work/
 •CSVダウンロード機能
 
 ## 使用技術
-フロントエンド  
+### フロントエンド  
 •HTML/CSS  
 •JavaScript  
 •Bootstrap 4.5.1  
 •Vue.js 2.6.11  
 •jQuery 3.6.0    
 
-バックエンド  
+### バックエンド  
 •PHP 7.4  
 •Laravel 8.65  
 •Mysql 8.0  
 
-サーバー  
+### サーバー  
 •ConoHa VPS(CentOS8)  
 
-開発環境  
+### 開発環境  
 •Docker(Laradock)  
 
-外部API  
+### 外部API  
 •Connpass API 
