@@ -1,4 +1,4 @@
-# Connppass Summary
+# Connpass Summary
 
 ConnpassAPIを活用したツールです。IT勉強会支援プラットフォームConnpassの情報をConnpassAPIで取得し、  
 人気急上昇イベントや参加人数50名以上の人気イベント、PHPイベントの情報をピックアップしてバッチ処理で  
