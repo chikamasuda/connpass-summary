@@ -36,10 +36,10 @@ https://connpass-summary.work/
 •Laravel 8.12  
 •Mysql 8.0.23  
 
-インフラ
-•ConoHa VPS
+インフラ  
+•ConoHa VPS(CentOS8)
 
-API
-•Connpass API
+API  
+•Connpass API  
 
 
