@@ -44,7 +44,7 @@ class CsvDownloadService
     } else {
       $lists = Event::where('date', '>=', date('Y-m-d'))
         ->where('accepted', '>=', 50);
-      $lists = $this->searchData($lists, $keyword, $start_date, $end_date, $sort)->get();
+      $lists = $this->getSearchData($lists, $keyword, $start_date, $end_date, $sort)->get();
     }
 
     foreach ($lists as $index => $d) {
@@ -89,11 +89,12 @@ class CsvDownloadService
       $lists = Event::where('date', '>=', date('Y-m-d'))
         ->where('php_flag', 1)
         ->orderBy('date', 'asc')
+        ->orderBy('begin_time', 'asc')
         ->get();
     } else {
       $lists = Event::where('date', '>=', date('Y-m-d'))
         ->where('php_flag', 1);
-      $lists = $this->searchData($lists, $keyword, $start_date, $end_date, $sort)->get();
+      $lists = $this->getSearchData($lists, $keyword, $start_date, $end_date, $sort)->get();
     }
 
     foreach ($lists as $index => $d) {
@@ -118,8 +119,9 @@ class CsvDownloadService
   }
 
   /**
-   * お気に入りイベント一覧
+   * お気に入りイベントのダウンロード
    *
+   * @param Request $request
    * @return void
    */
   public function getLikeEvent(Request $request)
@@ -148,7 +150,7 @@ class CsvDownloadService
         ->where('date', '>=',  Carbon::today()->format('Y-m-d'))
         ->where('ip', request()->ip());
       $lists = $this->search_service->likeSort($lists, $sort);
-      $lists = $this->searchData($lists, $keyword, $start_date, $end_date, $sort)->get();
+      $lists = $this->getSearchData($lists, $keyword, $start_date, $end_date, $sort)->get();
     }
 
     foreach ($lists as $index => $d) {
@@ -167,7 +169,11 @@ class CsvDownloadService
       //上記をまとめてデータ化。
       $data[] = array_values($arrayData);
     }
-    
+
+    if(empty($data)) {
+      return back();
+    }
+
     return $this->baseCSV($data, $csvHeader, $name);
   }
 
@@ -198,7 +204,17 @@ class CsvDownloadService
     return ['csv' => $csv, 'headers' => $headers];
   }
 
-  public function searchData($lists, $keyword, $start_date, $end_date, $sort)
+  /**
+   * 検索結果データ
+   *
+   * @param object $lists
+   * @param string $keyword
+   * @param string $start_date
+   * @param string $end_date
+   * @param string $sort
+   * @return void
+   */
+  public function getSearchData($lists, $keyword, $start_date, $end_date, $sort)
   {
     // キーワード検索
     if (!empty($keyword)) {
@@ -223,9 +239,22 @@ class CsvDownloadService
 
     //並び替え
     if ($sort === 'popular') $lists->OrderBy('accepted', 'desc');
-    if ($sort === 'date_asc') $lists->OrderBy('date', 'asc')->OrderBy('accepted', 'desc');
-    if ($sort === 'date_desc') $lists->OrderBy('date', 'desc')->OrderBy('accepted', 'desc');
+    if ($sort === 'date_asc') $lists->OrderBy('date', 'asc')->orderBy('begin_time', 'asc');
+    if ($sort === 'date_desc') $lists->OrderBy('date', 'desc')->orderBy('begin_time', 'asc');
 
     return $lists;
+  }
+
+  /**
+   * ダウンロードされるデータを取得
+   *
+   * @param object $lists
+   * @return void
+   */
+  private function getDownloadData($lists)
+  {
+    
+
+    return $data;
   }
 }

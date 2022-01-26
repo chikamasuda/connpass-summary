@@ -72,8 +72,8 @@ class SearchService
 
     //並び替え
     if ($sort === 'popular') $lists->OrderBy('accepted', 'desc');
-    if ($sort === 'date_asc') $lists->OrderBy('date', 'asc')->OrderBy('accepted', 'desc');
-    if ($sort === 'date_desc') $lists->OrderBy('date', 'desc')->OrderBy('accepted', 'desc');
+    if ($sort === 'date_asc') $lists->OrderBy('date', 'asc')->orderBy('begin_time', 'asc');
+    if ($sort === 'date_desc') $lists->OrderBy('date', 'desc')->orderBy('begin_time', 'asc');
 
     return $lists->paginate(20);
   }

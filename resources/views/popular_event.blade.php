@@ -94,7 +94,7 @@
             @endforeach
             <div class="text-center mt-4"> {{ $lists->appends(request()->query())->links('pagination::bootstrap-4') }}</div>
             @else
-            <p>検索結果は0件です。</p>
+            <p>人気イベントは0件です。</p>
             @endif
         </div>
     </div>

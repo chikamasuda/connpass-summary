@@ -51,6 +51,7 @@
     </div>
     <div class="mt-2 col-md-7 p-0 mb-4">
         <h2 class="title title-border pb-2">お気に入り一覧</h2>
+        @include('layouts.alert')
         <div class="mt-1">
             @if (!$lists->isEmpty())
             <form action="{{ route('like.csv') }}" method="get">
@@ -58,7 +59,7 @@
                 <input type="hidden" name="like_start_date" value="{{ old('like_start_date', request('like_start_date')) }}">
                 <input type="hidden" name="like_end_date" value="{{ old('like_end_date', request('like_end_date')) }}">
                 <input type="hidden" name="like_sort" value="{{ old('like_sort', request('like_sort')) }}">
-                <button type="submit" class="btn btn-default pr-3 pl-3 mb-3" href="">CSVダウンロード</button>
+                <button type="submit" id="download-button" class="btn btn-default pr-3 pl-3 mb-3" href="">CSVダウンロード</button>
             </form>
             @foreach($lists as $i => $list)
 
@@ -136,7 +137,7 @@
 
             <div class="text-center mt-4"> {{ $lists->appends(request()->query())->links('pagination::bootstrap-4') }}</div>
             @else
-            <p>お気に入りはありません。</p>
+            <p>お気に入りイベントは0件です。</p>
             @endif
         </div>
     </div>

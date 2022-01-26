@@ -33,7 +33,7 @@ class HomeController extends Controller
                 $query->where('date', '>=',  Carbon::today()->format('Y-m-d'))
                     ->where('date', '<=', date('Y-m-d', strtotime('last day of next month')));
             })
-            ->paginate(10);
+            ->paginate(5);
 
         return view('home', compact('alerts', 'popular_events', 'php_events'));
     }

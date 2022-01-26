@@ -19,7 +19,7 @@ class PhpEventController extends Controller
         $this->search_service = $search_service;
         $this->csv_download_service = $csv_download_service;
     }
-    
+
     /**
      * PHPイベント一覧
      *
@@ -27,9 +27,10 @@ class PhpEventController extends Controller
      */
     public function index()
     {
-        $lists = Event::where('date', '>', Carbon::yesterday())
+        $lists = Event::where('date', '>=', date('Y-m-d'))
             ->where('php_flag', 1)
             ->orderBy('date', 'asc')
+            ->orderBy('begin_time', 'asc')
             ->paginate(20);
 
         return view('php_event', compact('lists'));
@@ -53,7 +54,7 @@ class PhpEventController extends Controller
         $start_date = $request->input('php_start_date');
         $end_date = $request->input('php_end_date');
         $sort = $request->input('php_sort');
-        $lists = Event::where('date', '>', Carbon::yesterday())
+        $lists = Event::where('date', '>=', date('Y-m-d'))
             ->where('php_flag', 1);
 
         $lists = $this->search_service->eventSearch($lists, $keyword, $start_date, $end_date, $sort);

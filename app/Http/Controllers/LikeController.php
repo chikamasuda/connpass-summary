@@ -72,8 +72,18 @@ class LikeController extends Controller
         $like = Like::where('event_id', $event->id)->where('ip', $request->ip())->first();
         $like->delete();
 
+        $lists = Event::with('like')
+            ->where('date', '>=',  Carbon::today()->format('Y-m-d'))
+            ->whereHas('like', function ($query) {
+                $query->where('ip', request()->ip());
+            })
+            ->get();
+        
+        $count = count($lists);
+
         return [
             'id' => $event->id,
+            'count' => $count,
         ];
     }
 
@@ -95,17 +105,17 @@ class LikeController extends Controller
         $start_date = $request->input('like_start_date');
         $end_date = $request->input('like_end_date');
         $sort = $request->input('like_sort');
-        
+
         $lists = $this->event
             ->join('likes', 'likes.event_id', '=', 'events.id')
             ->where('date', '>=',  Carbon::today()->format('Y-m-d'))
             ->where('ip', request()->ip());
 
-        $lists = $this->search_service->likeSort($lists, $sort);   
+        $lists = $this->search_service->likeSort($lists, $sort);
         $lists = $this->search_service->eventSearch($lists, $keyword, $start_date, $end_date, $sort);
 
         session()->flashInput($request->input());
-        
+
         return view('like_event', compact('lists'));
     }
 
@@ -118,6 +128,12 @@ class LikeController extends Controller
     public function downloadLikeEvent(Request $request)
     {
         $csvData = $this->csv_download_service->getLikeEvent($request);
+
+        //ダウンロードされるデータが空の時はオブジェクトで値が返ってくるためアラートを出す
+        if(is_object($csvData)) {
+            return back()->with('flash_alert', 'CSVダウンロード対象のデータがありません');
+        }
+
         return Response::make($csvData['csv'], 200, $csvData['headers']);
     }
 }
