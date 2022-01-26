@@ -7,7 +7,7 @@ IT勉強会支援プラットフォームConnpassの情報をConnpassAPIで取�
 <img width="800" alt="スクリーンショット 2022-01-26 21 17 36" src="https://user-images.githubusercontent.com/66733811/151169156-256c452a-5bcc-41a6-9940-abfa867db8ff.png">
 
 ## 使い方
-イベント情報に対して、検索・CSVダウンロード・お気に入り登録ができます。   
+イベント情報に対して、検索・CSVダウンロード・お気に入りの登録・削除ができます。   
 イベントタイトルのリンクから、IT勉強会支援プラットフォームConnpassの該当のイベント情報に遷移すること  
 ができます。
 
@@ -32,10 +32,10 @@ https://connpass-summary.work/
 ## 使用技術
 フロントエンド  
 •HTML/CSS  
-•JavaScript  
-•Bootstrap
+•JavaScript 
+•Bootstrap 4.5.1  
 •Vue.js 2.6.12  
-•jQuery 3.6.0  
+•jQuery 3.5.1   
 
 バックエンド  
 •PHP 7.4  
