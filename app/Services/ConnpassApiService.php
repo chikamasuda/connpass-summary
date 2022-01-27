@@ -12,7 +12,7 @@ use Illuminate\Support\Carbon;
 class ConnpassAPIService
 {
     /**
-     * connpassAPIの情報取得・保存
+     * イベント情報取得・保存
      *
      * @param string $url
      * @param string $context
@@ -29,37 +29,38 @@ class ConnpassAPIService
             $arrays = json_decode($arrays, true);
             $num = count($arrays['events']);
             $data = [];
-
+            //イベント情報を配列に入れて保存
             for ($i = 0; $i < $num; $i++) {
-                $data[] = [
-                    "event_id" => $arrays['events'][$i]['event_id'],
-                    "date" => substr($arrays['events'][$i]['started_at'], 0, 10),
-                    "begin_time" => substr($arrays['events'][$i]['started_at'], 11, 5),
-                    "end_time" => substr($arrays['events'][$i]['ended_at'], 11, 5),
-                    "title" => $arrays['events'][$i]['title'],
-                    "catch" => $arrays['events'][$i]['catch'],
-                    "url" => $arrays['events'][$i]['event_url'],
-                    "group" => $arrays['events'][$i]['series']['title'],
-                    "owner" => $arrays['events'][$i]['owner_display_name'],
-                    "address" => $arrays['events'][$i]['address'],
-                    "accepted" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'],
-                    "limit" => $arrays['events'][$i]['limit'],
-                    "catch" => $arrays['events'][$i]['catch'],
-                    "site_id" => 1,
-                ];
+                if (isset($arrays['events'][$i]['series']['title'])) {
+                    $data[] = [
+                        "event_id" => $arrays['events'][$i]['event_id'],
+                        "date" => substr($arrays['events'][$i]['started_at'], 0, 10),
+                        "begin_time" => substr($arrays['events'][$i]['started_at'], 11, 5),
+                        "end_time" => substr($arrays['events'][$i]['ended_at'], 11, 5),
+                        "title" => $arrays['events'][$i]['title'],
+                        "catch" => $arrays['events'][$i]['catch'],
+                        "url" => $arrays['events'][$i]['event_url'],
+                        "group" => $arrays['events'][$i]['series']['title'],
+                        "owner" => $arrays['events'][$i]['owner_display_name'],
+                        "address" => $arrays['events'][$i]['address'],
+                        "accepted" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'],
+                        "limit" => $arrays['events'][$i]['limit'],
+                        "catch" => $arrays['events'][$i]['catch'],
+                        "site_id" => 1,
+                    ];
+                }
             }
-
             Event::upsert($data, ['event_id']);
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
-            // 全てのエラー・例外をキャッチしてログに残す(以下同)
+            // 全てのエラー・例外をキャッチしてログに残す（以下同）
             Log::error($e);
         }
     }
 
     /**
-     * connpassAPIの検索結果PHPの情報取得・保存
+     * PHPイベントの情報取得・保存
      *
      * @param string $url
      * @param string $context
@@ -76,38 +77,38 @@ class ConnpassAPIService
             $arrays = json_decode($arrays, true);
             $num = count($arrays['events']);
             $data = [];
-
+            //イベント情報を配列に入れて保存
             for ($i = 0; $i < $num; $i++) {
-                $data[] = [
-                    "event_id" => $arrays['events'][$i]['event_id'],
-                    "date" => substr($arrays['events'][$i]['started_at'], 0, 10),
-                    "begin_time" => substr($arrays['events'][$i]['started_at'], 11, 5),
-                    "end_time" => substr($arrays['events'][$i]['ended_at'], 11, 5),
-                    "title" => $arrays['events'][$i]['title'],
-                    "catch" => $arrays['events'][$i]['catch'],
-                    "url" => $arrays['events'][$i]['event_url'],
-                    "group" => $arrays['events'][$i]['series']['title'],
-                    "owner" => $arrays['events'][$i]['owner_display_name'],
-                    "address" => $arrays['events'][$i]['address'],
-                    "accepted" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'],
-                    "limit" => $arrays['events'][$i]['limit'],
-                    "catch" => $arrays['events'][$i]['catch'],
-                    "site_id" => 1,
-                    "php_flag" => 1,
-                ];
+                if (isset($arrays['events'][$i]['series']['title'])) {
+                    $data[] = [
+                        "event_id" => $arrays['events'][$i]['event_id'],
+                        "date" => substr($arrays['events'][$i]['started_at'], 0, 10),
+                        "begin_time" => substr($arrays['events'][$i]['started_at'], 11, 5),
+                        "end_time" => substr($arrays['events'][$i]['ended_at'], 11, 5),
+                        "title" => $arrays['events'][$i]['title'],
+                        "catch" => $arrays['events'][$i]['catch'],
+                        "url" => $arrays['events'][$i]['event_url'],
+                        "group" => $arrays['events'][$i]['series']['title'],
+                        "owner" => $arrays['events'][$i]['owner_display_name'],
+                        "address" => $arrays['events'][$i]['address'],
+                        "accepted" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'],
+                        "limit" => $arrays['events'][$i]['limit'],
+                        "catch" => $arrays['events'][$i]['catch'],
+                        "site_id" => 1,
+                        "php_flag" => 1,
+                    ];
+                }
             }
-            
             Event::upsert($data, ['event_id']);
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
-            // 全てのエラー・例外をキャッチしてログに残す(以下同)
             Log::error($e);
         }
     }
 
-     /**
-     * connpassAPIのアラート表示のための情報取得・保存
+    /**
+     * アラート表示のための情報取得・保存
      *
      * @param string $url
      * @param string $context
@@ -124,26 +125,31 @@ class ConnpassAPIService
             $arrays = json_decode($arrays, true);
             $num = count($arrays['events']);
             $data = [];
-            $alerts = Alert::where('diff', '>=', 20)
-            ->OrderBy('diff', 'desc')
-            ->whereHas('event', function ($query) {
-                $query->where('date', '>=',  Carbon::today()->format('Y-m-d'))
-                    ->where('date', '<=', date('Y-m-d', strtotime('last day of next month')));
-            })
-            ->get();
-
+            $alerts = Alert::all();
+            $events = Event::all();
+            //イベント情報を配列に入れて保存
             for ($i = 0; $i < $num; $i++) {
-                $data[] = [
-                    "event_id" => $arrays['events'][$i]['event_id'],
-                    "number" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'],
-                ];
-            }
+                $event = $events->where('event_id', $arrays['events'][$i]['event_id'])->first();
+                $alert = $alerts->where('event_id', $event->id)->first();
 
+                if($alert->number !== null) {
+                    $data[] = [
+                        "event_id" => $event->id,
+                        "number" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'],
+                        "diff" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'] - $alert->number,
+                    ];
+                } else {
+                    $data[] = [
+                        "event_id" => $event->id,
+                        "number" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'],
+                        "diff" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting']
+                    ];
+                } 
+            }
             Alert::upsert($data, ['event_id']);
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
-            // 全てのエラー・例外をキャッチしてログに残す(以下同)
             Log::error($e);
         }
     }

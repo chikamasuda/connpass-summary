@@ -10,6 +10,11 @@ use App\Models\Alert;
 
 class HomeController extends Controller
 {
+    /**
+     * ホーム画面のイベント一覧
+     *
+     * @return void
+     */
     public function index()
     {
         //人気イベントランキングの表示

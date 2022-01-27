@@ -72,18 +72,8 @@ class LikeController extends Controller
         $like = Like::where('event_id', $event->id)->where('ip', $request->ip())->first();
         $like->delete();
 
-        $lists = Event::with('like')
-            ->where('date', '>=',  Carbon::today()->format('Y-m-d'))
-            ->whereHas('like', function ($query) {
-                $query->where('ip', request()->ip());
-            })
-            ->get();
-        
-        $count = count($lists);
-
         return [
             'id' => $event->id,
-            'count' => $count,
         ];
     }
 

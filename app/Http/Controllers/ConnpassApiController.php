@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Log;
 
 class ConnpassApiController extends Controller
 {
-    public $ConnpassApiService;
+    public $connpass_api_service;
 
-    public function __construct(ConnpassApiService $ConnpassApiService)
+    public function __construct(ConnpassApiService $connpass_api_service)
     {
-        $this->ConnpassApiService = $ConnpassApiService;
+        $this->connpass_api_service = $connpass_api_service;
     }
 
     /**
@@ -24,31 +24,31 @@ class ConnpassApiController extends Controller
     {
         $month = date('Ym');
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=101';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=201';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=301';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=401';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=501';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=601';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=701';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=801';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=901';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1001';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1101';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1201';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
     }
 
     /**
@@ -62,33 +62,33 @@ class ConnpassApiController extends Controller
         $month_after_next =  date('Ym', strtotime(date('Y-m-1') . '+2 month'));
 
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=101';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=201';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=301';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=401';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=501';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=601';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=701';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=801';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=901';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1001';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1101';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&order=2&start=1';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&order=2&start=101';
-        $this->ConnpassApiService->getPopularEventData($url);
+        $this->connpass_api_service->getPopularEventData($url);
     }
 
     /**
@@ -103,15 +103,15 @@ class ConnpassApiController extends Controller
         $month_after_next =  date('Ym', strtotime(date('Y-m-1') . '+2 month'));
 
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&keyword=PHP&start=1';
-        $this->ConnpassApiService->getPhpEventData($url);
+        $this->connpass_api_service->getPhpEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&keyword=PHP&start=101';
-        $this->ConnpassApiService->getPhpEventData($url);
+        $this->connpass_api_service->getPhpEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&keyword=PHP&start=1';
-        $this->ConnpassApiService->getPhpEventData($url);
+        $this->connpass_api_service->getPhpEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&keyword=PHP&start=101';
-        $this->ConnpassApiService->getPhpEventData($url);
+        $this->connpass_api_service->getPhpEventData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&keyword=PHP&start=1';
-        $this->ConnpassApiService->getPhpEventData($url);
+        $this->connpass_api_service->getPhpEventData($url);
     }
 
     /**
@@ -124,31 +124,31 @@ class ConnpassApiController extends Controller
         $month = date('Ym');
 
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=101';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=201';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=301';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=401';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=501';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=601';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=701';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=801';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=901';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1001';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1101';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month . '&order=2&start=1201';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
     }
 
     /**
@@ -162,32 +162,32 @@ class ConnpassApiController extends Controller
         $month_after_next =  date('Ym', strtotime(date('Y-m-1') . '+2 month'));
 
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=101';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=201';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=301';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=401';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=501';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=601';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=701';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=801';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=901';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1001';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&order=2&start=1101';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&order=2&start=1';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
         $url = 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&order=2&start=101';
-        $this->ConnpassApiService->getAlertData($url);
+        $this->connpass_api_service->getAlertData($url);
     }
 }

@@ -184,7 +184,6 @@ class CsvDownloadService
    * @param $name
    * @return array
    */
-
   private function baseCSV($data, $csvHeader, $name)
   {
     array_unshift($data, $csvHeader);
@@ -214,7 +213,7 @@ class CsvDownloadService
    * @param string $sort
    * @return void
    */
-  public function getSearchData($lists, $keyword, $start_date, $end_date, $sort)
+  private function getSearchData($lists, $keyword, $start_date, $end_date, $sort)
   {
     // キーワード検索
     if (!empty($keyword)) {
@@ -243,18 +242,5 @@ class CsvDownloadService
     if ($sort === 'date_desc') $lists->OrderBy('date', 'desc')->orderBy('begin_time', 'asc');
 
     return $lists;
-  }
-
-  /**
-   * ダウンロードされるデータを取得
-   *
-   * @param object $lists
-   * @return void
-   */
-  private function getDownloadData($lists)
-  {
-    
-
-    return $data;
   }
 }

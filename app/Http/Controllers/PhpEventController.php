@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\Response;
 
 class PhpEventController extends Controller
 {
-    public $search_service;
-    public $csv_download_service;
+    private $search_service, $csv_download_service; 
 
     public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service)
     {

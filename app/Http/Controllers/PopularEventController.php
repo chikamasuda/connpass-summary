@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\Response;
 
 class PopularEventController extends Controller
 {
-    public $search_service;
-    public $csv_download_service;
+    private $search_service, $csv_download_service;
 
     public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service)
     {
@@ -22,7 +21,7 @@ class PopularEventController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * 人気イベント一覧
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -72,6 +71,7 @@ class PopularEventController extends Controller
     public function downloadPopularEvent(Request $request)
     {
         $csvData = $this->csv_download_service->getPopularEvent($request);
+
         return Response::make($csvData['csv'], 200, $csvData['headers']);
     }
 }
