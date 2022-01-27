@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row mx-auto top-block shadow-sm">
-    <div class="container justify-content-center">
-        <div class="col-md-12 p-0 mt-4 mb-4">
-            <div class="mt-2 bg-white mb-2 home-block">
+<div class="top-block shadow-sm">
+    <div class="container row mx-auto">
+        <div class="col-md-12 p-0 mt-3 mb-3">
+            <div class="mt-2 bg-white mb-2 home-block justify-content-center">
                 <div class="row pt-2 pl-3 pr-3">
                     <div class="col-md-4 pt-2 mb-3">
                         <div><img src="images/image1.png" alt="" class="image-block"></div>
