@@ -13,8 +13,6 @@ body , html {
   height: 100%;
 }
 
-/*中略*/
-
 #footer {
   position: absolute; /*　変更*/
   bottom: 0;
@@ -22,6 +20,7 @@ body , html {
   height: 100px;
   background-color: red;
 }
+
 .btn {
   font-size: 14px;
 }

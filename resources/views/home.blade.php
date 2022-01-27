@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row justify-content-center mx-auto top-block shadow-sm">
-    <div class="container">
+<div class="row mx-auto top-block shadow-sm">
+    <div class="container justify-content-center">
         <div class="col-md-12 p-0 mt-4 mb-4">
             <div class="mt-2 bg-white mb-2 home-block">
                 <div class="row pt-2 pl-3 pr-3">
