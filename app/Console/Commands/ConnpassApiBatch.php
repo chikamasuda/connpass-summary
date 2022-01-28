@@ -43,7 +43,6 @@ class ConnpassApiBatch extends Command
     public function handle()
     {
         $this->ConnpassApiController->popularEventBatch();
-        $this->ConnpassApiController->popularEventBatchSecond();
         $this->ConnpassApiController->phpEventBatch();
     }
 }
