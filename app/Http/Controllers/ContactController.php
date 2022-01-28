@@ -50,14 +50,7 @@ class ContactController extends Controller
      */
     public function send(ContactRequest $request)
     {
-        $data = [
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'title' => $request->input('title'),
-            'body' => $request->input('body')
-        ];
-
-        $this->mail_service->sendMail($data, $request);
+        $this->mail_service->sendMail($request);
 
         return view('contact.thanks');
     }

@@ -58,8 +58,6 @@ class PhpEventController extends Controller
 
         $lists = $this->search_service->eventSearch($lists, $keyword, $start_date, $end_date, $sort);
 
-        session()->flashInput($request->input());
-
         return view('php_event', compact('lists'));
     }
 

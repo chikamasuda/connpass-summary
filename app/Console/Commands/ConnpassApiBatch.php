@@ -20,7 +20,7 @@ class ConnpassApiBatch extends Command
      *
      * @var string
      */
-    protected $description = 'コンパスAPIのバッチ処理';
+    protected $description = 'コンパスAPIの情報取得のバッチ処理';
 
     protected $ConnpassApiController;
 

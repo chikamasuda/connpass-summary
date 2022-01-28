@@ -108,7 +108,7 @@ class ConnpassAPIService
     }
 
     /**
-     * アラート表示のための情報取得・保存
+     * 人気急上昇イベント表示のための情報取得・保存
      *
      * @param string $url
      * @param string $context

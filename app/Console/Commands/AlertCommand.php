@@ -19,7 +19,7 @@ class AlertCommand extends Command
      *
      * @var string
      */
-    protected $description = 'コンパスAPIのアラート表示バッチ処理';
+    protected $description = '人気急上昇イベントの表示のためのConnpassAPIからの情報取得のバッチ処理';
 
     protected $ConnpassApiController;
 

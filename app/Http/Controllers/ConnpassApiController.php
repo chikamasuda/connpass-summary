@@ -46,7 +46,7 @@ class ConnpassApiController extends Controller
     }
 
     /**
-     * アラート処理を走らせるためのバッチ
+     * 人気急上昇イベントバッチ処理
      *
      * @return void
      */

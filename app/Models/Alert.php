@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Alert extends Model
 {
@@ -31,5 +32,22 @@ class Alert extends Model
     public function event()
     {
         return $this->belongsTo(Event::class);
+    }
+
+    /**
+     * 人気急上昇イベントのデータ
+     *
+     * @return void
+     */
+    public function alertListData()
+    {
+        $alerts = $this->where('diff', '>=', 20)
+            ->OrderBy('diff', 'desc')
+            ->whereHas('event', function ($query) {
+                $query->where('date', '>=',  Carbon::today()->format('Y-m-d'))
+                    ->where('date', '<=', date('Y-m-d', strtotime('last day of next month')));
+            });
+
+        return $alerts->paginate(5);
     }
 }
