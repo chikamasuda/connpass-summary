@@ -44,8 +44,7 @@ class Alert extends Model
         $alerts = $this->where('diff', '>=', 20)
             ->OrderBy('diff', 'desc')
             ->whereHas('event', function ($query) {
-                $query->where('date', '>=',  Carbon::today()->format('Y-m-d'))
-                    ->where('date', '<=', date('Y-m-d', strtotime('last day of next month')));
+                $query->where('date', '>=',  Carbon::today()->format('Y-m-d'));
             });
 
         return $alerts->paginate(5);

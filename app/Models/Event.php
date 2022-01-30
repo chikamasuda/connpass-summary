@@ -118,7 +118,6 @@ class Event extends Model
             '3'  => 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&keyword=PHP&start=1',
             '4'  => 'https://connpass.com/api/v1/event/?count=100&ym=' . $next_month . '&keyword=PHP&start=101',
             '5'  => 'https://connpass.com/api/v1/event/?count=100&ym=' . $month_after_next . '&keyword=PHP&start=1',
-
         ];
 
         return $url_lists;
@@ -152,6 +151,37 @@ class Event extends Model
             ->OrderBy('accepted', 'desc')
             ->limit(5)
             ->get();
+
+        return $lists;
+    }
+    
+    /**
+     * PHPイベントの内容一覧リストのデータ
+     *
+     * @return void
+     */
+    public function getPhpEventList()
+    {
+        $lists = Event::where('date', '>=', date('Y-m-d'))
+            ->where('php_flag', 1)
+            ->orderBy('date', 'asc')
+            ->orderBy('begin_time', 'asc')
+            ->paginate(20);
+
+        return $lists;
+    }
+
+    /**
+     * 人気イベントの内容一覧リストのデータ
+     *
+     * @return void
+     */
+    public function getPopularEventList()
+    {
+        $lists = Event::where('date', '>', Carbon::yesterday())
+            ->where('accepted', '>=', 50)
+            ->OrderBy('accepted', 'desc')
+            ->paginate(20);
 
         return $lists;
     }

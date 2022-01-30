@@ -7,31 +7,31 @@ use Illuminate\Support\Carbon;
 use App\Services\SearchService;
 use App\Models\Event;
 use App\Services\CsvDownloadService;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Response;
 
 
 class PopularEventController extends Controller
 {
-    private $search_service, $csv_download_service;
+    private $search_service, $csv_download_service, $event;
 
-    public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service)
+    public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service, Event $event)
     {
         $this->search_service = $search_service;
         $this->csv_download_service = $csv_download_service;
+        $this->event = $event;
     }
 
     /**
      * 人気イベント一覧
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @param Event $event
+     * @return void
      */
     public function index(Event $event)
     {
-        $lists = Event::where('date', '>', Carbon::yesterday())
-            ->where('accepted', '>=', 50)
-            ->OrderBy('accepted', 'desc')
-            ->paginate(20);
-        
+        $lists = $this->event->getPopularEventList();
+
         return view('popular_event', compact('lists', 'event'));
     }
 
@@ -49,16 +49,17 @@ class PopularEventController extends Controller
             return redirect()->route('popular.index');
         }
 
-        $keyword = $request->input('keyword');
-        $start_date = $request->input('start_date');
-        $end_date = $request->input('end_date');
-        $sort = $request->input('sort');
-        $lists = Event::where('date', '>=', date('Y-m-d'))
-            ->where('accepted', '>=', 50);
-
-        $lists = $this->search_service->eventSearch($lists, $keyword, $start_date, $end_date, $sort);
-
-        session()->flashInput($request->input());
+        try {
+            $keyword = $request->input('keyword');
+            $start_date = $request->input('start_date');
+            $end_date = $request->input('end_date');
+            $sort = $request->input('sort');
+            $lists = $this->search_service->popularEventSearch($keyword, $start_date, $end_date, $sort);
+        } catch (\Throwable $e) {
+            return back()->with('flash_alert', 'イベント検索に失敗しました');
+            // 全てのエラー・例外をキャッチしてログに残す
+            Log::error($e);
+        }
 
         return view('popular_event', compact('lists'));
     }
@@ -70,7 +71,13 @@ class PopularEventController extends Controller
      */
     public function downloadPopularEvent(Request $request)
     {
-        $csvData = $this->csv_download_service->getPopularEvent($request);
+        try {
+            $csvData = $this->csv_download_service->getPopularEvent($request);
+        } catch (\Throwable $e) {
+            return back()->with('flash_alert', 'CSVダウンロードに失敗しました');
+            // 全てのエラー・例外をキャッチしてログに残す
+            Log::error($e);
+        }
 
         return Response::make($csvData['csv'], 200, $csvData['headers']);
     }

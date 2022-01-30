@@ -38,7 +38,7 @@ class SearchService
     }
 
     /**
-     * イベント検索
+     * 人気イベント検索
      * 
      * @param object $lists
      * @param string $keyword
@@ -47,8 +47,54 @@ class SearchService
      * @param string $sort
      * @return void
      */
-    public function eventSearch($lists, $keyword, $start_date, $end_date, $sort)
+    public function PopularEventSearch($keyword, $start_date, $end_date, $sort)
     {
+        $lists = Event::where('date', '>=', date('Y-m-d'))
+            ->where('accepted', '>=', 50);
+
+        // キーワード検索
+        if (!empty($keyword)) {
+            // 全角スペースを半角に変換
+            $spaceConversion = mb_convert_kana($keyword, 's');
+            //キーワードを半角スペースごとに区切る
+            $array_keyword = explode(' ', $spaceConversion);
+            //キーワード絞り込み
+            $lists->where(function ($query) use ($array_keyword) {
+                foreach ($array_keyword as $keyword_item) {
+                    $query->orWhere('title', 'like', "%{$keyword_item}%")
+                        ->orWhere('group', 'like', "%{$keyword_item}%")
+                        ->orWhere('owner', 'like', "%{$keyword_item}%")
+                        ->orWhere('address', 'like', "%{$keyword_item}%");
+                }
+            });
+        }
+
+        //日付検索
+        if (!empty($start_date)) $lists->where('date', '>=', $start_date);
+        if (!empty($end_date)) $lists->where('date', '<=', $end_date);
+
+        //並び替え
+        if ($sort === 'popular') $lists->orderBy('accepted', 'desc');
+        if ($sort === 'date_asc') $lists->orderBy('date', 'asc')->orderBy('begin_time', 'asc');
+        if ($sort === 'date_desc') $lists->orderBy('date', 'desc')->orderBy('begin_time', 'asc');
+
+        return $lists->paginate(20);
+    }
+
+    /**
+     * PHPイベント検索
+     * 
+     * @param string $keyword
+     * @param string $start_date
+     * @param string $end_date
+     * @param string $sort
+     * @return void
+     */
+    public function PhpEventSearch($keyword, $start_date, $end_date, $sort)
+    {
+        $lists = Event::where('date', '>=', date('Y-m-d'))
+            ->where('php_flag', 1);
+
         // キーワード検索
         if (!empty($keyword)) {
             // 全角スペースを半角に変換

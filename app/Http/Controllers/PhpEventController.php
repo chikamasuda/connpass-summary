@@ -7,16 +7,18 @@ use Illuminate\Support\Carbon;
 use App\Services\SearchService;
 use App\Services\CsvDownloadService;
 use App\Models\Event;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Response;
 
 class PhpEventController extends Controller
 {
-    private $search_service, $csv_download_service; 
+    private $search_service, $csv_download_service, $event;
 
-    public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service)
+    public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service, Event $event)
     {
         $this->search_service = $search_service;
         $this->csv_download_service = $csv_download_service;
+        $this->event = $event;
     }
 
     /**
@@ -26,11 +28,7 @@ class PhpEventController extends Controller
      */
     public function index()
     {
-        $lists = Event::where('date', '>=', date('Y-m-d'))
-            ->where('php_flag', 1)
-            ->orderBy('date', 'asc')
-            ->orderBy('begin_time', 'asc')
-            ->paginate(20);
+        $lists = $this->event->getPhpEventList();
 
         return view('php_event', compact('lists'));
     }
@@ -49,14 +47,17 @@ class PhpEventController extends Controller
             return redirect()->route('php.index');
         }
 
-        $keyword = $request->input('php_keyword');
-        $start_date = $request->input('php_start_date');
-        $end_date = $request->input('php_end_date');
-        $sort = $request->input('php_sort');
-        $lists = Event::where('date', '>=', date('Y-m-d'))
-            ->where('php_flag', 1);
-
-        $lists = $this->search_service->eventSearch($lists, $keyword, $start_date, $end_date, $sort);
+        try {
+            $keyword = $request->input('php_keyword');
+            $start_date = $request->input('php_start_date');
+            $end_date = $request->input('php_end_date');
+            $sort = $request->input('php_sort');
+            $lists = $this->search_service->PhpEventSearch($keyword, $start_date, $end_date, $sort);
+        } catch (\Throwable $e) {
+            return back()->with('flash_alert', 'イベント検索に失敗しました');
+            // 全てのエラー・例外をキャッチしてログに残す
+            Log::error($e);
+        }
 
         return view('php_event', compact('lists'));
     }
@@ -68,7 +69,13 @@ class PhpEventController extends Controller
      */
     public function downloadPhpEvent(Request $request)
     {
-        $csvData = $this->csv_download_service->getPhpEvent($request);
+        try {
+            $csvData = $this->csv_download_service->getPhpEvent($request);
+        } catch (\Throwable $e) {
+            return back()->with('flash_alert', 'CSVダウンロードに失敗しました');
+            // 全てのエラー・例外をキャッチしてログに残す
+            Log::error($e);
+        }
 
         return Response::make($csvData['csv'], 200, $csvData['headers']);
     }

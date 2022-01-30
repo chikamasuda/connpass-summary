@@ -15,7 +15,7 @@ class CreateAlertsTable extends Migration
     {
         Schema::create('alerts', function (Blueprint $table) {
             $table->id('alert_id');
-            $table->unsignedBigInteger('event_id')->index()->constrained()->onDelete('cascade')->comment('イベントテーブルID');
+            $table->unsignedBigInteger('event_id')->unique()->index()->constrained()->onDelete('cascade')->comment('イベントテーブルID');
             $table->integer('number')->comment('人数');
             $table->integer('diff')->index()->comment('前日との差分');
             $table->timestamps();

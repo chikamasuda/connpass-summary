@@ -130,21 +130,25 @@ class ConnpassAPIService
             //イベント情報を配列に入れて保存
             for ($i = 0; $i < $num; $i++) {
                 $event = $events->where('event_id', $arrays['events'][$i]['event_id'])->first();
-                $alert = $alerts->where('event_id', $event->id)->first();
-
-                if($alert->number !== null) {
+                if(isset($event->id)) {
+                    $alert = $alerts->where('event_id', $event->id)->first();
+                }
+                
+                if(isset($alert->number) && isset($event->id)) {
                     $data[] = [
                         "event_id" => $event->id,
                         "number" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'],
                         "diff" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'] - $alert->number,
-                    ];
-                } else {
+                    ];  
+                } 
+
+                if(empty($alert->number) && isset($event->id)) {
                     $data[] = [
                         "event_id" => $event->id,
-                        "number" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'],
+                        "number" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'] ?? null,
                         "diff" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting']
                     ];
-                } 
+                }
             }
             Alert::upsert($data, ['event_id']);
             DB::commit();
