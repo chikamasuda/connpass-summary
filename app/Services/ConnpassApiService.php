@@ -145,7 +145,7 @@ class ConnpassAPIService
                 if(empty($alert->number) && isset($event->id)) {
                     $data[] = [
                         "event_id" => $event->id,
-                        "number" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'] ?? null,
+                        "number" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting'],
                         "diff" => $arrays['events'][$i]['accepted'] + $arrays['events'][$i]['waiting']
                     ];
                 }
