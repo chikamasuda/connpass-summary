@@ -1,8 +1,6 @@
 # Connpass Summary
 
-ConnpassAPIを活用したツールです。コンセプトは「自分が好きそうなイベントを逃さないためのConnpassAPI駆動  
-ツール」です。IT勉強会支援プラットフォームConnpassの情報をConnpassAPIで取得し、人気急上昇イベントや参  
-加人数50名以上の人気イベント、PHPイベントの情報をピックアップしてバッチ処理で自動更新しています。  
+ConnpassAPIを活用したツールです。コンセプトは「自分が好きそうなイベントを逃さないためのConnpassAPI駆動ツール」です。IT勉強会支援プラットフォームConnpassの情報をConnpassAPIで取得し、人気急上昇イベントや参加人数50名以上の人気イベント、PHPイベントの情報をピックアップしてバッチ処理で自動更新しています。  
 
 <img width="820" alt="スクリーンショット 2022-01-27 8 20 57" src="https://user-images.githubusercontent.com/66733811/151263547-a8f1ccec-fb99-4a38-96cd-61fd63a83601.png">
 
