@@ -38,7 +38,7 @@ https://connpass-summary.work/
 ### バックエンド  
 •PHP 7.4  
 •Laravel 8.65  
-•Mysql 8.0  
+•MySQL 8.0  
 
 ### サーバー  
 •ConoHa VPS(CentOS8)  
