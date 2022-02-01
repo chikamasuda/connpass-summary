@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Event;
 use App\Models\Alert;
 use GuzzleHttp\Client;
-use Illuminate\Support\Carbon;
 
 class ConnpassAPIService
 {
