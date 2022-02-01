@@ -24,9 +24,9 @@
                     <div class="form-group">
                         <label>表示順</label>
                         <select class="form-control" name="sort">
-                            <option value="popular" class="bg-white" @if(old('sort')==='popular' ) selected @endif>人気イベント順</option>
-                            <option value="date_asc" class="bg-white" @if(old('sort')==='date_asc' ) selected @endif>開催日昇順</option>
-                            <option value="date_desc" class="bg-white" @if(old('sort')==='date_desc' ) selected @endif>開催日降順</option>
+                            <option value="popular" class="bg-white" @if(request('sort')==='popular' ) selected @endif>人気イベント順</option>
+                            <option value="date_asc" class="bg-white" @if(request('sort')==='date_asc' ) selected @endif>開催日昇順</option>
+                            <option value="date_desc" class="bg-white" @if(request('sort')==='date_desc' ) selected @endif>開催日降順</option>
                         </select>
                     </div>
                     <div class="text-center mx-auto mt-4">

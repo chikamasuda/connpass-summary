@@ -3,8 +3,10 @@
 namespace App\Services;
 
 use App\Models\Event;
+use App\Models\Like;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 
@@ -126,19 +128,23 @@ class SearchService
      * @param string $sort
      * @return void
      */
-    public function searchLikeEvent($keyword, $start_date, $end_date, $sort)
+    public function searchLikeEvent($request)
     {
+        $keyword = $request->input('like_keyword');
+        $start_date = $request->input('like_start_date');
+        $end_date = $request->input('like_end_date');
+        $sort = $request->input('like_sort');
+
+        $lists = DB::table('likes')->join('events', 'likes.event_id', '=', 'events.id')
+                ->where('date', '>=',  Carbon::today()->format('Y-m-d'))
+                ->where('ip', request()->ip());
+
         // キーワード検索
         if (!empty($keyword)) {
             // 全角スペースを半角に変換
             $spaceConversion = mb_convert_kana($keyword, 's');
             //キーワードを半角スペースごとに区切る
             $array_keyword = explode(' ', $spaceConversion);
-
-            $lists = $this->like
-                ->join('events', 'likes.event_id', '=', 'events.id')
-                ->where('date', '>=',  Carbon::today()->format('Y-m-d'))
-                ->where('ip', request()->ip());
 
             //キーワード絞り込み
             $lists->where(function ($query) use ($array_keyword) {
@@ -155,8 +161,8 @@ class SearchService
         if (!empty($end_date)) $lists->where('date', '<=', $end_date);
 
         //並び替え
-        if ($sort === 'like_asc') $lists->orderBy('like_id');
-        if ($sort === 'like_desc') $lists->orderByDesc('like_id');
+        if ($sort === 'like_asc') $lists->orderBy('like_id', 'asc');
+        if ($sort === 'like_desc') $lists->orderBy('like_id', 'desc');
         if ($sort === 'popular') $lists->orderBy('accepted', 'desc');
         if ($sort === 'date_asc') $lists->orderBy('date', 'asc')->orderBy('begin_time', 'asc');
         if ($sort === 'date_desc') $lists->orderBy('date', 'desc')->orderBy('begin_time', 'asc');

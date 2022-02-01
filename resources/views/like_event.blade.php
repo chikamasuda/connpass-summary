@@ -24,19 +24,19 @@
                     <div class="form-group">
                         <label>表示順</label>
                         <select class="form-control" name="like_sort">
-                            <option value="like_asc" class="bg-white" @if(old('like_sort')==='like_asc' ) selected @endif>
+                            <option value="like_asc" class="bg-white" @if(request('like_sort')==='like_asc' ) selected @endif>
                                 お気に入り登録昇順
                             </option>
-                            <option value="like_desc" class="bg-white" @if(old('like_sort')==='like_desc' ) selected @endif>
+                            <option value="like_desc" class="bg-white" @if(request('like_sort')==='like_desc' ) selected @endif>
                                 お気に入り登録降順
                             </option>
-                            <option value="date_asc" class="bg-white" @if(old('like_sort')==='date_asc' ) selected @endif>
+                            <option value="date_asc" class="bg-white" @if(request('like_sort')==='date_asc' ) selected @endif>
                                 開催日昇順
                             </option>
-                            <option value="date_desc" class="bg-white" @if(old('like_sort')==='date_desc' ) selected @endif>
+                            <option value="date_desc" class="bg-white" @if(request('like_sort')==='date_desc' ) selected @endif>
                                 開催日降順
                             </option>
-                            <option value="popular" class="bg-white" @if(old('like_sort')==='popular' ) selected @endif>
+                            <option value="popular" class="bg-white" @if(request('like_sort')==='popular' ) selected @endif>
                                 人気イベント順
                             </option>
                         </select>

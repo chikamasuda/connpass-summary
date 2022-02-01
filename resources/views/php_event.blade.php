@@ -10,7 +10,7 @@
                 <div>
                     <div class="form-group">
                         <label for="">キーワード</label>
-                        <input type="text" class="form-control text-black" name="php_keyword" value="{{ old('php_keyword', request('keyword')) }}" placeholder="キーワードを入力">
+                        <input type="text" class="form-control text-black" name="php_keyword" value="{{ old('php_keyword', request('php_keyword')) }}" placeholder="キーワードを入力">
                     </div>
                     <div class="form-group">
                         <label for="">開催日</label>
@@ -24,9 +24,9 @@
                     <div class="form-group">
                         <label>表示順</label>
                         <select class="form-control" name="php_sort">
-                            <option value="date_asc" class="bg-white" @if(old('php_sort')==='date_asc' ) selected @endif>開催日昇順</option>
-                            <option value="date_desc" class="bg-white" @if(old('php_sort')==='date_desc' ) selected @endif>開催日降順</option>
-                            <option value="popular" class="bg-white" @if(old('php_sort')==='popular' ) selected @endif>人気イベント順</option>
+                            <option value="date_asc" class="bg-white" @if(request("php_sort") == "date_asc") selected @endif>開催日昇順</option>
+                            <option value="date_desc" class="bg-white" @if(request("php_sort") == "date_desc") selected @endif>開催日降順</option>
+                            <option value="popular" class="bg-white" @if(request("php_sort") == "popular") selected @endif>人気イベント順</option>
                         </select>
                     </div>
                     <div class="text-center mx-auto mt-4">
@@ -62,7 +62,7 @@
                     <ul class="list-unstyled d-flex">
                         <li class="list-unstyled mr-3 pt-2 card-item">
                             <i class="fa fa-fw fa-calendar-alt mr-2 text-dark"></i>
-                            {{ (int)Str::substr($list->date, 5, 2) }}月{{ Str::substr($list->date, 8, 2) }}日 
+                            {{ (int)Str::substr($list->date, 5, 2) }}月{{ Str::substr($list->date, 8, 2) }}日
                             {{ Str::substr($list->begin_time, 0, 5) }}〜{{ Str::substr($list->end_time, 0, 5) }}
                         </li>
                         <li class="card-item pt-2">

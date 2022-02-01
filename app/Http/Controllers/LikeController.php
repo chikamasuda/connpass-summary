@@ -5,12 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Services\SearchService;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Models\Like;
 use Illuminate\Support\Facades\Log;
 use App\Services\CsvDownloadService;
-use App\Services\LikeService;
 use Illuminate\Support\Facades\Response;
 
 class LikeController extends Controller
@@ -90,11 +88,7 @@ class LikeController extends Controller
         }
 
         try {
-            $keyword = $request->input('like_keyword');
-            $start_date = $request->input('like_start_date');
-            $end_date = $request->input('like_end_date');
-            $sort = $request->input('like_sort');
-            $lists = $this->search_service->searchLikeEvent($keyword, $start_date, $end_date, $sort);
+           $lists = $this->search_service->searchLikeEvent($request);
         } catch (\Throwable $e) {
             return back()->with('flash_alert', 'イベント検索に失敗しました');
             // 全てのエラー・例外をキャッチしてログに残す
