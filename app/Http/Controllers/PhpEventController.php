@@ -52,7 +52,7 @@ class PhpEventController extends Controller
             $start_date = $request->input('php_start_date');
             $end_date = $request->input('php_end_date');
             $sort = $request->input('php_sort');
-            $lists = $this->search_service->PhpEventSearch($keyword, $start_date, $end_date, $sort);
+            $lists = $this->search_service->searchPhpEvent($keyword, $start_date, $end_date, $sort);
         } catch (\Throwable $e) {
             return back()->with('flash_alert', 'イベント検索に失敗しました');
             // 全てのエラー・例外をキャッチしてログに残す

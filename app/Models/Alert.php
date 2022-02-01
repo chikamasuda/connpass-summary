@@ -39,7 +39,7 @@ class Alert extends Model
      *
      * @return void
      */
-    public function alertListData()
+    public function getAlertListData()
     {
         $alerts = $this->where('diff', '>=', 20)
             ->OrderBy('diff', 'desc')

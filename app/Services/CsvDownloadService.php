@@ -45,11 +45,11 @@ class CsvDownloadService
         } else {
             $lists = Event::where('date', '>=', date('Y-m-d'))
                 ->where('accepted', '>=', 50);
-            $lists = $this->eventSearchData($lists, $keyword, $start_date, $end_date, $sort)->get();
+            $lists = $this->getEventSearchData($lists, $keyword, $start_date, $end_date, $sort)->get();
         }
 
         //ダウンロードデータを配列に入れて変数$dataに代入
-        $data = $this->arrayData($lists);
+        $data = $this->getDownloadData($lists);
 
         return $this->baseCSV($data, $csvHeader, $name);
     }
@@ -81,11 +81,11 @@ class CsvDownloadService
         } else {
             $lists = Event::where('date', '>=', date('Y-m-d'))
                 ->where('php_flag', 1);
-            $lists = $this->eventSearchData($lists, $keyword, $start_date, $end_date, $sort)->get();
+            $lists = $this->getEventSearchData($lists, $keyword, $start_date, $end_date, $sort)->get();
         }
 
         //ダウンロードデータを配列に入れて変数$dataに代入
-        $data = $this->arrayData($lists);
+        $data = $this->getDownloadData($lists);
 
         return $this->baseCSV($data, $csvHeader, $name);
     }
@@ -96,7 +96,7 @@ class CsvDownloadService
      * @param Request $request
      * @return void
      */
-    public function getLikeEventData(Request $request)
+    public function getLikeEvent(Request $request)
     {
         //CSVの1行目にタイトルを入れる
         $csvHeader = ['No.', '参加希望人数', '定員人数', '開催日', '開始時間', '終了時間', 'タイトル', 'URL', 'グループ', '管理者名', '場所'];
@@ -121,11 +121,11 @@ class CsvDownloadService
                 ->join('likes', 'likes.event_id', '=', 'events.id')
                 ->where('date', '>=',  Carbon::today()->format('Y-m-d'))
                 ->where('ip', request()->ip());
-            $lists = $this->likeEventSearchData($lists, $keyword, $start_date, $end_date, $sort)->get();
+            $lists = $this->getLikeEventSearchData($lists, $keyword, $start_date, $end_date, $sort)->get();
         }
 
         //ダウンロードデータを配列に入れて変数$dataに代入
-        $data = $this->arrayData($lists);
+        $data = $this->getDownloadData($lists);
 
         //ダウンロードデータが空の時、一つ前の遷移先に戻ってアラート表示を出す。
         if (empty($data)) {
@@ -171,7 +171,7 @@ class CsvDownloadService
      * @param string $sort
      * @return void
      */
-    private function eventSearchData($lists, $keyword, $start_date, $end_date, $sort)
+    private function getEventSearchData($lists, $keyword, $start_date, $end_date, $sort)
     {
         // キーワード検索
         if (!empty($keyword)) {
@@ -212,7 +212,7 @@ class CsvDownloadService
      * @param string $sort
      * @return void
      */
-    private function likeEventSearchData($lists, $keyword, $start_date, $end_date, $sort)
+    private function getLikeEventSearchData($lists, $keyword, $start_date, $end_date, $sort)
     {
         // キーワード検索
         if (!empty($keyword)) {
@@ -251,7 +251,7 @@ class CsvDownloadService
      * @param object $lists
      * @return void
      */
-    private function arrayData($lists)
+    private function getDownloadData($lists)
     {
         foreach ($lists as $index => $d) {
             //この配列がダウンロードされるデータになる

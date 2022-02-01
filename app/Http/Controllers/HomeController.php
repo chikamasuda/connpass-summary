@@ -25,13 +25,13 @@ class HomeController extends Controller
     public function index()
     {
         //人気イベントランキングの表示
-        $popular_events = $this->event->rankingPopularEventData();
+        $popular_events = $this->event->getRankingPopularEventData();
 
         //PHPイベントランキングの表示
-        $php_events = $this->event->rankingPhpEventData();
+        $php_events = $this->event->getRankingPhpEventData();
 
         //人気急上昇イベントのリスト
-        $alerts = $this->alert->alertListData();
+        $alerts = $this->alert->getAlertListData();
 
         return view('home', compact('alerts', 'popular_events', 'php_events'));
     }

@@ -31,7 +31,7 @@ class LikeController extends Controller
      */
     public function index(Event $event)
     {
-        $lists = $this->like->LikeEventListData();
+        $lists = $this->like->getLikeEventListData();
 
         return view('like_event', compact('lists'));
     }
@@ -95,7 +95,7 @@ class LikeController extends Controller
             $start_date = $request->input('like_start_date');
             $end_date = $request->input('like_end_date');
             $sort = $request->input('like_sort');
-            $lists = $this->search_service->likeEventSearch($keyword, $start_date, $end_date, $sort);
+            $lists = $this->search_service->searchLikeEvent($keyword, $start_date, $end_date, $sort);
         } catch (\Throwable $e) {
             return back()->with('flash_alert', 'イベント検索に失敗しました');
             // 全てのエラー・例外をキャッチしてログに残す
@@ -114,7 +114,7 @@ class LikeController extends Controller
     public function downloadLikeEvent(Request $request)
     {
         try {
-            $csvData = $this->csv_download_service->getLikeEventData($request);
+            $csvData = $this->csv_download_service->getLikeEvent($request);
             //ダウンロードされるデータが空の時はオブジェクトで値が返ってくるためアラートを出す
             if (is_object($csvData)) {
                 return back()->with('flash_alert', 'CSVダウンロード対象のデータがありません');

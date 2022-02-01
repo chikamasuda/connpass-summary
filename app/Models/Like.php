@@ -48,7 +48,7 @@ class Like extends Model
      *
      * @return void
      */
-    public function LikeEventListData()
+    public function getLikeEventListData()
     {
         $lists = $this->join('events', 'likes.event_id', '=', 'events.id')
             ->where('date', '>=',  Carbon::today()->format('Y-m-d'))

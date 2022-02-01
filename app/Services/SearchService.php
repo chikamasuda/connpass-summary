@@ -47,7 +47,7 @@ class SearchService
      * @param string $sort
      * @return void
      */
-    public function PopularEventSearch($keyword, $start_date, $end_date, $sort)
+    public function searchPopularEvent($keyword, $start_date, $end_date, $sort)
     {
         $lists = Event::where('date', '>=', date('Y-m-d'))
             ->where('accepted', '>=', 50);
@@ -90,7 +90,7 @@ class SearchService
      * @param string $sort
      * @return void
      */
-    public function PhpEventSearch($keyword, $start_date, $end_date, $sort)
+    public function searchPhpEvent($keyword, $start_date, $end_date, $sort)
     {
         $lists = Event::where('date', '>=', date('Y-m-d'))
             ->where('php_flag', 1);
@@ -134,7 +134,7 @@ class SearchService
      * @param string $sort
      * @return void
      */
-    public function likeEventSearch($keyword, $start_date, $end_date, $sort)
+    public function searchLikeEvent($keyword, $start_date, $end_date, $sort)
     {
         // キーワード検索
         if (!empty($keyword)) {

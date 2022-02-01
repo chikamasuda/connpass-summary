@@ -9,12 +9,11 @@ use App\Models\Event;
 
 class ConnpassApiController extends Controller
 {
-    private $connpass_api_service, $event;
+    private $connpass_api_service;
 
     public function __construct(ConnpassApiService $connpass_api_service, Event $event)
     {
         $this->connpass_api_service = $connpass_api_service;
-        $this->event = $event;
     }
 
     /**
@@ -24,7 +23,7 @@ class ConnpassApiController extends Controller
      */
     public function popularEventBatch()
     {
-        $url_lists = $this->event->popularEventUrlData();
+        $url_lists = config('url.event_url_lists');
 
         foreach($url_lists as $url) {
             $this->connpass_api_service->getPopularEventData($url);
@@ -38,7 +37,7 @@ class ConnpassApiController extends Controller
      */
     public function phpEventBatch()
     {
-        $url_lists = $this->event->phpEventUrlData();
+        $url_lists = config('url.php_url_lists');
 
         foreach($url_lists as $url) {
             $this->connpass_api_service->getPhpEventData($url);
@@ -52,7 +51,7 @@ class ConnpassApiController extends Controller
      */
     public function alertBatch()
     {
-        $url_lists = $this->event->popularEventUrlData();
+        $url_lists = config('url.event_url_lists');
 
         foreach($url_lists as $url) {
             $this->connpass_api_service->getAlertData($url);

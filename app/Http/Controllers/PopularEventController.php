@@ -54,7 +54,7 @@ class PopularEventController extends Controller
             $start_date = $request->input('start_date');
             $end_date = $request->input('end_date');
             $sort = $request->input('sort');
-            $lists = $this->search_service->popularEventSearch($keyword, $start_date, $end_date, $sort);
+            $lists = $this->search_service->searchPopularEvent($keyword, $start_date, $end_date, $sort);
         } catch (\Throwable $e) {
             return back()->with('flash_alert', 'イベント検索に失敗しました');
             // 全てのエラー・例外をキャッチしてログに残す
