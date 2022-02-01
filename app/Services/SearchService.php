@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Event;
-use App\Models\Like;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
@@ -11,13 +10,6 @@ use Illuminate\Support\Facades\Log;
 
 class SearchService
 {
-    private $like;
-
-    public function __construct(Like $like)
-    {
-        $this->like = $like;
-    }
-
     /**
      * session(oldの値)があれば消去する
      *「検索結果をリセット」用のセッション削除（検索結果を全て削除）

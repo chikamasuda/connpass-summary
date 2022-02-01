@@ -11,7 +11,7 @@ class ConnpassApiController extends Controller
 {
     private $connpass_api_service;
 
-    public function __construct(ConnpassApiService $connpass_api_service, Event $event)
+    public function __construct(ConnpassApiService $connpass_api_service)
     {
         $this->connpass_api_service = $connpass_api_service;
     }

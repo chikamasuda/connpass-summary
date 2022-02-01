@@ -62,9 +62,9 @@ class Event extends Model
      *
      * @return void
      */
-    public function getRankingPopularEventData()
+    public static function getRankingPopularEventData()
     {
-        $lists = $this->where('date', '>', Carbon::yesterday())
+        $lists = self::where('date', '>', Carbon::yesterday())
             ->where('accepted', '>=', 50)
             ->OrderBy('accepted', 'desc')
             ->limit(5)
@@ -78,9 +78,9 @@ class Event extends Model
      *
      * @return void
      */
-    public function getRankingPhpEventData()
+    public static function getRankingPhpEventData()
     {
-        $lists = Event::where('date', '>', Carbon::yesterday())
+        $lists = self::where('date', '>', Carbon::yesterday())
             ->where('php_flag', 1)
             ->OrderBy('accepted', 'desc')
             ->limit(5)
@@ -94,9 +94,9 @@ class Event extends Model
      *
      * @return void
      */
-    public function getPhpEventList()
+    public static function getPhpEventList()
     {
-        $lists = Event::where('date', '>=', date('Y-m-d'))
+        $lists = self::where('date', '>=', date('Y-m-d'))
             ->where('php_flag', 1)
             ->orderBy('date', 'asc')
             ->orderBy('begin_time', 'asc')
@@ -110,9 +110,9 @@ class Event extends Model
      *
      * @return void
      */
-    public function getPopularEventList()
+    public static function getPopularEventList()
     {
-        $lists = Event::where('date', '>', Carbon::yesterday())
+        $lists = self::where('date', '>', Carbon::yesterday())
             ->where('accepted', '>=', 50)
             ->OrderBy('accepted', 'desc')
             ->paginate(20);

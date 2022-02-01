@@ -38,9 +38,9 @@ class Like extends Model
      *
      * @return boolean
      */
-    public function isLikedBy($event_id)
+    public static function isLikedBy($event_id)
     {
-        return (bool)Like::where('ip', request()->ip())->where('event_id', $event_id)->first();
+        return (bool)self::where('ip', request()->ip())->where('event_id', $event_id)->first();
     }
 
     /**
@@ -48,9 +48,9 @@ class Like extends Model
      *
      * @return void
      */
-    public function getLikeEventListData()
+    public static function getLikeEventListData()
     {
-        $lists = $this->join('events', 'likes.event_id', '=', 'events.id')
+        $lists = self::join('events', 'likes.event_id', '=', 'events.id')
             ->where('date', '>=',  Carbon::today()->format('Y-m-d'))
             ->where('ip', request()->ip());
             
@@ -64,9 +64,9 @@ class Like extends Model
      * @param object $event
      * @return void
      */
-    public function insertLikeData($request, $event)
+    public static function insertLikeData($request, $event)
     {
-        return $this->create([
+        return self::create([
             'event_id'    => $event->id,
             'ip'          => $request->ip(),
         ]);
@@ -79,9 +79,9 @@ class Like extends Model
      * @param object $event
      * @return void
      */
-    public function deleteLike($request, $event)
+    public static function deleteLike($request, $event)
     {
-        $like = $this->where('event_id', $event->id)->where('ip', $request->ip())->first();
+        $like = self::where('event_id', $event->id)->where('ip', $request->ip())->first();
         $like->delete();
     }
 }

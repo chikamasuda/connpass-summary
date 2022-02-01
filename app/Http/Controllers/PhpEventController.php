@@ -12,13 +12,12 @@ use Illuminate\Support\Facades\Response;
 
 class PhpEventController extends Controller
 {
-    private $search_service, $csv_download_service, $event;
+    private $search_service, $csv_download_service;
 
     public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service, Event $event)
     {
         $this->search_service = $search_service;
         $this->csv_download_service = $csv_download_service;
-        $this->event = $event;
     }
 
     /**
@@ -28,7 +27,7 @@ class PhpEventController extends Controller
      */
     public function index()
     {
-        $lists = $this->event->getPhpEventList();
+        $lists = Event::getPhpEventList();
 
         return view('php_event', compact('lists'));
     }

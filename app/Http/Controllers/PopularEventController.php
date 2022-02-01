@@ -13,13 +13,12 @@ use Illuminate\Support\Facades\Response;
 
 class PopularEventController extends Controller
 {
-    private $search_service, $csv_download_service, $event;
+    private $search_service, $csv_download_service;
 
-    public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service, Event $event)
+    public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service)
     {
         $this->search_service = $search_service;
         $this->csv_download_service = $csv_download_service;
-        $this->event = $event;
     }
 
     /**
@@ -30,7 +29,7 @@ class PopularEventController extends Controller
      */
     public function index(Event $event)
     {
-        $lists = $this->event->getPopularEventList();
+        $lists = Event::getPopularEventList();
 
         return view('popular_event', compact('lists', 'event'));
     }

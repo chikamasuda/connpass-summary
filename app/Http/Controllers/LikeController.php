@@ -15,12 +15,11 @@ use Illuminate\Support\Facades\Response;
 
 class LikeController extends Controller
 {
-    private $search_service, $like, $csv_download_service;
+    private $search_service, $csv_download_service;
 
-    public function __construct(SearchService $search_service, Like $like, CsvDownloadService $csv_download_service)
+    public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service)
     {
         $this->search_service = $search_service;
-        $this->like = $like;
         $this->csv_download_service = $csv_download_service;
     }
 
@@ -31,7 +30,7 @@ class LikeController extends Controller
      */
     public function index(Event $event)
     {
-        $lists = $this->like->getLikeEventListData();
+        $lists = Like::getLikeEventListData();
 
         return view('like_event', compact('lists'));
     }
@@ -47,7 +46,7 @@ class LikeController extends Controller
     {
         DB::beginTransaction();
         try {
-            $this->like->insertLikeData($request, $event);
+            Like::insertLikeData($request, $event);
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
@@ -67,7 +66,7 @@ class LikeController extends Controller
     {
         DB::beginTransaction();
         try {
-            $this->like->deleteLike($request, $event);
+            Like::deleteLike($request, $event);
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();

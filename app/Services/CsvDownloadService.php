@@ -11,15 +11,6 @@ use Illuminate\Support\Facades\Log;
 
 class CsvDownloadService
 {
-    public $search_service;
-    public $event;
-
-    public function __construct(SearchService $search_service, Event $event)
-    {
-        $this->search_service = $search_service;
-        $this->event = $event;
-    }
-
     /**
      * 人気イベント一覧
      *
@@ -110,15 +101,12 @@ class CsvDownloadService
         $sort = $request->input('like_sort');
 
         if ($sort === null) {
-            $lists = Event::with('like')
+            $lists = Event::join('likes', 'likes.event_id', '=', 'events.id')
                 ->where('date', '>=',  Carbon::today()->format('Y-m-d'))
-                ->whereHas('like', function ($query) {
-                    $query->where('ip', request()->ip());
-                })
+                ->where('ip', request()->ip())
                 ->get();
         } else {
-            $lists = $this->event
-                ->join('likes', 'likes.event_id', '=', 'events.id')
+            $lists = Event::join('likes', 'likes.event_id', '=', 'events.id')
                 ->where('date', '>=',  Carbon::today()->format('Y-m-d'))
                 ->where('ip', request()->ip());
             $lists = $this->getLikeEventSearchData($lists, $keyword, $start_date, $end_date, $sort)->get();

@@ -39,9 +39,9 @@ class Alert extends Model
      *
      * @return void
      */
-    public function getAlertListData()
+    public static function getAlertListData()
     {
-        $alerts = $this->where('diff', '>=', 20)
+        $alerts = self::where('diff', '>=', 20)
             ->OrderBy('diff', 'desc')
             ->whereHas('event', function ($query) {
                 $query->where('date', '>=',  Carbon::today()->format('Y-m-d'));
