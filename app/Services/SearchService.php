@@ -128,13 +128,8 @@ class SearchService
      * @param string $sort
      * @return void
      */
-    public function searchLikeEvent($request)
+    public function searchLikeEvent($keyword, $start_date, $end_date, $sort)
     {
-        $keyword = $request->input('like_keyword');
-        $start_date = $request->input('like_start_date');
-        $end_date = $request->input('like_end_date');
-        $sort = $request->input('like_sort');
-
         $lists = DB::table('likes')->join('events', 'likes.event_id', '=', 'events.id')
                 ->where('date', '>=',  Carbon::today()->format('Y-m-d'))
                 ->where('ip', request()->ip());

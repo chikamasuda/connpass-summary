@@ -88,7 +88,11 @@ class LikeController extends Controller
         }
 
         try {
-           $lists = $this->search_service->searchLikeEvent($request);
+            $keyword = $request->input('like_keyword');
+            $start_date = $request->input('like_start_date');
+            $end_date = $request->input('like_end_date');
+            $sort = $request->input('like_sort');
+            $lists = $this->search_service->searchLikeEvent($keyword, $start_date, $end_date, $sort);
         } catch (\Throwable $e) {
             return back()->with('flash_alert', 'イベント検索に失敗しました');
             // 全てのエラー・例外をキャッチしてログに残す
