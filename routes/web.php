@@ -20,20 +20,17 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::prefix('popular')->name('popular.')->group(function () {
     Route::get('/index', [App\Http\Controllers\PopularEventController::class, 'index'])->name('index');
     Route::get('/csv', [App\Http\Controllers\PopularEventController::class, 'downloadPopularEvent'])->name('csv');
-    Route::get('/search', [App\Http\Controllers\PopularEventController::class, 'search'])->name('search');
 });
 
 //PHPイベントページ
 Route::prefix('php')->name('php.')->group(function () {
     Route::get('/index', [App\Http\Controllers\PhpEventController::class, 'index'])->name('index');
-    Route::get('/search', [App\Http\Controllers\PhpEventController::class, 'search'])->name('search');
     Route::get('/csv', [App\Http\Controllers\PhpEventController::class, 'downloadPhpEvent'])->name('csv');
 });
 
 //お気に入りページ
 Route::prefix('like')->name('like.')->group(function () {
     Route::get('/index', [App\Http\Controllers\LikeController::class, 'index'])->name('index');
-    Route::get('/search', [App\Http\Controllers\LikeController::class, 'search'])->name('search');
     Route::get('/csv', [App\Http\Controllers\LikeController::class, 'downloadLikeEvent'])->name('csv');
 });
 
