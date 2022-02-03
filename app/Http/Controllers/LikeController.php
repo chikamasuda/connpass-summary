@@ -22,13 +22,33 @@ class LikeController extends Controller
     }
 
     /**
-     * お気に入り一覧画面表示
+     * お気に入り一覧画面表示・検索結果表示
      *
      * @return void
      */
-    public function index(Event $event)
+    public function index(Request $request, Event $event)
     {
-        $lists = Like::getLikeEventListData();
+         // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
+         if ($request->has('reset')) {
+            $this->search_service->forgetOld();
+            return redirect()->route('like.index');
+        }
+
+        try {
+            $keyword = $request->input('like_keyword');
+            $start_date = $request->input('like_start_date');
+            $end_date = $request->input('like_end_date');
+            $sort = $request->input('like_sort');
+            if(empty($sort)) {
+                $lists = Like::getLikeEventListData();
+            } else {
+                $lists = $this->search_service->searchLikeEvent($keyword, $start_date, $end_date, $sort);
+            }
+        } catch (\Throwable $e) {
+            return back()->with('flash_alert', 'イベント検索に失敗しました');
+            // 全てのエラー・例外をキャッチしてログに残す
+            Log::error($e);
+        }
 
         return view('like_event', compact('lists'));
     }
@@ -71,35 +91,6 @@ class LikeController extends Controller
             return back()->with('flash_alert', 'お気に入り削除に失敗しました。');
             Log::error($e);
         }
-    }
-
-    /**
-     * お気に入りイベント検索
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function search(Request $request)
-    {
-        // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
-        if ($request->has('reset')) {
-            $this->search_service->forgetOld();
-            return redirect()->route('like.index');
-        }
-
-        try {
-            $keyword = $request->input('like_keyword');
-            $start_date = $request->input('like_start_date');
-            $end_date = $request->input('like_end_date');
-            $sort = $request->input('like_sort');
-            $lists = $this->search_service->searchLikeEvent($keyword, $start_date, $end_date, $sort);
-        } catch (\Throwable $e) {
-            return back()->with('flash_alert', 'イベント検索に失敗しました');
-            // 全てのエラー・例外をキャッチしてログに残す
-            Log::error($e);
-        }
-
-        return view('like_event', compact('lists'));
     }
 
     /**

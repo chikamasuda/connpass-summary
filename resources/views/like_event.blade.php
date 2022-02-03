@@ -5,7 +5,7 @@
     <div class="mt-2 mb-5 col-md-4 p-0">
         <h2 class="title title-border pb-2">イベントを絞り込む</h2>
         <div class="search-card">
-            <form action="{{ route('like.search') }}" method="get">
+            <form action="{{ route('like.index') }}" method="get">
                 <div>
                     <div class="form-group">
                         <label for="">キーワード</label>

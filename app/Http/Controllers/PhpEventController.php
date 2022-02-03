@@ -21,24 +21,11 @@ class PhpEventController extends Controller
     }
 
     /**
-     * PHPイベント一覧
+     * PHPイベント一覧・検索結果表示
      *
      * @return void
      */
-    public function index()
-    {
-        $lists = Event::getPhpEventList();
-
-        return view('php_event', compact('lists'));
-    }
-
-    /**
-     * PHPイベント検索
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function search(Request $request)
+    public function index(Request $request)
     {
         // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
         if ($request->has('reset')) {
@@ -51,7 +38,12 @@ class PhpEventController extends Controller
             $start_date = $request->input('php_start_date');
             $end_date = $request->input('php_end_date');
             $sort = $request->input('php_sort');
-            $lists = $this->search_service->searchPhpEvent($keyword, $start_date, $end_date, $sort);
+            if(empty($sort)) {
+                $lists = Event::getPhpEventList();
+            } else {
+                $lists = $this->search_service->searchPhpEvent($keyword, $start_date, $end_date, $sort);
+            }
+            
         } catch (\Throwable $e) {
             return back()->with('flash_alert', 'イベント検索に失敗しました');
             // 全てのエラー・例外をキャッチしてログに残す

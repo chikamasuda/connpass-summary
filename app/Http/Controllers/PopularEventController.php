@@ -22,25 +22,12 @@ class PopularEventController extends Controller
     }
 
     /**
-     * 人気イベント一覧
+     * 人気イベント一覧・検索結果一覧
      *
      * @param Event $event
      * @return void
      */
-    public function index(Event $event)
-    {
-        $lists = Event::getPopularEventList();
-
-        return view('popular_event', compact('lists', 'event'));
-    }
-
-    /**
-     * 人気イベント検索
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function search(Request $request)
+    public function index(Request $request, Event $event)
     {
         // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
         if ($request->has('reset')) {
@@ -53,14 +40,18 @@ class PopularEventController extends Controller
             $start_date = $request->input('start_date');
             $end_date = $request->input('end_date');
             $sort = $request->input('sort');
-            $lists = $this->search_service->searchPopularEvent($keyword, $start_date, $end_date, $sort);
+            if(empty($sort)) {
+                $lists = Event::getPopularEventList();
+            } else {
+                $lists = $this->search_service->searchPopularEvent($keyword, $start_date, $end_date, $sort);
+            }
         } catch (\Throwable $e) {
             return back()->with('flash_alert', 'イベント検索に失敗しました');
             // 全てのエラー・例外をキャッチしてログに残す
             Log::error($e);
         }
 
-        return view('popular_event', compact('lists'));
+        return view('popular_event', compact('lists', 'event'));
     }
 
     /**
