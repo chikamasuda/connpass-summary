@@ -6,7 +6,6 @@
         <h2 class="title title-border pb-2">イベントを絞り込む</h2>
         <div class="search-card">
             <form action="{{ route('php.search') }}" method="get">
-                @csrf
                 <div>
                     <div class="form-group">
                         <label for="">キーワード</label>

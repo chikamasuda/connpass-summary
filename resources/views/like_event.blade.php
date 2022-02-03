@@ -6,7 +6,6 @@
         <h2 class="title title-border pb-2">イベントを絞り込む</h2>
         <div class="search-card">
             <form action="{{ route('like.search') }}" method="get">
-                @csrf
                 <div>
                     <div class="form-group">
                         <label for="">キーワード</label>
@@ -77,12 +76,7 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
-                            <delete-like 
-                             endpoint="{{ route('events.like', ['event' => $list->id]) }}"
-                             index = "{{ $i }}"
-                             data-toggle="modal" 
-                             data-target="#modal-delete-{{ $list->id }}"
-                            >
+                            <delete-like endpoint="{{ route('events.like', ['event' => $list->id]) }}" index="{{ $i }}" data-toggle="modal" data-target="#modal-delete-{{ $list->id }}">
                             </delete-like>
                         </div>
                     </div>
