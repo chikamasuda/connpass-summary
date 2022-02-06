@@ -44,7 +44,7 @@ class SearchService
     public function searchPopularEvent($keyword, $start_date, $end_date, $sort)
     {
         $lists = Event::where('date', '>=', date('Y-m-d'))
-            ->where('accepted', '>=', 50);
+            ->where('accepted', '>=', event::POPULAR_EVENT_NUMBER);
 
         // キーワード検索
         if (!empty($keyword)) {

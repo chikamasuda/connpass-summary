@@ -9,6 +9,9 @@ use Illuminate\Support\Carbon;
 
 class Event extends Model
 {
+    //人気イベントの基準人数
+    const POPULAR_EVENT_NUMBER = 50;
+
     use HasFactory;
 
     public $timestamps = false;
@@ -65,7 +68,7 @@ class Event extends Model
     public static function getRankingPopularEventData()
     {
         $lists = self::where('date', '>', Carbon::yesterday())
-            ->where('accepted', '>=', 50)
+            ->where('accepted', '>=', self::POPULAR_EVENT_NUMBER)
             ->OrderBy('accepted', 'desc')
             ->limit(5)
             ->get();
@@ -113,7 +116,7 @@ class Event extends Model
     public static function getPopularEventList()
     {
         $lists = self::where('date', '>', Carbon::yesterday())
-            ->where('accepted', '>=', 50)
+            ->where('accepted', '>=', self::POPULAR_EVENT_NUMBER)
             ->OrderBy('accepted', 'desc')
             ->paginate(20);
 
