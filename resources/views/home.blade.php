@@ -30,7 +30,7 @@
     </div>
 </div>
 <section class="" style="background: #fff;">
-    <div class="row container pb-3 mx-auto">
+    <div class="row container pb-4 mx-auto">
         <div class="col-md-7 p-0 mt-4">
             <h2 class="title pb-2 title-border pt-2 mb-1">
                 人気急上昇イベント(直近24時間)

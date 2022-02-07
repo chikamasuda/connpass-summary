@@ -29,6 +29,11 @@
         @yield('content')
     </main>
     <footer class="pt-3 pb-3 footer text-center">
+        <ul class="mb-2 d-flex footer-nav mt-1 list-unstyled">
+          <li class="pr-3 text-center footer-border"><a href="{{ route('home') }}">ホーム</a></li>
+          <li class="pr-3 pl-3 text-center footer-border"><a href="{{ route('contact.index') }}">お問い合わせ</a></li>
+          <li class="pl-3 text-center"><a href="{{ route('privacy.index') }}">プライバシーポリシー</a></li>
+        </ul>
         <small class="text-center">2022 Connpass Summary</small>
     </footer>
   

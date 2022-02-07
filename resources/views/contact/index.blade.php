@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="row container mx-auto mt-4 contact-container">
-    <div class="card col-md-7 p-0 mt-2 mx-auto contact-card">
+    <div class="card col-md-7 p-0 mt-2 mx-auto contact-card mb-5">
         <h2 class="card-header title bg-light">お問い合わせ</h2>
         <div class="card-body">
             <p>リクエスト、バグなどありましたら、お問い合わせください。</p>

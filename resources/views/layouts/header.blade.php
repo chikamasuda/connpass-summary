@@ -16,7 +16,6 @@
                 <li class="nav-item"><a href="{{ route('popular.index') }}" class="nav-link mr-3">人気イベント</a></li>
                 <li class="nav-item"><a href="{{ route('php.index') }}" class="nav-link mr-3">PHPイベント</a></li>
                 <li class="nav-item"><a href="{{ route('like.index') }}" class="nav-link mr-3">お気に入り</a></li>
-                <li class="nav-item"><a href="{{ route('contact.index') }}" class="nav-link">お問い合わせ</a></li>
             </ul>
         </div>
     </div>

@@ -350,9 +350,22 @@ h3 {
 .footerFixed{
   min-height: 100vh; 
   position: relative;
-  padding-bottom: 50px; 
-  box-sizing: border-box;
+  padding-bottom: 70px; 
 }
+
+.footer-nav {
+  font-size: 13px;
+  justify-content: center;
+}
+
+.footer-border {
+  border-right: 1px solid #666;
+}
+
+.footer ul li a {
+  color: inherit;
+}
+
 @media screen and (max-width:440px){
   .logo{
       margin-left: 14px;

@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 //TOPページ
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//プライバシーポリシー
+Route::get('/privacy/index', [App\Http\Controllers\PrivacyController::class, 'index'])->name('privacy.index');
+
 //人気イベントページ
 Route::prefix('popular')->name('popular.')->group(function () {
     Route::get('/index', [App\Http\Controllers\PopularEventController::class, 'index'])->name('index');
