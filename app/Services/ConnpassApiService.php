@@ -8,7 +8,7 @@ use App\Models\Event;
 use App\Models\Alert;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7;
-use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\BadResponseException;
 
 class ConnpassAPIService
 {
@@ -180,7 +180,7 @@ class ConnpassAPIService
             $response = $client->request($method, $url);
             $arrays = $response->getBody();
             $arrays = json_decode($arrays, true);
-        } catch (ClientException $e) {
+        } catch (BadResponseException $e) {
             echo Psr7\Message::toString($e->getRequest());
             echo Psr7\Message::toString($e->getResponse());
         }
