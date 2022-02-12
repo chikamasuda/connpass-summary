@@ -13,7 +13,7 @@ class MailService
      *
      * @return void
      */
-    public function sendMail($request)
+    public static function sendMail($request)
     {
         try {
             $data = [

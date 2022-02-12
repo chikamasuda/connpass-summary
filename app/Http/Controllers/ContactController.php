@@ -10,13 +10,6 @@ use Illuminate\Support\Facades\Log;
 
 class ContactController extends Controller
 {
-    private $mail_service;
-
-    public function __construct(MailService $mail_service)
-    {
-        $this->mail_service = $mail_service;
-    }
-
     /**
      * お問い合わせメールフォームの表示
      *
@@ -50,7 +43,7 @@ class ContactController extends Controller
      */
     public function send(ContactRequest $request)
     {
-        $this->mail_service->sendMail($request);
+        MailService::sendMail($request);
 
         return view('contact.thanks');
     }

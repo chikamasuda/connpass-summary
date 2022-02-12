@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 class Alert extends Model
 {
     //人気急上昇イベントの基準人数
-    const ALERT_EVENT_NUMBER = 20;
+    const ALERT_ACCEPTED_MIN_COUNT = 20;
 
     use HasFactory;
 
@@ -44,7 +44,7 @@ class Alert extends Model
      */
     public static function getAlertListData()
     {
-        $alerts = self::where('diff', '>=', self::ALERT_EVENT_NUMBER)
+        $alerts = self::where('diff', '>=', self::ALERT_ACCEPTED_MIN_COUNT)
             ->OrderBy('diff', 'desc')
             ->whereHas('event', function ($query) {
                 $query->where('date', '>=',  Carbon::today()->format('Y-m-d'));

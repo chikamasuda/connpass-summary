@@ -13,14 +13,6 @@ use Illuminate\Support\Facades\Response;
 
 class LikeController extends Controller
 {
-    private $search_service, $csv_download_service;
-
-    public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service)
-    {
-        $this->search_service = $search_service;
-        $this->csv_download_service = $csv_download_service;
-    }
-
     /**
      * お気に入り一覧画面表示・検索結果表示
      *
@@ -30,7 +22,7 @@ class LikeController extends Controller
     {
          // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
          if ($request->has('reset')) {
-            $this->search_service->forgetOld();
+            SearchService::forgetOld();
             return redirect()->route('like.index');
         }
 
@@ -42,7 +34,7 @@ class LikeController extends Controller
             if(empty($sort)) {
                 $lists = Like::getLikeEventListData();
             } else {
-                $lists = $this->search_service->searchLikeEvent($keyword, $start_date, $end_date, $sort);
+                $lists = SearchService::searchLikeEvent($keyword, $start_date, $end_date, $sort);
             }
         } catch (\Throwable $e) {
             return back()->with('flash_alert', 'イベント検索に失敗しました');
@@ -102,7 +94,7 @@ class LikeController extends Controller
     public function downloadLikeEvent(Request $request)
     {
         try {
-            $csvData = $this->csv_download_service->getLikeEvent($request);
+            $csvData = CsvDownloadService::getLikeEvent($request);
             //ダウンロードされるデータが空の時はオブジェクトで値が返ってくるためアラートを出す
             if (is_object($csvData)) {
                 return back()->with('flash_alert', 'CSVダウンロード対象のデータがありません');

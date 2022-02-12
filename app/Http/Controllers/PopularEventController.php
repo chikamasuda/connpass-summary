@@ -13,14 +13,6 @@ use Illuminate\Support\Facades\Response;
 
 class PopularEventController extends Controller
 {
-    private $search_service, $csv_download_service;
-
-    public function __construct(SearchService $search_service, CsvDownloadService $csv_download_service)
-    {
-        $this->search_service = $search_service;
-        $this->csv_download_service = $csv_download_service;
-    }
-
     /**
      * 人気イベント一覧・検索結果一覧
      *
@@ -31,7 +23,7 @@ class PopularEventController extends Controller
     {
         // リセットボタンが押された場合はセッションを消して一覧へリダイレクト
         if ($request->has('reset')) {
-            $this->search_service->forgetOld();
+            SearchService::forgetOld();
             return redirect()->route('popular.index');
         }
 
@@ -40,10 +32,10 @@ class PopularEventController extends Controller
             $start_date = $request->input('start_date');
             $end_date = $request->input('end_date');
             $sort = $request->input('sort');
-            if(empty($sort)) {
+            if (empty($sort)) {
                 $lists = Event::getPopularEventList();
             } else {
-                $lists = $this->search_service->searchPopularEvent($keyword, $start_date, $end_date, $sort);
+                $lists = SearchService::searchPopularEvent($keyword, $start_date, $end_date, $sort);
             }
         } catch (\Throwable $e) {
             return back()->with('flash_alert', 'イベント検索に失敗しました');
@@ -62,7 +54,7 @@ class PopularEventController extends Controller
     public function downloadPopularEvent(Request $request)
     {
         try {
-            $csvData = $this->csv_download_service->getPopularEvent($request);
+            $csvData = CsvDownloadService::getPopularEvent($request);
         } catch (\Throwable $e) {
             return back()->with('flash_alert', 'CSVダウンロードに失敗しました');
             // 全てのエラー・例外をキャッチしてログに残す

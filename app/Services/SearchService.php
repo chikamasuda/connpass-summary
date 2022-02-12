@@ -18,7 +18,7 @@ class SearchService
      *
      * @return void
      */
-    public function forgetOld()
+    public static function forgetOld()
     {
         try {
             if (session()->has('_old_input')) {
@@ -41,10 +41,10 @@ class SearchService
      * @param string $sort
      * @return void
      */
-    public function searchPopularEvent($keyword, $start_date, $end_date, $sort)
+    public static function searchPopularEvent($keyword, $start_date, $end_date, $sort)
     {
         $lists = Event::where('date', '>=', date('Y-m-d'))
-            ->where('accepted', '>=', event::POPULAR_EVENT_NUMBER);
+            ->where('accepted', '>=', Event::POPULAR_ACCEPTED_MIN_COUNT);
 
         // キーワード検索
         if (!empty($keyword)) {
@@ -84,7 +84,7 @@ class SearchService
      * @param string $sort
      * @return void
      */
-    public function searchPhpEvent($keyword, $start_date, $end_date, $sort)
+    public static function searchPhpEvent($keyword, $start_date, $end_date, $sort)
     {
         $lists = Event::where('date', '>=', date('Y-m-d'))
             ->where('php_flag', 1);
@@ -128,7 +128,7 @@ class SearchService
      * @param string $sort
      * @return void
      */
-    public function searchLikeEvent($keyword, $start_date, $end_date, $sort)
+    public static function searchLikeEvent($keyword, $start_date, $end_date, $sort)
     {
         $lists = DB::table('likes')->join('events', 'likes.event_id', '=', 'events.id')
                 ->where('date', '>=',  Carbon::today()->format('Y-m-d'))
