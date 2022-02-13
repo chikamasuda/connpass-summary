@@ -182,6 +182,13 @@ h3 {
   padding: 24px 24px 0 24px;
 }
 
+.csv-card {
+  background-color: #fff;
+  border: 2px solid #e9e9e9;
+  height: 145px;
+  padding: 24px 24px 0 24px;
+}
+
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;

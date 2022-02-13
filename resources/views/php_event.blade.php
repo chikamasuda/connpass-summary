@@ -23,9 +23,9 @@
                     <div class="form-group">
                         <label>表示順</label>
                         <select class="form-control" name="php_sort">
-                            <option value="date_asc" class="bg-white" @if(request("php_sort") == "date_asc") selected @endif>開催日昇順</option>
-                            <option value="date_desc" class="bg-white" @if(request("php_sort") == "date_desc") selected @endif>開催日降順</option>
-                            <option value="popular" class="bg-white" @if(request("php_sort") == "popular") selected @endif>人気イベント順</option>
+                            <option value="date_asc" class="bg-white" @if(request("php_sort")=="date_asc" ) selected @endif>開催日昇順</option>
+                            <option value="date_desc" class="bg-white" @if(request("php_sort")=="date_desc" ) selected @endif>開催日降順</option>
+                            <option value="popular" class="bg-white" @if(request("php_sort")=="popular" ) selected @endif>人気イベント順</option>
                         </select>
                     </div>
                     <div class="text-center mx-auto mt-4">
@@ -35,18 +35,22 @@
                 </div>
             </form>
         </div>
-    </div>
-    <div class="mt-2 col-md-7 p-0 mb-4">
-        <h2 class="title title-border pb-2">PHPイベント一覧</h2>
-        <div class="mt-1">
-            @if (!$lists->isEmpty())
+        <h2 class="title title-border pb-2 mt-5">CSVダウンロード</h2>
+        <div class="csv-card">
+            <p>PHPイベント一覧のデータをCSV形式でダウンロードできます。</p>
             <form action="{{ route('php.csv') }}" method="get">
                 <input type="hidden" name="php_keyword" value="{{ old('php_keyword', request('php_keyword')) }}">
                 <input type="hidden" name="php_start_date" value="{{ old('php_start_date', request('php_start_date')) }}">
                 <input type="hidden" name="php_end_date" value="{{ old('php_end_date', request('php_end_date')) }}">
                 <input type="hidden" name="php_sort" value="{{ old('php_sort', request('php_sort')) }}">
-                <button type="submit" class="btn btn-default pr-3 pl-3 mb-3" href="">CSVダウンロード</button>
+                <button type="submit" class="btn btn-block text-white site-btn pt-2 pb-2"><i class="fas fa-file-export mr-2"></i>CSVダウンロード</button>
             </form>
+        </div>
+    </div>
+    <div class="mt-2 col-md-7 p-0 mb-4">
+        <h2 class="title title-border pb-2">PHPイベント一覧</h2>
+        <div class="mt-1">
+            @if (!$lists->isEmpty())
             @foreach($lists as $list)
             <ul class="list-unstyled event-card">
                 <li class="pt-4 pl-4 pr-4">

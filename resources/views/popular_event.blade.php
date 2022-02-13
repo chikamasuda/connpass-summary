@@ -14,18 +14,18 @@
                     <div class="form-group">
                         <label for="">開催日検索</label>
                         <div class="form-group">
-                            <input class="form-control" type="text" id="datepicker" name="start_date" value="{{ old('start_date', request('start_date')) }}" placeholder="From" class="pb-3">
+                            <input class="form-control" type="text" id="datepicker" name="start_date" value="{{ old('start_date', request('start_date')) }}" placeholder="From">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" id="datepicker-2" name="end_date" value="{{ old('end_date', request('end_date')) }}" placeholder="To" class="pb-3">
+                            <input class="form-control" type="text" id="datepicker-2" name="end_date" value="{{ old('end_date', request('end_date')) }}" placeholder="To">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>表示順</label>
                         <select class="form-control" name="sort">
-                            <option value="popular" class="bg-white" @if(request('sort')==='popular') selected @endif>人気イベント順</option>
-                            <option value="date_asc" class="bg-white" @if(request('sort')==='date_asc') selected @endif>開催日昇順</option>
-                            <option value="date_desc" class="bg-white" @if(request('sort')==='date_desc') selected @endif>開催日降順</option>
+                            <option value="popular" class="bg-white" @if(request('sort')==='popular' ) selected @endif>人気イベント順</option>
+                            <option value="date_asc" class="bg-white" @if(request('sort')==='date_asc' ) selected @endif>開催日昇順</option>
+                            <option value="date_desc" class="bg-white" @if(request('sort')==='date_desc' ) selected @endif>開催日降順</option>
                         </select>
                     </div>
                     <div class="text-center mx-auto mt-4">
@@ -35,18 +35,22 @@
                 </div>
             </form>
         </div>
-    </div>
-    <div class="mt-2 col-md-7 p-0 pb-4">
-        <h2 class="title title-border pb-2">人気イベント一覧</h2>
-        <div class="mt-1">
-            @if (!$lists->isEmpty())
+        <h2 class="title title-border pb-2 mt-5">CSVダウンロード</h2>
+        <div class="csv-card">
+            <p>人気イベント一覧のデータをCSV形式でダウンロードできます。</p>
             <form action="{{ route('popular.csv') }}" method="get">
                 <input type="hidden" name="keyword" value="{{ old('keyword', request('keyword')) }}">
                 <input type="hidden" name="start_date" value="{{ old('start_date', request('start_date')) }}">
                 <input type="hidden" name="end_date" value="{{ old('end_date', request('end_date')) }}">
                 <input type="hidden" name="sort" value="{{ old('sort', request('sort')) }}">
-                <button type="submit" class="btn btn-default pr-3 pl-3 mb-3" href="">CSVダウンロード</button>
+                <button type="submit" class="btn btn-block text-white site-btn pt-2 pb-2"><i class="fas fa-file-export mr-2"></i>CSVダウンロード</button>
             </form>
+        </div>
+    </div>
+    <div class="mt-2 col-md-7 p-0 pb-4">
+        <h2 class="title title-border pb-2">人気イベント一覧</h2>
+        <div class="mt-1">
+            @if (!$lists->isEmpty())
             @foreach($lists as $list)
             <ul class="list-unstyled event-card">
                 <li class="pt-4 pl-4 pr-4">

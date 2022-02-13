@@ -95,10 +95,6 @@ class LikeController extends Controller
     {
         try {
             $csvData = CsvDownloadService::getLikeEvent($request);
-            //ダウンロードされるデータが空の時はオブジェクトで値が返ってくるためアラートを出す
-            if (is_object($csvData)) {
-                return back()->with('flash_alert', 'CSVダウンロード対象のデータがありません');
-            }
         } catch (\Throwable $e) {
             return back()->with('flash_alert', 'CSVダウンロードに失敗しました');
             // 全てのエラー・例外をキャッチしてログに残す

@@ -47,21 +47,26 @@
                 </div>
             </form>
         </div>
+        @if (!$lists->isEmpty())
+        <h2 class="title title-border pb-2 mt-5">CSVダウンロード</h2>
+        <div class="csv-card">
+            <p>お気に入り一覧のデータをCSV形式でダウンロードできます。</p>
+            <form action="{{ route('like.csv') }}" method="get">
+                <input type="hidden" name="like_keyword" value="{{ old('like_keyword', request('like_keyword')) }}">
+                <input type="hidden" name="like_start_date" value="{{ old('like_start_date', request('like_start_date')) }}">
+                <input type="hidden" name="like_end_date" value="{{ old('like_end_date', request('like_end_date')) }}">
+                <input type="hidden" name="like_sort" value="{{ old('like_sort', request('like_sort')) }}">
+                <button type="submit" class="btn btn-block text-white site-btn pt-2 pb-2"><i class="fas fa-file-export mr-2"></i>CSVダウンロード</button>
+            </form>
+        </div>
+        @endif
     </div>
     <div class="mt-2 col-md-7 p-0 mb-4">
         <h2 class="title title-border pb-2">お気に入り一覧</h2>
         @include('layouts.alert')
         <div class="mt-1">
             @if (!$lists->isEmpty())
-            <form action="{{ route('like.csv') }}" method="get">
-                <input type="hidden" name="like_keyword" value="{{ old('like_keyword', request('like_keyword')) }}">
-                <input type="hidden" name="like_start_date" value="{{ old('like_start_date', request('like_start_date')) }}">
-                <input type="hidden" name="like_end_date" value="{{ old('like_end_date', request('like_end_date')) }}">
-                <input type="hidden" name="like_sort" value="{{ old('like_sort', request('like_sort')) }}">
-                <button type="submit" id="download-button" class="btn btn-default pr-3 pl-3 mb-3" href="">CSVダウンロード</button>
-            </form>
             @foreach($lists as $i => $list)
-
             <!-- modal -->
             <div id="modal-delete-{{ $list->id }}" class="modal" tabindex="-1" role="dialog">
                 <div id="modal-dialog" class="modal-dialog" role="document">

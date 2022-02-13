@@ -112,11 +112,6 @@ class CsvDownloadService
         //ダウンロードデータを配列に入れて変数$dataに代入
         $data = self::getDownloadData($lists);
 
-        //ダウンロードデータが空の時、一つ前の遷移先に戻ってアラート表示を出す。
-        if (empty($data)) {
-            return back();
-        }
-
         return self::baseCSV($data, $csvHeader, $name);
     }
 
