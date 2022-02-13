@@ -13,12 +13,8 @@
                     </div>
                     <div class="form-group">
                         <label for="">開催日</label>
-                        <div class="form-group">
-                            <input class="form-control" type="text" id="datepicker" name="php_start_date" value="{{ old('php_start_date', request('php_start_date')) }}" placeholder="From" class="pb-3">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" id="datepicker-2" name="php_end_date" value="{{ old('php_end_date', request('php_end_date')) }}" placeholder="To" class="pb-3">
-                        </div>
+                        <input class="form-control mb-3" type="text" id="datepicker" name="php_start_date" value="{{ old('php_start_date', request('php_start_date')) }}" placeholder="From" class="pb-3">
+                        <input class="form-control" type="text" id="datepicker-2" name="php_end_date" value="{{ old('php_end_date', request('php_end_date')) }}" placeholder="To" class="pb-3">
                     </div>
                     <div class="form-group">
                         <label>表示順</label>

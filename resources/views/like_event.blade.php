@@ -13,29 +13,25 @@
                     </div>
                     <div class="form-group">
                         <label for="">開催日</label>
-                        <div class="form-group">
-                            <input class="form-control" type="text" id="datepicker" name="like_start_date" value="{{ old('like_start_date', request('like_start_date')) }}" placeholder="From" class="pb-3">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" id="datepicker-2" name="like_end_date" value="{{ old('like_end_date', request('like_end_date')) }}" placeholder="To" class="pb-3">
-                        </div>
+                        <input class="form-control mb-3" type="text" id="datepicker" name="like_start_date" value="{{ old('like_start_date', request('like_start_date')) }}" placeholder="From" class="pb-3">
+                        <input class="form-control" type="text" id="datepicker-2" name="like_end_date" value="{{ old('like_end_date', request('like_end_date')) }}" placeholder="To" class="pb-3">
                     </div>
                     <div class="form-group">
                         <label>表示順</label>
                         <select class="form-control" name="like_sort">
-                            <option value="like_asc" class="bg-white" @if(request('like_sort')==='like_asc' ) selected @endif>
+                            <option value="like_asc" class="bg-white" @if(request('like_sort')==='like_asc') selected @endif>
                                 お気に入り登録昇順
                             </option>
-                            <option value="like_desc" class="bg-white" @if(request('like_sort')==='like_desc' ) selected @endif>
+                            <option value="like_desc" class="bg-white" @if(request('like_sort')==='like_desc') selected @endif>
                                 お気に入り登録降順
                             </option>
-                            <option value="date_asc" class="bg-white" @if(request('like_sort')==='date_asc' ) selected @endif>
+                            <option value="date_asc" class="bg-white" @if(request('like_sort')==='date_asc') selected @endif>
                                 開催日昇順
                             </option>
-                            <option value="date_desc" class="bg-white" @if(request('like_sort')==='date_desc' ) selected @endif>
+                            <option value="date_desc" class="bg-white" @if(request('like_sort')==='date_desc') selected @endif>
                                 開催日降順
                             </option>
-                            <option value="popular" class="bg-white" @if(request('like_sort')==='popular' ) selected @endif>
+                            <option value="popular" class="bg-white" @if(request('like_sort')==='popular') selected @endif>
                                 人気イベント順
                             </option>
                         </select>
