@@ -136,7 +136,7 @@
 
             <div class="text-center mt-4"> {{ $lists->appends(request()->query())->links('pagination::bootstrap-4') }}</div>
             @else
-            <p>お気に入りイベントは0件です。</p>
+            <p class="message-card">お気に入りイベントは0件です。</p>
             @endif
         </div>
     </div>
