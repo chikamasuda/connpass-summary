@@ -19,14 +19,14 @@ class ConnpassAPIService
      * @param string $context
      * @return void
      */
-    public function getPopularEventData()
+    public static function updatePopularEventData()
     {
         //コンパスのURLのリスト
         $url_lists = config('url.event_url_lists');
 
         foreach ($url_lists as $url) {
             //ConnpassAPIのデータ取得
-            $api_data = $this->getConnpassApiData($url);
+            $api_data = self::getConnpassApiData($url);
 
             //イベント情報を配列に入れて保存
             DB::beginTransaction();
@@ -69,14 +69,14 @@ class ConnpassAPIService
      * @param string $context
      * @return void
      */
-    public function getPhpEventData()
+    public static function updatePhpEventData()
     {
         //コンパスのURLのリスト
         $url_lists = config('url.php_url_lists');
 
         foreach ($url_lists as $url) {
             //ConnpassAPIのデータ取得
-            $api_data = $this->getConnpassApiData($url);
+            $api_data = self::getConnpassApiData($url);
 
             //イベント情報を配列に入れて保存
             DB::beginTransaction();
@@ -119,14 +119,14 @@ class ConnpassAPIService
      * @param string $context
      * @return void
      */
-    public function getAlertData()
+    public static function updateAlertData()
     {
         //コンパスのURLのリスト
         $url_lists = config('url.event_url_lists');
 
         foreach ($url_lists as $url) {
            //ConnpassAPIのデータ取得
-           $api_data = $this->getConnpassApiData($url);
+           $api_data = self::getConnpassApiData($url);
 
             //イベント情報を配列に入れて保存
             DB::beginTransaction();
@@ -172,7 +172,7 @@ class ConnpassAPIService
      * @param string $url
      * @return void
      */
-    private function getConnpassApiData($url)
+    private static function getConnpassApiData($url)
     {
          try {
             $client = new Client();
@@ -183,8 +183,10 @@ class ConnpassAPIService
         } catch (BadResponseException $e) {
             echo Psr7\Message::toString($e->getRequest());
             echo Psr7\Message::toString($e->getResponse());
+            return false;
         } catch (\Exception $e) {
             Log::error($e);
+            return false;
         }
     }
 }
