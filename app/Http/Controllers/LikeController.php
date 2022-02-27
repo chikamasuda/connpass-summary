@@ -37,11 +37,10 @@ class LikeController extends Controller
                 $lists = SearchService::searchLikeEvent($keyword, $start_date, $end_date, $sort);
             }
         } catch (\Throwable $e) {
-            return back()->with('flash_alert', 'イベント検索に失敗しました');
+            return back()->with('flash_alert', config('message.flash_alert.event_search'));
             // 全てのエラー・例外をキャッチしてログに残す
             Log::error($e);
         }
-
         return view('like_event', compact('lists'));
     }
 
@@ -60,7 +59,7 @@ class LikeController extends Controller
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
-            return back()->with('flash_alert', 'お気に入り登録に失敗しました。');
+            return back()->with('flash_alert', config('message.flash_alert.save_like'));
             Log::error($e);
         }
     }
@@ -80,7 +79,7 @@ class LikeController extends Controller
             DB::commit();
         } catch (\Throwable $e) {
             DB::rollback();
-            return back()->with('flash_alert', 'お気に入り削除に失敗しました。');
+            return back()->with('flash_alert', config('message.flash_alert.delete_like'));
             Log::error($e);
         }
     }
@@ -96,7 +95,7 @@ class LikeController extends Controller
         try {
             $csvData = CsvDownloadService::getLikeEvent($request);
         } catch (\Throwable $e) {
-            return back()->with('flash_alert', 'CSVダウンロードに失敗しました');
+            return back()->with('flash_alert', config('message.flash_alert.csv_download'));
             // 全てのエラー・例外をキャッチしてログに残す
             Log::error($e);
         }

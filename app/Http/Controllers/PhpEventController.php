@@ -37,7 +37,7 @@ class PhpEventController extends Controller
             }
             
         } catch (\Throwable $e) {
-            return back()->with('flash_alert', 'イベント検索に失敗しました');
+            return back()->with('flash_alert', config('message.flash_alert.event_search'));
             // 全てのエラー・例外をキャッチしてログに残す
             Log::error($e);
         }
@@ -55,7 +55,7 @@ class PhpEventController extends Controller
         try {
             $csvData = CsvDownloadService::getPhpEvent($request);
         } catch (\Throwable $e) {
-            return back()->with('flash_alert', 'CSVダウンロードに失敗しました');
+            return back()->with('flash_alert', config('message.flash_alert.csv_download'));
             // 全てのエラー・例外をキャッチしてログに残す
             Log::error($e);
         }

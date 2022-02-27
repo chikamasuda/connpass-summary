@@ -28,7 +28,7 @@ class MailService
             //再送信を防ぐためにトークンを再発行
             $request->session()->regenerateToken();
         } catch (\Throwable $e) {
-            return back()->with('flash_alert', 'メール送信に失敗しました。');
+            return back()->with('flash_alert', config('message.flash_alert.send_mail'));
             // 全てのエラー・例外をキャッチしてログに残す
             Log::error($e);
         }

@@ -38,11 +38,10 @@ class PopularEventController extends Controller
                 $lists = SearchService::searchPopularEvent($keyword, $start_date, $end_date, $sort);
             }
         } catch (\Throwable $e) {
-            return back()->with('flash_alert', 'イベント検索に失敗しました');
+            return back()->with('flash_alert', config('message.flash_alert.event_search'));
             // 全てのエラー・例外をキャッチしてログに残す
             Log::error($e);
         }
-
         return view('popular_event', compact('lists', 'event'));
     }
 
@@ -56,7 +55,7 @@ class PopularEventController extends Controller
         try {
             $csvData = CsvDownloadService::getPopularEvent($request);
         } catch (\Throwable $e) {
-            return back()->with('flash_alert', 'CSVダウンロードに失敗しました');
+            return back()->with('flash_alert', config('message.flash_alert.csv_download'));
             // 全てのエラー・例外をキャッチしてログに残す
             Log::error($e);
         }
