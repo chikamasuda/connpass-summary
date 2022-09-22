@@ -19,7 +19,7 @@ https://connpass-summary.work/
 
 
 ## 機能一覧
-•外部API連携  
+•外部API連携(Connpass API)    
 •バッチ処理  
 •メール送信機能(お問い合わせフォーム)    
 •お気に入り機能（登録・削除をAjaxによる非同期処理で実装)   
